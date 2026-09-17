@@ -1,0 +1,19 @@
+[
+  {
+    "stage": "initial profiling run",
+    "status": "interrupted deliberately",
+    "reason": "tracemalloc materially inflated Graphix execution times; replaced with sampled process RSS; profiling outputs overwritten by untraced runs"
+  },
+  {
+    "stage": "manifest atomic replace",
+    "status": "resolved and resumed",
+    "error": "PermissionError [WinError 5] Access is denied during os.replace(manifest.json.tmp, manifest.json)",
+    "resolution": "unique same-directory tempfiles, bounded PermissionError retries, identical-config manifest resume"
+  },
+  {
+    "stage": "targeted pytest coverage collection",
+    "status": "resolved",
+    "error": "ImportError: cannot load module more than once per process (NumPy)",
+    "resolution": "Use filesystem --cov=src/photographiqml/reservoirs instead of dotted subpackage coverage discovery; no numerical tolerance changed"
+  }
+]

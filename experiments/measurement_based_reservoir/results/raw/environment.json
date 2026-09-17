@@ -1,0 +1,42 @@
+{
+  "python": "3.14.4",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "photographiq": "0.3.1",
+    "photographiqml": "0.2.0",
+    "piquasso": "8.0.1",
+    "graphix": "0.4",
+    "mentpy": "0.1.0a15",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "networkx": "3.6.1",
+    "scikit-learn": "1.9.1",
+    "jax": null
+  },
+  "commits": {
+    "photographiqml": "9c08023d07005ebc0150324c539ea942b8c8ba01",
+    "photographiq": "6d49da06fa6ede78bf06ea1df07ccfb3b4f5250e"
+  },
+  "dirty_worktrees": {
+    "photographiqml": true,
+    "photographiq": false
+  },
+  "implementation_sha256": {
+    "src/photographiqml/reservoirs/__init__.py": "95c7914f12fd5dfcbd9e5d24c3fe8c8483c153bacd9643325e2c2bfd632bbdfc",
+    "src/photographiqml/reservoirs/base.py": "2cf1c090c83260be89bc971dcb1ad4f57b3050001b0b4320a9378930ce2eebdc",
+    "src/photographiqml/reservoirs/benchmarks.py": "984286d9fc79003f0dfd7d74b400307d115f62e27685f0d6a9124a4794df2ecd",
+    "src/photographiqml/reservoirs/config.py": "c0af03375adf449fe2a24463e93c0131ce811b345c055c1d9714411dadd22b61",
+    "src/photographiqml/reservoirs/cv.py": "4309994b0543c588ff6a30a507626e4c6f74103aa9c0ad23963176673648687c",
+    "src/photographiqml/reservoirs/diagnostics.py": "0fbf5b63b4fb4b203cad1ff35b1327a05e07b772c667e2ae2396167f3b6aaa06",
+    "src/photographiqml/reservoirs/fock.py": "f0ed92447659cda57e5322ba4a4471c73a6eb9215d7b977d1e03bb47f7a9012b",
+    "src/photographiqml/reservoirs/graphix_backend.py": "90ce46730c5e5caeefe33b7bf93f6fe5d91a4c65d2fb7ab4b17f18e7088f7e92",
+    "src/photographiqml/reservoirs/mentpy_backend.py": "272abe8c6e714cdb7e4a731388c6b29a9202110d634b827b9301270794da89a8",
+    "src/photographiqml/reservoirs/readout.py": "1c8a0e2e472d27aa482402410de874ca169a45d7abf14e1161217bc4dd36d630",
+    "src/photographiqml/reservoirs/results.py": "0dc20ea945a34459d6244fd86a3ceda04f2bcb7c5b0a8012ebf21d6f86d523ba",
+    "src/photographiqml/reservoirs/temporal.py": "fb1479617be33cad247f4b55415340b76d6ea531c0e9114dcb09c57bdba63624",
+    "src/photographiqml/reservoirs/validation.py": "3caf583272bff310c56480d8c7abcde667c6b0060bb25cb1834001ae68e33131",
+    "experiments/measurement_based_reservoir/main.py": "e0c4befe334ec929d7610ef13bb06d91709aa085fe6e3d940c0c170403673234",
+    "experiments/measurement_based_reservoir/reproduce.py": "b49f284bee9d1139a877eb832b73758f9ceedd117996364d198a966556abfe56",
+    "experiments/measurement_based_reservoir/supplementary.py": "012b82718fa4370b7969bb1c8b57a8e815c5e23b4c9e0c54eafc69bb0a396a93"
+  }
+}

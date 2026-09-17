@@ -1,0 +1,1462 @@
+[
+  {
+    "seed": 0,
+    "memory_modes": 1,
+    "steps": 100,
+    "feature_dimension": 7,
+    "construction_seconds": 0.0024487000046065077,
+    "execution_seconds": 0.10160799999721348,
+    "resources": {
+      "modes": 2,
+      "retained_nodes": [
+        0
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 1,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 48,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.933384139797857,
+      "covariance_spectrum": [
+        0.0015013462463580062,
+        0.0010251276554884819,
+        0.0005835443943641222,
+        2.7260866745178284e-05,
+        1.0599538671033203e-06,
+        4.307072068714532e-07,
+        2.960583253675212e-33
+      ],
+      "condition_number_nonzero": 59.04040961218191,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.1736712663719016
+    }
+  },
+  {
+    "seed": 0,
+    "memory_modes": 2,
+    "steps": 100,
+    "feature_dimension": 14,
+    "construction_seconds": 0.0024904000019887462,
+    "execution_seconds": 0.12317110000003595,
+    "resources": {
+      "modes": 3,
+      "retained_nodes": [
+        0,
+        1
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 3,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 160,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 3.7256369930536635,
+      "covariance_spectrum": [
+        0.0033384689835155574,
+        0.002159169443439059,
+        0.0016669366536154052,
+        0.0003023668777391606,
+        0.0001621118969678171,
+        3.970308483446321e-05,
+        2.4792993399481855e-05,
+        6.711900583387988e-06,
+        2.7107986501742105e-06,
+        1.1391980944831183e-06,
+        5.780409080924315e-07,
+        2.0894115427882426e-07,
+        5.031182653585996e-32,
+        2.1601225308850374e-33
+      ],
+      "condition_number_nonzero": 126.40425055088299,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.1890080334722304
+    }
+  },
+  {
+    "seed": 0,
+    "memory_modes": 4,
+    "steps": 100,
+    "feature_dimension": 28,
+    "construction_seconds": 0.00269059999845922,
+    "execution_seconds": 0.19296730001224205,
+    "resources": {
+      "modes": 5,
+      "retained_nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 7,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 576,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 4.132639540568543,
+      "covariance_spectrum": [
+        0.004957695486550046,
+        0.0032418731468023903,
+        0.00265583845239435,
+        0.000588300253461951,
+        0.000419872141331119,
+        8.08136775184e-05,
+        4.756404423861208e-05,
+        3.22321165456669e-05,
+        2.0960924487245203e-05,
+        1.3626111404698132e-05,
+        1.1592155363759505e-05,
+        3.317114533692879e-06,
+        2.042143231338493e-06,
+        1.5747817288489084e-06,
+        8.538518773351875e-07,
+        6.693099043261654e-07,
+        3.149443979687659e-07,
+        2.3572241952810888e-07,
+        1.594435910668519e-07,
+        1.3254263364197137e-07,
+        5.3611703533519926e-08,
+        1.9042395585170084e-08,
+        4.9002294715616914e-09,
+        5.848807786345687e-10,
+        1.2008773349705496e-32,
+        2.186033561082358e-33,
+        1.92595889692514e-33,
+        1.5331589873271563e-33
+      ],
+      "condition_number_nonzero": 2911.429307099503,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.1980135507701035
+    }
+  },
+  {
+    "seed": 1,
+    "memory_modes": 1,
+    "steps": 100,
+    "feature_dimension": 7,
+    "construction_seconds": 0.003519699996104464,
+    "execution_seconds": 0.09848760000022594,
+    "resources": {
+      "modes": 2,
+      "retained_nodes": [
+        0
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 1,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 48,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.3051602366391615,
+      "covariance_spectrum": [
+        0.0007016621087030959,
+        0.00023311974106512233,
+        8.235609807725753e-05,
+        7.223644406405862e-06,
+        1.7278118633673088e-07,
+        3.498534953505813e-10,
+        1.096081500739555e-32
+      ],
+      "condition_number_nonzero": 1416.1879785709907,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.0982247272283139
+    }
+  },
+  {
+    "seed": 1,
+    "memory_modes": 2,
+    "steps": 100,
+    "feature_dimension": 14,
+    "construction_seconds": 0.0018242000078316778,
+    "execution_seconds": 0.11155400000279769,
+    "resources": {
+      "modes": 3,
+      "retained_nodes": [
+        0,
+        1
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 3,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 160,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.549400887268504,
+      "covariance_spectrum": [
+        0.0019990960095727117,
+        0.0004610544702992643,
+        0.00023696232659526145,
+        5.688743058467595e-05,
+        4.208355218349324e-05,
+        1.57192939164325e-05,
+        7.064873779287465e-06,
+        7.197348531231014e-07,
+        3.8566948703735117e-08,
+        2.1847326576151776e-08,
+        4.068754624333467e-10,
+        1.4246258064419684e-10,
+        2.94947789978372e-33,
+        2.1476788527083725e-33
+      ],
+      "condition_number_nonzero": 3745.988351548603,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.1379308547589877
+    }
+  },
+  {
+    "seed": 1,
+    "memory_modes": 4,
+    "steps": 100,
+    "feature_dimension": 28,
+    "construction_seconds": 0.008014999999431893,
+    "execution_seconds": 0.14156489999732003,
+    "resources": {
+      "modes": 5,
+      "retained_nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 7,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 576,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.498666957337836,
+      "covariance_spectrum": [
+        0.0024951796983433555,
+        0.0006224537477463646,
+        0.00029227464028072175,
+        4.948672346568263e-05,
+        3.0720157710757164e-05,
+        1.733191692543997e-05,
+        9.103567284235331e-06,
+        3.6940403031738343e-06,
+        1.7928004537623587e-06,
+        8.136745096664898e-07,
+        5.767620725287062e-07,
+        4.376869613964051e-07,
+        4.101259181229537e-08,
+        2.5714892256502125e-08,
+        1.7988836402970486e-08,
+        2.589311756386332e-09,
+        1.0593045653645476e-09,
+        1.2014405196923981e-10,
+        9.185480007964526e-11,
+        5.974746331781144e-11,
+        5.312868262348546e-12,
+        5.205882839064603e-13,
+        4.35595795248264e-13,
+        5.472948943246269e-14,
+        4.177483558901698e-32,
+        2.3874974854942247e-33,
+        1.5894158251501186e-33,
+        1.2580121358796832e-33
+      ],
+      "condition_number_nonzero": 213520.8136724339,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.1503525298327166
+    }
+  },
+  {
+    "seed": 2,
+    "memory_modes": 1,
+    "steps": 100,
+    "feature_dimension": 7,
+    "construction_seconds": 0.001399499989929609,
+    "execution_seconds": 0.1153100999945309,
+    "resources": {
+      "modes": 2,
+      "retained_nodes": [
+        0
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 1,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 48,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.38773863998915,
+      "covariance_spectrum": [
+        0.002007118922669776,
+        0.0011269915846884488,
+        0.00021588873316331862,
+        6.754323602476097e-06,
+        2.4188958478378356e-06,
+        8.519295782472453e-07,
+        5.236425678703852e-32
+      ],
+      "condition_number_nonzero": 48.538315948435866,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.0845656272535766
+    }
+  },
+  {
+    "seed": 2,
+    "memory_modes": 2,
+    "steps": 100,
+    "feature_dimension": 14,
+    "construction_seconds": 0.0016206000000238419,
+    "execution_seconds": 0.1702250000089407,
+    "resources": {
+      "modes": 3,
+      "retained_nodes": [
+        0,
+        1
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 3,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 160,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 3.562924026548319,
+      "covariance_spectrum": [
+        0.005309531587112035,
+        0.003548198518081984,
+        0.0010108602390900342,
+        0.0006562030008329834,
+        0.00043751160161085696,
+        3.014719450451013e-05,
+        1.5119667461969338e-05,
+        9.999463793803998e-06,
+        4.054556875323021e-06,
+        3.3822621425766913e-06,
+        1.9029072127735176e-06,
+        4.5194245161000264e-07,
+        9.00784417116002e-33,
+        2.2970809468239605e-33
+      ],
+      "condition_number_nonzero": 108.3893310212798,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.1334215501988298
+    }
+  },
+  {
+    "seed": 2,
+    "memory_modes": 4,
+    "steps": 100,
+    "feature_dimension": 28,
+    "construction_seconds": 0.002698600001167506,
+    "execution_seconds": 0.1701418000011472,
+    "resources": {
+      "modes": 5,
+      "retained_nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 7,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 576,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 3.8123400197129813,
+      "covariance_spectrum": [
+        0.006073499688238443,
+        0.004034760485834082,
+        0.001135145850046446,
+        0.0007951346167758637,
+        0.000534170893678125,
+        9.166886432183981e-05,
+        5.02991239903895e-05,
+        3.6683957701271064e-05,
+        1.528820835085269e-05,
+        1.1468945604870206e-05,
+        6.2579304065969425e-06,
+        4.882955750507828e-06,
+        2.8417888915382108e-06,
+        1.4241732580420866e-06,
+        1.1582808175599014e-06,
+        1.023056178423002e-06,
+        3.778267814715716e-07,
+        3.339859904298863e-07,
+        2.473163605830438e-07,
+        2.008776282417098e-07,
+        6.426822181547063e-08,
+        1.4642295957740032e-09,
+        1.1803007003740134e-09,
+        1.5207633027614558e-10,
+        3.5550191894439427e-32,
+        1.828867007633759e-33,
+        1.63949649187408e-33,
+        1.3886420891514566e-33
+      ],
+      "condition_number_nonzero": 6319.586966175607,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.1351487690758244
+    }
+  },
+  {
+    "seed": 3,
+    "memory_modes": 1,
+    "steps": 100,
+    "feature_dimension": 7,
+    "construction_seconds": 0.0014811000000918284,
+    "execution_seconds": 0.07565959999919869,
+    "resources": {
+      "modes": 2,
+      "retained_nodes": [
+        0
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 1,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 48,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.1725123639122854,
+      "covariance_spectrum": [
+        0.005463452561301675,
+        0.002964769282446801,
+        0.00019603661015335508,
+        3.80119800663789e-05,
+        7.893285388666894e-06,
+        2.1078225464729982e-06,
+        7.619019709035975e-32
+      ],
+      "condition_number_nonzero": 50.91157884943855,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.0967947255926822
+    }
+  },
+  {
+    "seed": 3,
+    "memory_modes": 2,
+    "steps": 100,
+    "feature_dimension": 14,
+    "construction_seconds": 0.0015440999995917082,
+    "execution_seconds": 0.1123410000000149,
+    "resources": {
+      "modes": 3,
+      "retained_nodes": [
+        0,
+        1
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 3,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 160,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.6825538726550455,
+      "covariance_spectrum": [
+        0.005630805448118095,
+        0.0030869186280134534,
+        0.00034403963576058386,
+        0.0002199877016235007,
+        0.00016666686049087896,
+        3.734383230825155e-05,
+        8.07056376174972e-06,
+        3.81861899895259e-06,
+        1.805566460102936e-06,
+        3.528497226010297e-07,
+        1.953613608470028e-07,
+        2.6931931483889717e-08,
+        3.470821315200295e-32,
+        2.4118077384018142e-33
+      ],
+      "condition_number_nonzero": 457.2476799905632,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.0949431509625376
+    }
+  },
+  {
+    "seed": 3,
+    "memory_modes": 4,
+    "steps": 100,
+    "feature_dimension": 28,
+    "construction_seconds": 0.0022554000024683774,
+    "execution_seconds": 0.13609170001291204,
+    "resources": {
+      "modes": 5,
+      "retained_nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 7,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 576,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 3.2901077117591693,
+      "covariance_spectrum": [
+        0.01593844904124328,
+        0.009995875389384097,
+        0.0016464395578166667,
+        0.0011058982547442813,
+        0.0007430002065756256,
+        0.00020730690842994155,
+        0.00017184100304478203,
+        0.00011394188550595818,
+        5.110234463907352e-05,
+        2.7222722723063597e-05,
+        1.526047854203507e-05,
+        1.279744976160335e-05,
+        7.929574026079299e-06,
+        5.965135748803439e-06,
+        4.335532878224311e-06,
+        2.285079296047511e-06,
+        1.34510454688295e-06,
+        1.0490048738590928e-06,
+        4.0207409162528175e-07,
+        1.7025455547843236e-07,
+        1.4104483088183893e-07,
+        6.581085546044932e-08,
+        9.913987613535884e-09,
+        3.741602175959407e-10,
+        4.874095230448099e-32,
+        2.1306191720166985e-33,
+        1.5691900003840207e-33,
+        1.2717571882834197e-33
+      ],
+      "condition_number_nonzero": 6526.70862011445,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.176507537282777
+    }
+  },
+  {
+    "seed": 4,
+    "memory_modes": 1,
+    "steps": 100,
+    "feature_dimension": 7,
+    "construction_seconds": 0.001219199999468401,
+    "execution_seconds": 0.08295890000590589,
+    "resources": {
+      "modes": 2,
+      "retained_nodes": [
+        0
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 1,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 48,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.4471619805181004,
+      "covariance_spectrum": [
+        0.014867437132270107,
+        0.007683845029505028,
+        0.0013195150244915957,
+        0.00029770849548499666,
+        5.820902273896104e-05,
+        1.270256307677597e-05,
+        3.4696603745179e-32
+      ],
+      "condition_number_nonzero": 34.211520409786544,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.2658194646428311
+    }
+  },
+  {
+    "seed": 4,
+    "memory_modes": 2,
+    "steps": 100,
+    "feature_dimension": 14,
+    "construction_seconds": 0.0023975000076461583,
+    "execution_seconds": 0.15720519999740645,
+    "resources": {
+      "modes": 3,
+      "retained_nodes": [
+        0,
+        1
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 3,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 160,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 3.4821780445705035,
+      "covariance_spectrum": [
+        0.02612972398632809,
+        0.01569493173427669,
+        0.003121056352086066,
+        0.0025219969101724594,
+        0.002131487541763306,
+        0.0004285338728660932,
+        0.00019328390633682695,
+        0.00012458649424492457,
+        4.4815053364723614e-05,
+        2.0648018376173585e-05,
+        7.673474595459899e-06,
+        2.450942377203819e-06,
+        9.057308819237031e-33,
+        2.2707041625881534e-33
+      ],
+      "condition_number_nonzero": 103.25256772131799,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.2952830628211764
+    }
+  },
+  {
+    "seed": 4,
+    "memory_modes": 4,
+    "steps": 100,
+    "feature_dimension": 28,
+    "construction_seconds": 0.002292599994689226,
+    "execution_seconds": 0.20837680000113323,
+    "resources": {
+      "modes": 5,
+      "retained_nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 7,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 576,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 3.08436696040645,
+      "covariance_spectrum": [
+        0.027523653880769248,
+        0.016115036078756976,
+        0.002630609030228408,
+        0.0013339025521515808,
+        0.0008803598564503728,
+        0.0004908035983569808,
+        0.00016061321523277053,
+        0.0001257331854671423,
+        9.216114917813401e-05,
+        4.425081902720751e-05,
+        2.9960248091937003e-05,
+        2.685487820681373e-05,
+        7.293975863974554e-06,
+        4.612687794807402e-06,
+        1.959163722577269e-06,
+        1.5511584198830485e-06,
+        9.965188066920741e-07,
+        9.69394924678831e-07,
+        5.391785494245804e-07,
+        1.6585796144016686e-07,
+        3.749885959086235e-08,
+        1.3715239074231338e-08,
+        6.201515462956498e-09,
+        4.2365053171863896e-10,
+        2.7065050820735386e-32,
+        1.7070902604714136e-33,
+        1.5678475425576873e-33,
+        1.1174500460489416e-33
+      ],
+      "condition_number_nonzero": 8060.262132767214,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.291999457812031
+    }
+  },
+  {
+    "seed": 5,
+    "memory_modes": 1,
+    "steps": 100,
+    "feature_dimension": 7,
+    "construction_seconds": 0.001360399997793138,
+    "execution_seconds": 0.0957409000111511,
+    "resources": {
+      "modes": 2,
+      "retained_nodes": [
+        0
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 1,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 48,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 1.9229642679521892,
+      "covariance_spectrum": [
+        7.897375033684012e-06,
+        4.421758863670679e-06,
+        1.21940551414181e-09,
+        8.255100460380944e-11,
+        2.1091358630168984e-11,
+        1.1165660010834081e-11,
+        9.841810651476867e-33
+      ],
+      "condition_number_nonzero": 841.0061688598212,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.0002247045017043
+    }
+  },
+  {
+    "seed": 5,
+    "memory_modes": 2,
+    "steps": 100,
+    "feature_dimension": 14,
+    "construction_seconds": 0.0016529999993508682,
+    "execution_seconds": 0.11256170000706334,
+    "resources": {
+      "modes": 3,
+      "retained_nodes": [
+        0,
+        1
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 3,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 160,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.3355375036781147,
+      "covariance_spectrum": [
+        0.0018086683829569626,
+        0.001193636993517673,
+        5.250795150134698e-05,
+        2.9219836850506442e-05,
+        1.6555492219500974e-05,
+        6.4458308965191275e-06,
+        2.9082761106871433e-06,
+        1.13181680181544e-06,
+        8.425296959119498e-07,
+        8.976362808376295e-08,
+        8.951673483455289e-10,
+        3.7008794698344847e-10,
+        6.032858071333872e-33,
+        2.201491874932222e-33
+      ],
+      "condition_number_nonzero": 2210.6857041290195,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.0445772509888094
+    }
+  },
+  {
+    "seed": 5,
+    "memory_modes": 4,
+    "steps": 100,
+    "feature_dimension": 28,
+    "construction_seconds": 0.0022068999969633296,
+    "execution_seconds": 0.1542672999930801,
+    "resources": {
+      "modes": 5,
+      "retained_nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 7,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 576,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.8351210026989393,
+      "covariance_spectrum": [
+        0.009972328850136498,
+        0.006276054375683256,
+        0.0009191005143599421,
+        0.000314545221330111,
+        0.00022012981992437824,
+        0.00010575715803381752,
+        3.49324804208448e-05,
+        2.493585625976237e-05,
+        1.7974619005064255e-05,
+        1.559776228298836e-05,
+        5.289736575609221e-06,
+        2.579561074144322e-06,
+        1.37666945196977e-06,
+        1.1945235684625087e-06,
+        9.148185140058173e-07,
+        5.702658899754896e-07,
+        4.6514943833167537e-07,
+        1.51902402405686e-07,
+        1.414993553469554e-07,
+        1.2013079072465809e-07,
+        3.792718085932815e-08,
+        1.281121484026148e-09,
+        3.652979951428469e-10,
+        1.068961161140696e-10,
+        2.306362963879466e-32,
+        2.2893616607067413e-33,
+        1.7281044927374646e-33,
+        1.5500471540508178e-33
+      ],
+      "condition_number_nonzero": 9658.6701007459,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.190296575207481
+    }
+  },
+  {
+    "seed": 6,
+    "memory_modes": 1,
+    "steps": 100,
+    "feature_dimension": 7,
+    "construction_seconds": 0.001825500003178604,
+    "execution_seconds": 0.09169430000474676,
+    "resources": {
+      "modes": 2,
+      "retained_nodes": [
+        0
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 1,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 48,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.6682506263178274,
+      "covariance_spectrum": [
+        1.419677823812894e-05,
+        7.953214220484999e-06,
+        3.267605465939549e-06,
+        1.4005295797197385e-07,
+        8.811844449765319e-11,
+        4.655631100803877e-11,
+        3.4515306961900744e-33
+      ],
+      "condition_number_nonzero": 552.2117188688802,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.0127917485425348
+    }
+  },
+  {
+    "seed": 6,
+    "memory_modes": 2,
+    "steps": 100,
+    "feature_dimension": 14,
+    "construction_seconds": 0.001520699996035546,
+    "execution_seconds": 0.13666450000891928,
+    "resources": {
+      "modes": 3,
+      "retained_nodes": [
+        0,
+        1
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 3,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 160,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 4.4435935583751665,
+      "covariance_spectrum": [
+        2.498003581819919e-05,
+        1.4912273617188582e-05,
+        9.708505570353253e-06,
+        2.9854708559564504e-06,
+        2.5766405857710327e-06,
+        1.573287871625901e-06,
+        1.32725645253173e-06,
+        4.732801831236855e-08,
+        1.4358869164020747e-10,
+        4.17492327357344e-11,
+        3.4215765845190173e-11,
+        9.51387053975718e-12,
+        3.242705363653027e-32,
+        1.72237569989237e-33
+      ],
+      "condition_number_nonzero": 1620.383863571807,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.013908753843075
+    }
+  },
+  {
+    "seed": 6,
+    "memory_modes": 4,
+    "steps": 100,
+    "feature_dimension": 28,
+    "construction_seconds": 0.0021664999949280173,
+    "execution_seconds": 0.1569700000109151,
+    "resources": {
+      "modes": 5,
+      "retained_nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 7,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 576,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.4942150566648804,
+      "covariance_spectrum": [
+        0.001162204140394301,
+        0.00018527528113642804,
+        0.00014467755098292203,
+        3.7517577835746354e-05,
+        1.2039860309041211e-05,
+        9.598207824517519e-06,
+        7.446389231563855e-06,
+        3.6059913683180985e-06,
+        1.410652664379602e-06,
+        1.2524740849502681e-06,
+        1.042637547350057e-06,
+        7.79927475046322e-07,
+        1.2912888119982588e-07,
+        9.434401382958737e-08,
+        5.8231840977709845e-08,
+        1.1027413591694082e-08,
+        4.060107908293373e-09,
+        2.192511385717176e-09,
+        2.2328113243185196e-10,
+        6.760993670379114e-11,
+        5.015850062554066e-11,
+        1.7001289003654226e-11,
+        4.527631834251136e-12,
+        1.839408507016135e-12,
+        4.6729986196552257e-32,
+        2.017974110596106e-33,
+        1.7371594134107603e-33,
+        1.4643978222290363e-33
+      ],
+      "condition_number_nonzero": 25136.344149320827,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.1585435890301328
+    }
+  },
+  {
+    "seed": 7,
+    "memory_modes": 1,
+    "steps": 100,
+    "feature_dimension": 7,
+    "construction_seconds": 0.0008878999942680821,
+    "execution_seconds": 0.08995849998609629,
+    "resources": {
+      "modes": 2,
+      "retained_nodes": [
+        0
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 1,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 48,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.504388807772899,
+      "covariance_spectrum": [
+        0.000584024916986354,
+        0.0004914113759068919,
+        8.552462714475443e-05,
+        2.4814746851951253e-06,
+        3.5806474130469116e-07,
+        6.304957473379175e-08,
+        4.7990094184068433e-32
+      ],
+      "condition_number_nonzero": 96.24420896345495,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.0628831063927526
+    }
+  },
+  {
+    "seed": 7,
+    "memory_modes": 2,
+    "steps": 100,
+    "feature_dimension": 14,
+    "construction_seconds": 0.001520699996035546,
+    "execution_seconds": 0.09482060000300407,
+    "resources": {
+      "modes": 3,
+      "retained_nodes": [
+        0,
+        1
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 3,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 160,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 3.584516136633495,
+      "covariance_spectrum": [
+        0.001042771576073815,
+        0.0009098280393709413,
+        0.00026607065391127407,
+        0.00012896248797027325,
+        8.086260503758691e-05,
+        8.131944798326426e-06,
+        4.293274251669488e-06,
+        1.1588757356496635e-06,
+        2.4029351026902864e-07,
+        1.356723840089458e-07,
+        1.1157190394120888e-07,
+        1.8870731611620112e-08,
+        2.6954736059703027e-32,
+        1.9313536779332543e-33
+      ],
+      "condition_number_nonzero": 235.07163248666498,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.0721824953964898
+    }
+  },
+  {
+    "seed": 7,
+    "memory_modes": 4,
+    "steps": 100,
+    "feature_dimension": 28,
+    "construction_seconds": 0.0013897999888285995,
+    "execution_seconds": 0.1418128999939654,
+    "resources": {
+      "modes": 5,
+      "retained_nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 7,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 576,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 4.221683533733136,
+      "covariance_spectrum": [
+        0.002039310287363434,
+        0.0017884535412208324,
+        0.0007422472460508857,
+        0.0003779589941091028,
+        0.00019471698955454133,
+        3.6721446690104627e-05,
+        2.297505367152999e-05,
+        2.211224293161952e-05,
+        1.3904417490478328e-05,
+        5.11225294076728e-06,
+        4.896304645170334e-06,
+        1.7632075704102647e-06,
+        9.098641628094716e-07,
+        5.975657010598419e-07,
+        4.420971383335e-07,
+        3.334965204538692e-07,
+        2.3137432308181324e-07,
+        1.0780551621729172e-07,
+        7.013347059032439e-08,
+        5.7940151113873825e-08,
+        1.768313290109178e-08,
+        6.184786951932692e-09,
+        2.0649237253765524e-09,
+        1.5897591609177352e-10,
+        2.262890700667007e-32,
+        2.1039087020280576e-33,
+        1.813517761739154e-33,
+        1.509669742855945e-33
+      ],
+      "condition_number_nonzero": 3581.5909738889213,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.1047550392099899
+    }
+  },
+  {
+    "seed": 8,
+    "memory_modes": 1,
+    "steps": 100,
+    "feature_dimension": 7,
+    "construction_seconds": 0.0017814000020734966,
+    "execution_seconds": 0.1273038999934215,
+    "resources": {
+      "modes": 2,
+      "retained_nodes": [
+        0
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 1,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 48,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.2163911156683755,
+      "covariance_spectrum": [
+        0.00035154155516940066,
+        0.00022870770766418046,
+        1.7640512116259522e-05,
+        9.412230727631722e-07,
+        6.16159269475916e-08,
+        3.812593361829048e-08,
+        8.262850121282005e-33
+      ],
+      "condition_number_nonzero": 96.02362369280051,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.0313161357749758
+    }
+  },
+  {
+    "seed": 8,
+    "memory_modes": 2,
+    "steps": 100,
+    "feature_dimension": 14,
+    "construction_seconds": 0.0011347999970894307,
+    "execution_seconds": 0.08342910000646953,
+    "resources": {
+      "modes": 3,
+      "retained_nodes": [
+        0,
+        1
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 3,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 160,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 3.3423186922673698,
+      "covariance_spectrum": [
+        0.0013847139552152564,
+        0.0009564105674217073,
+        0.00023036649282800854,
+        0.00015488108173062495,
+        7.005141240680101e-05,
+        9.856172755390222e-06,
+        3.6712557884514944e-06,
+        1.1630428738749083e-06,
+        3.9340971214431455e-07,
+        3.1973513320150845e-07,
+        8.630573061332375e-08,
+        2.133366083312119e-08,
+        2.230271991565222e-32,
+        2.0036538836076066e-33
+      ],
+      "condition_number_nonzero": 254.76944522504027,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.0682395627333345
+    }
+  },
+  {
+    "seed": 8,
+    "memory_modes": 4,
+    "steps": 100,
+    "feature_dimension": 28,
+    "construction_seconds": 0.0014180999860400334,
+    "execution_seconds": 0.09928969999600668,
+    "resources": {
+      "modes": 5,
+      "retained_nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 7,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 576,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 3.2826536983575654,
+      "covariance_spectrum": [
+        0.003404043735663923,
+        0.002160246676867254,
+        0.0006359795879272171,
+        0.00024333494721866014,
+        0.00011945163767852345,
+        3.891137521294949e-05,
+        1.3047795513127684e-05,
+        5.063354445906555e-06,
+        3.884988748927656e-06,
+        2.5089530324893474e-06,
+        2.1882024203329834e-06,
+        1.3421848647632866e-06,
+        9.125259515940119e-07,
+        3.721054925082351e-07,
+        2.570620436701213e-07,
+        2.0687026542394135e-07,
+        1.461559494674596e-07,
+        7.333838606652532e-08,
+        1.786644155243022e-08,
+        1.1780043282222172e-08,
+        3.6630350119055103e-09,
+        3.4549440907316864e-10,
+        1.8945113967400087e-10,
+        2.1171784542701935e-11,
+        2.4328361955520797e-32,
+        2.0233083859929278e-33,
+        1.8622871738646022e-33,
+        1.709288877692828e-33
+      ],
+      "condition_number_nonzero": 12679.987716156364,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.1205429509110048
+    }
+  },
+  {
+    "seed": 9,
+    "memory_modes": 1,
+    "steps": 100,
+    "feature_dimension": 7,
+    "construction_seconds": 0.0011344000085955486,
+    "execution_seconds": 0.0675109000003431,
+    "resources": {
+      "modes": 2,
+      "retained_nodes": [
+        0
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 1,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 48,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 1.9510497006716037,
+      "covariance_spectrum": [
+        0.00047326374160238136,
+        0.0002435871369723932,
+        2.69925583668494e-06,
+        3.55258853142946e-07,
+        6.858844240957746e-08,
+        2.238062272880006e-08,
+        1.0896272825788264e-32
+      ],
+      "condition_number_nonzero": 145.4171180324037,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.0122852606029398
+    }
+  },
+  {
+    "seed": 9,
+    "memory_modes": 2,
+    "steps": 100,
+    "feature_dimension": 14,
+    "construction_seconds": 0.0011325999948894605,
+    "execution_seconds": 0.09528330000466667,
+    "resources": {
+      "modes": 3,
+      "retained_nodes": [
+        0,
+        1
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 3,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 160,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.3250232354836617,
+      "covariance_spectrum": [
+        0.00508439625849161,
+        0.0030607090197903313,
+        0.00015760852149385694,
+        6.713234976164825e-05,
+        3.6149166033098886e-05,
+        3.471035931582509e-05,
+        7.805340292713359e-06,
+        3.595242666028415e-06,
+        1.4232052952910687e-06,
+        2.144496543882958e-07,
+        4.586086921285948e-08,
+        1.416340612671824e-08,
+        1.9881688597760047e-32,
+        2.0902243629093517e-33
+      ],
+      "condition_number_nonzero": 599.1503826334927,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.079899350492698
+    }
+  },
+  {
+    "seed": 9,
+    "memory_modes": 4,
+    "steps": 100,
+    "feature_dimension": 28,
+    "construction_seconds": 0.001583400007802993,
+    "execution_seconds": 0.10422429999744054,
+    "resources": {
+      "modes": 5,
+      "retained_nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fresh_nodes": 1,
+      "measurements": 1,
+      "edges": 7,
+      "cutoff": null,
+      "squeezing": 0.3,
+      "state_storage_bytes": 576,
+      "temporal_depth": 100,
+      "fresh_nodes_total": 100
+    },
+    "diagnostics": {
+      "effective_rank": 2.8723021404695963,
+      "covariance_spectrum": [
+        0.018305503490621614,
+        0.011648375791049612,
+        0.001155272042309582,
+        0.0008588579320284738,
+        0.0006500356227953644,
+        0.00023620529136208484,
+        5.833631663156681e-05,
+        2.9366275500192222e-05,
+        2.757176503795049e-05,
+        2.1709748584549232e-05,
+        1.051628460923404e-05,
+        7.857668771729855e-06,
+        3.7025096028862942e-06,
+        1.768278941505068e-06,
+        1.32771656771037e-06,
+        1.1543743843546831e-06,
+        5.626168747111135e-07,
+        4.7391601710832657e-07,
+        3.242945164913949e-07,
+        3.055071247459001e-07,
+        2.891004083141245e-08,
+        6.122212060223057e-09,
+        5.459507716925832e-09,
+        8.029774953329778e-10,
+        8.286185025624087e-32,
+        2.2648867330114645e-33,
+        1.7137828015687767e-33,
+        1.3810627534168329e-33
+      ],
+      "condition_number_nonzero": 4774.6237331922985,
+      "rank_deficient": true,
+      "variance_collapsed_columns": 0,
+      "maximum_absolute_feature": 1.1988021841618903
+    }
+  }
+]

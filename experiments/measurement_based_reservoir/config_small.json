@@ -1,0 +1,1 @@
+﻿{"seeds":[0,1,2,3,4,5,6,7,8,9],"length":360,"washout":20,"gap":5,"delays":4,"window":4,"dataset_seed":1729,"regularizations":[0.000001,0.0001,0.01,1.0],"transmissivities":[0.6,0.8,0.95],"noise_strengths":[0.0,0.1],"shot_counts":[32,128],"run_fock":false}

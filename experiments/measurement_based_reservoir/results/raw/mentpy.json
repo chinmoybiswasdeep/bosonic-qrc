@@ -1,0 +1,48 @@
+{
+  "density_max_error": 1.1857187100668868e-16,
+  "state_max_error_up_to_phase": 1.1443916996305594e-16,
+  "probability_max_error": 0.0,
+  "node_map": {
+    "0": 0,
+    "1": 1,
+    "2": 2
+  },
+  "edges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "input_nodes": [
+    0
+  ],
+  "output_nodes": [
+    2
+  ],
+  "measured_nodes": [
+    0,
+    1
+  ],
+  "trainable_nodes": [
+    0,
+    1
+  ],
+  "measurement_order": [
+    0,
+    1,
+    2
+  ],
+  "plane": "XY",
+  "angles_radians": [
+    0.2,
+    -0.4
+  ],
+  "convention": "MSB-first; bit 0 positive eigenstate; corrected frame; MentPy zero branch",
+  "branch_probability": 0.25,
+  "expectation_max_error": 2.220446049250313e-16,
+  "scope": "corrected pure wire only; not general mixed collision channels"
+}

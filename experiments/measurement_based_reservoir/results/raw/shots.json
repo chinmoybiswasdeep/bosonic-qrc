@@ -1,0 +1,142 @@
+[
+  {
+    "seed": 0,
+    "shots": 32,
+    "rms_error": 0.017818989734549356,
+    "seconds": 0.7184076999983517,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 1,
+    "shots": 32,
+    "rms_error": 0.029885122741108536,
+    "seconds": 0.6695051999995485,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 2,
+    "shots": 32,
+    "rms_error": 0.010260219341501101,
+    "seconds": 0.6246986999904038,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 3,
+    "shots": 32,
+    "rms_error": 0.01566518100347022,
+    "seconds": 0.6937012999987928,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 4,
+    "shots": 32,
+    "rms_error": 0.04402065542753161,
+    "seconds": 0.6074517999950331,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 5,
+    "shots": 32,
+    "rms_error": 0.0005046230189909064,
+    "seconds": 0.6217126999981701,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 6,
+    "shots": 32,
+    "rms_error": 0.005888498882951311,
+    "seconds": 0.598022399994079,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 7,
+    "shots": 32,
+    "rms_error": 0.011602908805720714,
+    "seconds": 0.576566499992623,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 8,
+    "shots": 32,
+    "rms_error": 0.0076487300810908695,
+    "seconds": 0.6228188999957638,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 9,
+    "shots": 32,
+    "rms_error": 0.003025440223009808,
+    "seconds": 0.6595736000017496,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 0,
+    "shots": 128,
+    "rms_error": 0.008232671091408504,
+    "seconds": 2.685329499989166,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 1,
+    "shots": 128,
+    "rms_error": 0.013002047152453048,
+    "seconds": 2.592081099995994,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 2,
+    "shots": 128,
+    "rms_error": 0.00515054622599252,
+    "seconds": 2.3869573999982094,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 3,
+    "shots": 128,
+    "rms_error": 0.004301379550521286,
+    "seconds": 2.470046000002185,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 4,
+    "shots": 128,
+    "rms_error": 0.013174237539127007,
+    "seconds": 2.6987393999879714,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 5,
+    "shots": 128,
+    "rms_error": 0.000591867504291127,
+    "seconds": 2.6794484999991255,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 6,
+    "shots": 128,
+    "rms_error": 0.0054953469054287146,
+    "seconds": 2.31909099999757,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 7,
+    "shots": 128,
+    "rms_error": 0.011450242383964006,
+    "seconds": 2.549193600003491,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 8,
+    "shots": 128,
+    "rms_error": 0.0028134263415504493,
+    "seconds": 2.459461899998132,
+    "estimator": "trajectory-moment-estimator"
+  },
+  {
+    "seed": 9,
+    "shots": 128,
+    "rms_error": 0.003851694579416959,
+    "seconds": 2.57028359999822,
+    "estimator": "trajectory-moment-estimator"
+  }
+]

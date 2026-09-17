@@ -1,0 +1,4 @@
+{
+  "sampled_peak_process_rss_bytes": 382849024,
+  "limitation": "RSS sampled between runs; includes imports and may miss intra-run peaks"
+}

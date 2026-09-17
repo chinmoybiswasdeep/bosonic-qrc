@@ -1,0 +1,93 @@
+{
+  "baseline": {
+    "photographiq": {
+      "passed": 533,
+      "warnings": 104,
+      "seconds": 475.6
+    },
+    "photographiqml": {
+      "passed": 127,
+      "warnings": 59,
+      "seconds": 77.98
+    }
+  },
+  "final_tests": {
+    "passed": 159,
+    "warnings": 60,
+    "seconds": 151.01,
+    "coverage_percent": 96.1977186311787,
+    "coverage_threshold": 90
+  },
+  "ruff_check": "passed: src tests scripts experiments examples",
+  "ruff_format": "passed: 107 files",
+  "mypy": "passed: 29 source files",
+  "build": "sdist and wheel passed",
+  "mkdocs_strict": "passed",
+  "tutorials": "44 scripts and 6 notebooks executed successfully",
+  "benchmark": {
+    "runs": 420,
+    "seeds": 10,
+    "summary_rows": 525,
+    "figures": 17,
+    "figure_formats": [
+      "svg",
+      "pdf",
+      "png"
+    ]
+  },
+  "reproducibility": {
+    "runs_compared": 420,
+    "all_score_records_exactly_equal": true,
+    "source_hashes_match": true,
+    "exclusions": "runtime and process memory are not expected to reproduce bitwise"
+  },
+  "mentpy_reference": {
+    "density_max_error": 1.1857187100668868e-16,
+    "state_max_error_up_to_phase": 1.1443916996305594e-16,
+    "probability_max_error": 0.0,
+    "node_map": {
+      "0": 0,
+      "1": 1,
+      "2": 2
+    },
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "input_nodes": [
+      0
+    ],
+    "output_nodes": [
+      2
+    ],
+    "measured_nodes": [
+      0,
+      1
+    ],
+    "trainable_nodes": [
+      0,
+      1
+    ],
+    "measurement_order": [
+      0,
+      1,
+      2
+    ],
+    "plane": "XY",
+    "angles_radians": [
+      0.2,
+      -0.4
+    ],
+    "convention": "MSB-first; bit 0 positive eigenstate; corrected frame; MentPy zero branch",
+    "branch_probability": 0.25,
+    "expectation_max_error": 2.220446049250313e-16,
+    "scope": "corrected pure wire only; not general mixed collision channels"
+  },
+  "scope": "Local Windows Python 3.14.4 verification; full publication configuration not executed"
+}

@@ -1,0 +1,6 @@
+{
+  "runs_compared": 420,
+  "all_score_records_exactly_equal": true,
+  "source_hashes_match": true,
+  "exclusions": "runtime and process memory are not expected to reproduce bitwise"
+}

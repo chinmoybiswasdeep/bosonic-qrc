@@ -1,0 +1,10 @@
+site_name: cv-mb-qrc
+site_description: Measurement-based quantum reservoir computing
+theme:
+  name: mkdocs
+docs_dir: docs
+site_dir: site
+markdown_extensions:
+  - tables
+  - fenced_code
+

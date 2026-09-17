@@ -1,0 +1,154 @@
+{
+  "rows": [
+    {
+      "cutoff": 8,
+      "features": [
+        [
+          2.6124663374340868e-06,
+          0.9999994411811898,
+          4.94554341902735e-06,
+          0.9999985540651344
+        ],
+        [
+          8.32004469570659e-06,
+          0.9999976133101335,
+          1.5446947494454254e-05,
+          0.9999952433369346
+        ]
+      ],
+      "joint_success_probability": 0.9926577324549727,
+      "failure_probability": 0.0073422675450273145,
+      "max_feature_change": null,
+      "diagnostics": [
+        {
+          "tier": "C",
+          "cutoff": 8,
+          "cutoff_semantics": "exclusive total photon number",
+          "converged": false,
+          "herald_probability": 0.9963427281313465,
+          "postselected": true,
+          "trace": 1.0,
+          "hermiticity_error": 1.5670486888882105e-18,
+          "minimum_eigenvalue": -3.4723851414824125e-22,
+          "boundary_population": 4.0992747425873214e-08,
+          "minimum_retained_norm": 0.999999999879841
+        },
+        {
+          "tier": "C",
+          "cutoff": 8,
+          "cutoff_semantics": "exclusive total photon number",
+          "converged": false,
+          "herald_probability": 0.9963014778225109,
+          "postselected": true,
+          "trace": 0.9999999999999999,
+          "hermiticity_error": 1.5178830414797062e-18,
+          "minimum_eigenvalue": 4.606156472175438e-28,
+          "boundary_population": 4.183430614764761e-08,
+          "minimum_retained_norm": 0.9999999998771407
+        }
+      ],
+      "seconds": 0.9210904000065057
+    },
+    {
+      "cutoff": 12,
+      "features": [
+        [
+          2.6124663405517685e-06,
+          0.9999994411811893,
+          4.945543426182856e-06,
+          0.9999985540651329
+        ],
+        [
+          8.320044705005953e-06,
+          0.9999976133101312,
+          1.544694751681977e-05,
+          0.9999952433369301
+        ]
+      ],
+      "joint_success_probability": 0.9926577322137342,
+      "failure_probability": 0.007342267786265788,
+      "max_feature_change": 2.2365515337094063e-14,
+      "diagnostics": [
+        {
+          "tier": "C",
+          "cutoff": 12,
+          "cutoff_semantics": "exclusive total photon number",
+          "converged": false,
+          "herald_probability": 0.9963427280116236,
+          "postselected": true,
+          "trace": 1.0,
+          "hermiticity_error": 2.18146165177184e-18,
+          "minimum_eigenvalue": -3.5311617971120372e-22,
+          "boundary_population": 3.1909123636607716e-13,
+          "minimum_retained_norm": 0.9999999999999991
+        },
+        {
+          "tier": "C",
+          "cutoff": 12,
+          "cutoff_semantics": "exclusive total photon number",
+          "converged": false,
+          "herald_probability": 0.9963014777001048,
+          "postselected": true,
+          "trace": 1.0,
+          "hermiticity_error": 2.8855011420996274e-19,
+          "minimum_eigenvalue": -3.5164761509565343e-22,
+          "boundary_population": 3.348483989696583e-13,
+          "minimum_retained_norm": 0.999999999999999
+        }
+      ],
+      "seconds": 0.9651755000086268
+    },
+    {
+      "cutoff": 16,
+      "features": [
+        [
+          2.6124663405517664e-06,
+          0.9999994411811893,
+          4.945543426182848e-06,
+          0.9999985540651329
+        ],
+        [
+          8.320044705006239e-06,
+          0.9999976133101312,
+          1.54469475168203e-05,
+          0.9999952433369301
+        ]
+      ],
+      "joint_success_probability": 0.9926577322137324,
+      "failure_probability": 0.0073422677862675645,
+      "max_feature_change": 5.285485590866834e-19,
+      "diagnostics": [
+        {
+          "tier": "C",
+          "cutoff": 16,
+          "cutoff_semantics": "exclusive total photon number",
+          "converged": false,
+          "herald_probability": 0.9963427280116227,
+          "postselected": true,
+          "trace": 1.0,
+          "hermiticity_error": 2.1815379610562954e-18,
+          "minimum_eigenvalue": -7.05171790237728e-22,
+          "boundary_population": 2.0604358823200255e-18,
+          "minimum_retained_norm": 0.9999999999999999
+        },
+        {
+          "tier": "C",
+          "cutoff": 16,
+          "cutoff_semantics": "exclusive total photon number",
+          "converged": false,
+          "herald_probability": 0.9963014777001039,
+          "postselected": true,
+          "trace": 1.0,
+          "hermiticity_error": 2.8253018564922695e-19,
+          "minimum_eigenvalue": -1.5132248112967079e-21,
+          "boundary_population": 2.2379903712975228e-18,
+          "minimum_retained_norm": 0.9999999999999998
+        }
+      ],
+      "seconds": 5.572151400017901
+    }
+  ],
+  "tolerance": 1e-05,
+  "observable_convergence": true,
+  "scope": "fixed zero-PNR branch, selected observables only; not full-state convergence"
+}
