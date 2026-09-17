@@ -7,7 +7,7 @@ PhotoGraphiQ remains the unchanged execution dependency. The tracked changes wer
 removed from the sibling PhotoGraphiQML checkout, while its pre-existing untracked
 `paper_experiments` directory was preserved.
 
-The new `photographiqml.reservoirs` package separates causal orchestration,
+The standalone `cv_mb_qrc.reservoirs` package separates causal orchestration,
 configuration, results, readout, chronological handling, diagnostics and datasets
 from CV, Graphix, optional MentPy and optional mixed-Fock adapters. CV transfers
 the complete Gaussian state through the public PhotoGraphiQ interface. Graphix
@@ -188,7 +188,7 @@ From the `cv-mb-qrc` root, use an activated environment interpreter:
 python -m pip install -e "../PhotoGraphiQ[dev]"
 python -m pip install -e ".[dev,docs,experiments,graphix]"
 python -m pip install -r tests/mentpy_reference/requirements.txt
-python -m pytest --cov=src/photographiqml --cov-fail-under=90
+python -m pytest --cov=src/cv_mb_qrc --cov-fail-under=90
 python -m ruff check src tests experiments
 python -m ruff format --check src tests experiments
 python -m mypy
@@ -201,8 +201,8 @@ python experiments/measurement_based_reservoir/reproduce.py
 For the separate Fock numerical record:
 
 ```python
-from photographiqml.reservoirs.fock import cutoff_study
-from photographiqml.reservoirs.results import atomic_json
+from cv_mb_qrc.reservoirs.fock import cutoff_study
+from cv_mb_qrc.reservoirs.results import atomic_json
 atomic_json("experiments/measurement_based_reservoir/results/raw/fock.json",
             cutoff_study([.02, .04], cutoffs=(8, 12, 16)))
 ```

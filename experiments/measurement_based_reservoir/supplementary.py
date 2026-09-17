@@ -7,9 +7,9 @@ from time import perf_counter
 
 import numpy as np
 
-from photographiqml.reservoirs import CVConfig, CVMBReservoir, GraphixMBReservoir
-from photographiqml.reservoirs.diagnostics import contraction, feature_diagnostics
-from photographiqml.reservoirs.results import atomic_json
+from cv_mb_qrc.reservoirs import CVConfig, CVMBReservoir, GraphixMBReservoir
+from cv_mb_qrc.reservoirs.diagnostics import contraction, feature_diagnostics
+from cv_mb_qrc.reservoirs.results import atomic_json
 
 
 def run_supplementary(output):

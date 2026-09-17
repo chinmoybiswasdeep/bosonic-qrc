@@ -35,7 +35,7 @@ error only when selected.
 
 ```python
 import numpy as np
-from photographiqml.reservoirs import CVConfig, CVMBReservoir, RidgeReadout
+from cv_mb_qrc.reservoirs import CVConfig, CVMBReservoir, RidgeReadout
 
 inputs = np.random.default_rng(1729).uniform(-1, 1, 200)
 reservoir = CVMBReservoir(CVConfig(seed=7, memory_modes=2, tier="B"))
@@ -54,7 +54,7 @@ squeezing.
 ## Reproduce
 
 ```sh
-python -m pytest --cov=src/photographiqml --cov-fail-under=90
+python -m pytest --cov=src/cv_mb_qrc --cov-fail-under=90
 python -m ruff check src tests experiments
 python -m ruff format --check src tests experiments
 python -m mypy

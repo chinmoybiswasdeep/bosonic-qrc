@@ -33,6 +33,12 @@ class CVConfig:
     efficiency: float = 1.0
     adaptive_angle: float = 0.0
     tier: str = "B"
+    feature_preset: str = "quadratic_nonredundant"
+    readout_mode: str = "state_oracle"
+    n_replicas: int = 1
+    n_readout_shots: int = 1
+    probe_strength: float = 0.05
+    variance_floor: float = 1e-12
     evolution: str = "unconditional"
     backend: str = "gaussian"
     temporal_edges: bool = True
@@ -40,7 +46,7 @@ class CVConfig:
     max_trajectories: int = 10000
 
     def __post_init__(self):
-        for name in ("memory_modes", "input_channels", "max_modes", "max_trajectories"):
+        for name in ("memory_modes", "input_channels", "max_modes", "max_trajectories", "n_replicas", "n_readout_shots"):
             integer(getattr(self, name), name)
         integer(self.seed, "seed", 0)
         for name in (
@@ -66,6 +72,12 @@ class CVConfig:
             raise ValueError("Invalid transmissivity or detector efficiency")
         if self.tier not in ("A", "B"):
             raise BackendCapabilityError("Gaussian CV reservoir supports Tier A/B only")
+        if self.feature_preset not in ("minimal_linear", "full_gaussian", "quadratic_nonredundant", "physical_probe", "diagnostic_redundant"):
+            raise ValueError("Unknown CV feature preset")
+        if self.readout_mode not in ("state_oracle", "physical_probe"):
+            raise ValueError("readout_mode must be state_oracle or physical_probe")
+        if not 0 < self.probe_strength <= 1 or self.variance_floor < 0:
+            raise ValueError("Invalid probe strength or variance floor")
         if self.backend not in ("gaussian", "piquasso"):
             raise BackendCapabilityError("Select gaussian or piquasso; no implicit Fock fallback")
         if self.evolution not in ("unconditional", "conditional"):

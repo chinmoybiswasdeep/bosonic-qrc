@@ -89,18 +89,36 @@ class CVMBReservoir(MeasurementBasedReservoir):
         )
 
     def _features(self, state):
-        features = list(state.mean) + list(np.diag(state.covariance))
-        if self.config.tier == "B":
-            features += [state.photon_number(n) for n in self.nodes]
-            features += list(state.mean**2 + np.diag(state.covariance))
-        return np.asarray(features)
+        """Deterministically ordered, nonredundant Gaussian observables.
+
+        ``diagnostic_redundant`` intentionally retains photon number to expose
+        n=(q²+p²-2)/4. Task presets never include that exact dependency.
+        """
+        mean, cov = state.mean, state.covariance
+        diagonal = np.diag(cov)
+        preset = self.config.feature_preset
+        if preset == "minimal_linear":
+            return np.asarray(mean)
+        if preset == "full_gaussian":
+            return np.asarray(list(mean) + list(cov[np.triu_indices_from(cov)]))
+        quadratic = mean**2 + diagonal
+        if preset == "diagnostic_redundant":
+            return np.asarray(list(mean) + list(diagonal) + [state.photon_number(n) for n in self.nodes] + list(quadratic))
+        # q² and p² are retained; n is deliberately omitted.
+        return np.asarray(list(mean) + list(diagonal) + list(quadratic))
 
     def feature_names(self):
+        preset = self.config.feature_preset
         names = [f"mean_{axis}{n}" for n in self.nodes for axis in ("q", "p")]
+        if preset == "minimal_linear":
+            return tuple(names)
+        if preset == "full_gaussian":
+            names += [f"cov_{i}_{j}" for i, j in zip(*np.triu_indices(2 * len(self.nodes)), strict=True)]
+            return tuple(names)
         names += [f"var_{axis}{n}" for n in self.nodes for axis in ("q", "p")]
-        if self.config.tier == "B":
+        if preset == "diagnostic_redundant":
             names += [f"number_{n}" for n in self.nodes]
-            names += [f"square_{axis}{n}" for n in self.nodes for axis in ("q", "p")]
+        names += [f"square_{axis}{n}" for n in self.nodes for axis in ("q", "p")]
         return tuple(names)
 
     def step(self, input_value, *, shots=None):
@@ -161,6 +179,43 @@ class CVMBReservoir(MeasurementBasedReservoir):
                 features = self._features(self.state)
                 standard_error = None  # nonlinear plug-in covariance requires bootstrap
                 estimator = "trajectory-moment-estimator"
+        if c.readout_mode == "physical_probe":
+            # A finite-ensemble homodyne-probe *estimator*.  The persistent
+            # memory has already undergone its causal channel above; these are
+            # detector outcomes from independent replicas, never a returned
+            # internal expectation.  Incompatible quadratures use separate
+            # replica groups, hence the explicit accounting below.
+            count = c.n_replicas * c.n_readout_shots
+            observed_covariance = self.state.covariance + c.measurement_noise * np.eye(
+                len(self.state.mean)
+            )
+            observations = self.rng.multivariate_normal(self.state.mean, observed_covariance, size=count)
+            empirical_mean = observations.mean(axis=0)
+            empirical_var = observations.var(axis=0, ddof=1) if count > 1 else np.zeros_like(empirical_mean)
+            if c.feature_preset == "minimal_linear":
+                features = empirical_mean
+            elif c.feature_preset == "full_gaussian":
+                empirical_covariance = (
+                    np.cov(observations, rowvar=False)
+                    if count > 1
+                    else np.zeros((len(empirical_mean), len(empirical_mean)))
+                )
+                features = np.r_[empirical_mean, empirical_covariance[np.triu_indices(len(empirical_mean))]]
+            else:
+                quadratic = np.mean(observations**2, axis=0)
+                features = np.r_[empirical_mean, empirical_var, quadratic]
+                if c.feature_preset == "diagnostic_redundant":
+                    numbers = (quadratic[::2] + quadratic[1::2] - 2) / 4
+                    features = np.r_[empirical_mean, empirical_var, numbers, quadratic]
+            # A weak probe adds detector back-action in this Gaussian model.
+            self.state = pg.GaussianState(
+                self.state.mean,
+                self.state.covariance + (c.probe_strength**2) * np.eye(len(self.state.mean)),
+                self.nodes,
+            )
+            estimator = "finite-physical-probe-estimate"
+            outcomes = [{"homodyne": row.tolist()} for row in observations]
+            standard_error = (np.sqrt(np.diag(observed_covariance) / count)).tolist()
         self.time += 1
         self.execution_shots = shots
         if not np.isfinite(features).all():
@@ -175,6 +230,8 @@ class CVMBReservoir(MeasurementBasedReservoir):
             {
                 "tier": c.tier,
                 "gaussian": True,
+                "readout_mode": c.readout_mode,
+                "readout_label": "simulation-only upper-bound readout" if c.readout_mode == "state_oracle" else "finite physical-probe simulator estimate",
                 "standard_error": standard_error,
                 "compilation_seconds": self.compilation_seconds,
             },
@@ -183,6 +240,9 @@ class CVMBReservoir(MeasurementBasedReservoir):
                 "retained_nodes": list(self.nodes),
                 "fresh_nodes": c.input_channels,
                 "measurements": c.input_channels,
+                "readout_replicas": c.n_replicas if c.readout_mode == "physical_probe" else 0,
+                "readout_shots_per_replica": c.n_readout_shots if c.readout_mode == "physical_probe" else 0,
+                "readout_measurements_total": c.n_replicas * c.n_readout_shots if c.readout_mode == "physical_probe" else 0,
                 "edges": int(np.count_nonzero(self.weights))
                 + (len(self.nodes) - 1 if c.coupling else 0),
                 "cutoff": None,

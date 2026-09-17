@@ -15,12 +15,14 @@ def feature_diagnostics(features):
     rank = float(np.exp(-np.sum(p * np.log(p)))) if len(p) else 0.0
     positive = s[s > max(s[0], 1.0) * 1e-12]
     return {
+        "exact_rank": int(np.linalg.matrix_rank(centered)),
         "effective_rank": rank,
         "covariance_spectrum": spectrum.tolist(),
         "condition_number_nonzero": float(positive[0] / positive[-1]) if len(positive) else None,
         "rank_deficient": len(positive) < x.shape[1],
         "variance_collapsed_columns": int(np.sum(x.var(axis=0) < 1e-12)),
         "maximum_absolute_feature": float(np.max(abs(x))),
+        "column_variance": x.var(axis=0).tolist(),
     }
 
 

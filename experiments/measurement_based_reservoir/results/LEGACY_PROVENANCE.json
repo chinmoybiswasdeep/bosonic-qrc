@@ -1,0 +1,5 @@
+{
+  "legacy": true,
+  "reason": "Generated before standalone cv_mb_qrc namespace migration; not current standalone-package reproduction evidence.",
+  "replacement_directory": "experiments/measurement_based_reservoir/results/"
+}

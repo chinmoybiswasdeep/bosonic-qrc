@@ -1,10 +1,10 @@
 import numpy as np
 import pytest
 
-from photographiqml.reservoirs.benchmarks import ClassicalFeatures, mackey_glass, metrics, narma10
-from photographiqml.reservoirs.diagnostics import bootstrap_summary
-from photographiqml.reservoirs.fock import FockConfig, FockMBReservoir, cutoff_study
-from photographiqml.reservoirs.temporal import chronological_splits
+from cv_mb_qrc.reservoirs.benchmarks import ClassicalFeatures, mackey_glass, metrics, narma10
+from cv_mb_qrc.reservoirs.diagnostics import bootstrap_summary
+from cv_mb_qrc.reservoirs.fock import FockConfig, FockMBReservoir, cutoff_study
+from cv_mb_qrc.reservoirs.temporal import chronological_splits
 
 
 def test_tasks_and_exact_delay_control():

@@ -6,13 +6,13 @@ from dataclasses import replace
 import numpy as np
 import pytest
 
-from photographiqml.reservoirs import CVConfig, CVMBReservoir, QubitConfig, RidgeReadout
-from photographiqml.reservoirs.diagnostics import contraction, trace_distance
-from photographiqml.reservoirs.results import atomic_json
+from cv_mb_qrc.reservoirs import CVConfig, CVMBReservoir, QubitConfig, RidgeReadout
+from cv_mb_qrc.reservoirs.diagnostics import contraction, trace_distance
+from cv_mb_qrc.reservoirs.results import atomic_json
 
 
 def test_atomic_retry_preserves_json(tmp_path, monkeypatch):
-    import photographiqml.reservoirs.results as results
+    import cv_mb_qrc.reservoirs.results as results
 
     original = results.os.replace
     attempts = []
@@ -42,7 +42,7 @@ def test_readout_invalid_and_optional_clean_import():
     model.fit([0, 1], [[0], [1]], [0, 1])
     with pytest.raises(ValueError):
         model.predict([0], [[1, 2]])
-    code = "import sys; import photographiqml.reservoirs; assert 'graphix' not in sys.modules; assert 'mentpy' not in sys.modules"
+    code = "import sys; import cv_mb_qrc.reservoirs; assert 'graphix' not in sys.modules; assert 'mentpy' not in sys.modules"
     subprocess.run([sys.executable, "-c", code], check=True, capture_output=True, text=True)
 
 
@@ -61,7 +61,7 @@ def test_phase_squeeze_encoding_and_trajectory_limits():
 
 def test_zero_probability_branch_and_trace_distance():
     pytest.importorskip("graphix")
-    from photographiqml.reservoirs.graphix_backend import GraphixMBReservoir, graphix_wire
+    from cv_mb_qrc.reservoirs.graphix_backend import GraphixMBReservoir, graphix_wire
 
     c = QubitConfig(entangle=False, angle=0)
     model = GraphixMBReservoir(c)

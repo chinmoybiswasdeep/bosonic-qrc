@@ -1,0 +1,9 @@
+{
+  "seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], "length": 10000,
+  "washout": 200, "gap": 50, "delays": 20, "window": 20,
+  "dataset_seed": 1729, "dataset_seeds": [1729, 1730, 1731, 1732, 1733],
+  "regularizations": [0.000001, 0.0001, 0.01, 1.0],
+  "transmissivities": [0.6, 0.8, 0.95], "noise_strengths": [0.0, 0.05, 0.1],
+  "shot_counts": [128, 512, 2048], "run_fock": true,
+  "purpose": "Publication-scale plan; intentionally unexecuted in this development checkout"
+}

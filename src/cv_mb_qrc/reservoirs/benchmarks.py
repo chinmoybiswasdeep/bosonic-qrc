@@ -23,6 +23,21 @@ def capacity_targets(inputs, delays=5):
     return np.column_stack(columns), tuple(names)
 
 
+def null_corrected_capacity(scores, null_scores):
+    """Report raw, legacy clipped, and permutation-null-corrected capacity."""
+    observed, null = np.asarray(scores, float), np.asarray(null_scores, float)
+    if observed.ndim != 1 or null.ndim != 2 or null.shape[1] != len(observed):
+        raise ValueError("null_scores must be (permutations, targets)")
+    correction = null.mean(axis=0)
+    return {
+        "raw_total": float(observed.sum()),
+        "legacy_clipped_total": float(np.maximum(observed, 0).sum()),
+        "null_total": float(correction.sum()),
+        "null_corrected_total": float((observed - correction).sum()),
+        "per_target_null_mean": correction.tolist(),
+    }
+
+
 def narma10(inputs):
     u = np.asarray(inputs, float)
     if u.ndim != 1 or not np.isfinite(u).all() or np.any((u < 0) | (u > 0.5)):

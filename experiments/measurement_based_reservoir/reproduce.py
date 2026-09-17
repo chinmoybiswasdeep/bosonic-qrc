@@ -11,8 +11,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-from photographiqml.reservoirs.diagnostics import bootstrap_summary
-from photographiqml.reservoirs.results import atomic_json
+from cv_mb_qrc.reservoirs.diagnostics import bootstrap_summary
+from cv_mb_qrc.reservoirs.results import atomic_json
 
 
 def reproduce(output):

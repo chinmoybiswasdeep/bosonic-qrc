@@ -6,7 +6,7 @@ import numpy as np
 import photographiq as pg
 import pytest
 
-from photographiqml.reservoirs import (
+from cv_mb_qrc.reservoirs import (
     BackendCapabilityError,
     CVConfig,
     CVMBReservoir,
@@ -15,10 +15,10 @@ from photographiqml.reservoirs import (
     WindowedMBQELM,
     chronological_splits,
 )
-from photographiqml.reservoirs.benchmarks import capacity_targets, metrics, select_readout
-from photographiqml.reservoirs.diagnostics import contraction, fading_memory, feature_diagnostics
-from photographiqml.reservoirs.temporal import delay_features
-from photographiqml.reservoirs.validation import gaussian_one_mode_reference, raw_piquasso_collision
+from cv_mb_qrc.reservoirs.benchmarks import capacity_targets, metrics, select_readout
+from cv_mb_qrc.reservoirs.diagnostics import contraction, fading_memory, feature_diagnostics
+from cv_mb_qrc.reservoirs.temporal import delay_features
+from cv_mb_qrc.reservoirs.validation import gaussian_one_mode_reference, raw_piquasso_collision
 
 
 @pytest.mark.parametrize(
@@ -194,7 +194,7 @@ def test_optional_import_boundary(monkeypatch):
 
     monkeypatch.setattr(builtins, "__import__", guarded)
     assert CVMBReservoir().step(0).features.size
-    from photographiqml.reservoirs.graphix_backend import GraphixMBReservoir
+    from cv_mb_qrc.reservoirs.graphix_backend import GraphixMBReservoir
 
     with pytest.raises(ImportError, match="Install"):
         GraphixMBReservoir()

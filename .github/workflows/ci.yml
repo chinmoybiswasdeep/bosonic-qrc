@@ -1,0 +1,21 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12', '3.13', '3.14']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: ${{ matrix.python }}}
+      - run: python -m pip install -U pip
+      - run: python -m pip install '.[dev,experiments]'
+      - run: python -m pytest --cov=src/cv_mb_qrc
+      - run: python -m ruff check src tests experiments
+      - run: python -m ruff format --check src tests experiments
+      - run: python -m mypy
+      - run: python -m build
+      - run: python experiments/measurement_based_reservoir/main.py --config experiments/measurement_based_reservoir/config_ci.json

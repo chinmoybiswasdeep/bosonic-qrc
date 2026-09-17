@@ -1,12 +1,12 @@
 # Stateful measurement-based reservoirs
 
-The public API lives in `photographiqml.reservoirs`. PhotoGraphiQ owns optical
+The public API lives in `cv_mb_qrc.reservoirs`. PhotoGraphiQ owns optical
 simulation and this repository owns temporal orchestration, input encoding,
 features and ridge training. Graphix and MentPy imports are optional.
 
 ```python
 import numpy as np
-from photographiqml.reservoirs import CVConfig, CVMBReservoir, RidgeReadout
+from cv_mb_qrc.reservoirs import CVConfig, CVMBReservoir, RidgeReadout
 
 config = CVConfig(seed=7, memory_modes=2, squeezing=.3, coupling=.2,
                   transmissivity=.8, evolution="unconditional", tier="B")
@@ -52,7 +52,7 @@ moment statistic; it is not itself a fixed linear observable. This feature tier
 is Gaussian-simulable and supplies no evidence of non-Gaussian resources.
 
 ```python
-from photographiqml.reservoirs import GraphixMBReservoir, QubitConfig
+from cv_mb_qrc.reservoirs import GraphixMBReservoir, QubitConfig
 qubit = GraphixMBReservoir(QubitConfig(seed=7))
 result = qubit.run_sequence([.1, .2, -.1])
 print(result.features)  # retained memory X/Y/Z expectations

@@ -36,9 +36,11 @@ def environment() -> dict:
         except importlib.metadata.PackageNotFoundError:
             packages[name] = None
     roots = {"cv-mb-qrc": Path(__file__).resolve().parents[3]}
-    import photographiq
-
-    roots["photographiq"] = Path(photographiq.__file__).resolve().parents[2]
+    try:
+        import photographiq
+        roots["photographiq"] = Path(photographiq.__file__).resolve().parents[2]
+    except ImportError:
+        roots["photographiq"] = Path.cwd()
     commits = {}
     dirty = {}
     for name, root in roots.items():
@@ -57,7 +59,7 @@ def environment() -> dict:
         )
         dirty[name] = bool(status.stdout.strip()) if status.returncode == 0 else None
     root = roots["cv-mb-qrc"]
-    source_paths = sorted((root / "src/photographiqml/reservoirs").glob("*.py"))
+    source_paths = sorted((root / "src/cv_mb_qrc/reservoirs").glob("*.py"))
     source_paths += sorted((root / "experiments/measurement_based_reservoir").glob("*.py"))
     hashes = {
         str(p.relative_to(root)).replace("\\", "/"): hashlib.sha256(p.read_bytes()).hexdigest()
@@ -71,6 +73,14 @@ def environment() -> dict:
         "dirty_worktrees": dirty,
         "implementation_sha256": hashes,
     }
+
+
+def verify_source_hashes(record: dict) -> None:
+    """Fail closed when result provenance does not match this checkout."""
+    expected = record.get("implementation_sha256")
+    actual = environment()["implementation_sha256"]
+    if expected != actual:
+        raise ValueError("Result source hashes differ from the current checkout")
 
 
 def atomic_json(path, data):

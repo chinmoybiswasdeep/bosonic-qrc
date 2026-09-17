@@ -3,6 +3,7 @@
 from .base import MeasurementBasedReservoir
 from .config import BackendCapabilityError, CVConfig, QubitConfig
 from .cv import CVMBReservoir
+from .gaussian_twin import GaussianClassicalTwin
 from .graphix_backend import GraphixMBReservoir
 from .readout import RidgeReadout
 from .results import ReservoirResult
@@ -14,6 +15,7 @@ __all__ = [
     "CVConfig",
     "QubitConfig",
     "CVMBReservoir",
+    "GaussianClassicalTwin",
     "GraphixMBReservoir",
     "RidgeReadout",
     "ReservoirResult",

@@ -11,7 +11,7 @@ import numpy as np
 import photographiq as pg
 import psutil
 
-from photographiqml.reservoirs import (
+from cv_mb_qrc.reservoirs import (
     CVConfig,
     CVMBReservoir,
     GraphixMBReservoir,
@@ -19,7 +19,7 @@ from photographiqml.reservoirs import (
     WindowedMBQELM,
     chronological_splits,
 )
-from photographiqml.reservoirs.benchmarks import (
+from cv_mb_qrc.reservoirs.benchmarks import (
     ClassicalFeatures,
     capacity_targets,
     mackey_glass,
@@ -27,10 +27,10 @@ from photographiqml.reservoirs.benchmarks import (
     narma10,
     select_readout,
 )
-from photographiqml.reservoirs.diagnostics import contraction, fading_memory, feature_diagnostics
-from photographiqml.reservoirs.mentpy_backend import compare_wire
-from photographiqml.reservoirs.results import atomic_json, environment
-from photographiqml.reservoirs.temporal import delay_features
+from cv_mb_qrc.reservoirs.diagnostics import contraction, fading_memory, feature_diagnostics
+from cv_mb_qrc.reservoirs.mentpy_backend import compare_wire
+from cv_mb_qrc.reservoirs.results import atomic_json, environment
+from cv_mb_qrc.reservoirs.temporal import delay_features
 
 
 def methods(seed, config):
@@ -158,7 +158,18 @@ def run(config, output, *, resume=False):
             raise ValueError("Cannot resume a different configuration")
         manifest = json.loads((output / "raw/manifest.json").read_text())
     atomic_json(output / "raw/config.json", config)
-    atomic_json(output / "raw/environment.json", environment())
+    provenance = environment()
+    dirty = any(value is True for value in provenance["dirty_worktrees"].values())
+    provenance.update(
+        {
+            "commands": ["experiments/measurement_based_reservoir/main.py"],
+            "start_timestamp_utc": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
+            "development_uncommitted": dirty,
+            "publication_valid": not dirty,
+            "publication_validity_reason": "requires clean cv-mb-qrc and PhotoGraphiQ worktrees",
+        }
+    )
+    atomic_json(output / "raw/environment.json", provenance)
     rng = np.random.default_rng(config["dataset_seed"])
     data = {"iid": rng.uniform(-1, 1, config["length"]), "mg": mackey_glass(config["length"])}
     split_indices = chronological_splits(
@@ -253,7 +264,7 @@ def run(config, output, *, resume=False):
             )
     atomic_json(output / "raw/shots.json", shot_rows)
     if config["run_fock"]:
-        from photographiqml.reservoirs.fock import cutoff_study
+        from cv_mb_qrc.reservoirs.fock import cutoff_study
 
         atomic_json(output / "raw/fock.json", cutoff_study([0.02, 0.04], cutoffs=(8, 12, 16)))
 

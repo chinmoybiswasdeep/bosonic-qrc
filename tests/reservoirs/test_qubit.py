@@ -5,9 +5,9 @@ import pytest
 
 pytest.importorskip("graphix")
 
-from photographiqml.reservoirs import GraphixMBReservoir, QubitConfig
-from photographiqml.reservoirs.graphix_backend import graphix_wire
-from photographiqml.reservoirs.validation import collision_kraus
+from cv_mb_qrc.reservoirs import GraphixMBReservoir, QubitConfig
+from cv_mb_qrc.reservoirs.graphix_backend import graphix_wire
+from cv_mb_qrc.reservoirs.validation import collision_kraus
 
 
 @pytest.mark.parametrize("entangle,feedforward", list(product([False, True], repeat=2)))
@@ -48,7 +48,7 @@ def test_wire_all_branches_and_identity():
 
 def test_mentpy_common_subset():
     pytest.importorskip("mentpy")
-    from photographiqml.reservoirs.mentpy_backend import compare_wire
+    from cv_mb_qrc.reservoirs.mentpy_backend import compare_wire
 
     for state in ([1, 0], np.array([1, 1j]) / np.sqrt(2)):
         result = compare_wire(state)

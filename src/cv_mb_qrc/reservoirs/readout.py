@@ -4,10 +4,13 @@ import numpy as np
 
 
 class RidgeReadout:
-    def __init__(self, regularization=1e-4):
+    def __init__(self, regularization=1e-4, *, variance_floor=1e-12):
         if not np.isfinite(regularization) or regularization <= 0:
             raise ValueError("Ridge regularization must be finite and positive")
         self.regularization = regularization
+        if not np.isfinite(variance_floor) or variance_floor < 0:
+            raise ValueError("variance_floor must be finite and nonnegative")
+        self.variance_floor = variance_floor
         self.weights = None
 
     @staticmethod
@@ -29,8 +32,14 @@ class RidgeReadout:
             raise ValueError("Targets must be finite with matching sample axis")
         self.mean = x.mean(axis=0)
         self.scale = x.std(axis=0)
-        self.scale[self.scale < 1e-12] = 1
-        z = (x - self.mean) / self.scale
+        # Selection is fit strictly on training features, never validation/test.
+        self.kept_columns = self.scale >= self.variance_floor
+        self.removed_columns = np.flatnonzero(~self.kept_columns).tolist()
+        if not np.any(self.kept_columns):
+            raise ValueError("All readout columns collapsed on the training partition")
+        self.mean, self.scale = self.mean[self.kept_columns], self.scale[self.kept_columns]
+        self.scale[self.scale == 0] = 1
+        z = (x[:, self.kept_columns] - self.mean) / self.scale
         self.target_mean = y.mean(axis=0)
         # SVD avoids squaring condition numbers and handles constant columns.
         u, s, vh = np.linalg.svd(z, full_matrices=False)
@@ -42,6 +51,6 @@ class RidgeReadout:
         if self.weights is None:
             raise ValueError("Fit readout on training data first")
         x = self.design(inputs, features)
-        if x.shape[1] != len(self.mean):
+        if x.shape[1] != len(self.kept_columns):
             raise ValueError("Feature dimension differs from training")
-        return (x - self.mean) / self.scale @ self.weights + self.target_mean
+        return (x[:, self.kept_columns] - self.mean) / self.scale @ self.weights + self.target_mean
