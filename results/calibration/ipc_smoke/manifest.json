@@ -1,6 +1,6 @@
 {
   "branch": "CV",
-  "git_commit": "2197b921e57827c9513ea16a3dcf406a844556b2",
+  "git_commit": "c4436f88be3b95e24f738b4f73591a2efd47d42f",
   "backend": "piquasso",
   "backend_version": "8.0.1",
   "simulator": "GaussianSimulator",
@@ -118,7 +118,7 @@
     }
   ],
   "maximum_target_correlation": 0.17726608969397664,
-  "runtime_seconds": 13.987357400008477,
+  "runtime_seconds": 8.668498499988345,
   "backend_call_count": 1044,
   "gate_status": "PASS_SMOKE_PIPELINE_INSUFFICIENT_FDR_RESOLUTION",
   "minimum_resolvable_p_value": 0.047619047619047616
