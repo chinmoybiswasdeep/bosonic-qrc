@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0-eoc",
   "branch": "EOC-CVMB",
-  "git_commit": "51ae7bb1565bc0e3b0b59644a1267ffea3645846",
+  "git_commit": "27504d668596a2f6e3d7b16a92f277a10c09f4cd",
   "base_commit": "2d227b8b7fef7037b78ec81bd67b42ccf68c01e4",
   "config_hash": "05cac338f22885819dd6eb26d39cedadca49be1867f84e2f402419d19d274231",
   "configuration": {
@@ -3865,7 +3865,7 @@
           "polynomial IPC including cross delays"
         ]
       },
-      "runtime_seconds": 5.159086200001184
+      "runtime_seconds": 2.7634761999943294
     },
     {
       "interaction": 1.0,
@@ -4265,7 +4265,7 @@
           "polynomial IPC including cross delays"
         ]
       },
-      "runtime_seconds": 4.384351400018204
+      "runtime_seconds": 2.6946640000096522
     },
     {
       "interaction": 4.0,
@@ -4665,7 +4665,7 @@
           "polynomial IPC including cross delays"
         ]
       },
-      "runtime_seconds": 5.405064599995967
+      "runtime_seconds": 2.7809313999896403
     },
     {
       "interaction": 8.0,
@@ -5065,7 +5065,7 @@
           "polynomial IPC including cross delays"
         ]
       },
-      "runtime_seconds": 6.1493536999914795
+      "runtime_seconds": 2.701074400014477
     }
   ],
   "performance_vs_d_eoc": {
@@ -5221,8 +5221,8 @@
     }
   },
   "runtime": {
-    "seconds": 21.281100599997444,
-    "python_tracemalloc_peak_bytes": 17709044
+    "seconds": 11.09201939997729,
+    "python_tracemalloc_peak_bytes": 17705627
   },
   "environment": {
     "python": "3.11.16",
@@ -5259,13 +5259,13 @@
   "artifact_checksums": {
     "closed_calibration.json": "379a2279abcfee608e98029d4c694842035071166d012d7f171c0dd493ae3386",
     "cutoff_convergence.csv": "04d84db225a863a57754f3d0f1630238c5ebde98eb7875837e649d07cd60b4fc",
-    "finite_size_chaos.pdf": "2a3f9c9e0a9ab12be2f0c3d24087948375055862f576e743223f5a8ff38349b5",
+    "finite_size_chaos.pdf": "9fa6856875cf97060f91ea6fcfa7a16c839ae2ec1cadda6b7d7faeaf32492869",
     "finite_size_chaos.png": "e7970ab7ff7551b406adf6e88904a5b1febd1661f2507382072990c36d6bfcf5",
-    "finite_size_chaos.svg": "50e748dd2a7f59975e5096e41aaf3b7984de1cfaade3ecdff957e8dd89e63947",
+    "finite_size_chaos.svg": "47023f6aa00da8f1315141f47198b543bec902b5ab7c94a67ff1001779bfb9af",
     "gate_report.json": "547355cbde0af4c23f526f6f3c869c48dce08bd21c62fea3061e45c9d0736b20",
     "open_results.csv": "28c731b7fd500cff72aa11c7e31f81e74a86ae53c939b12b8340db4c156df9b4",
-    "performance_vs_d_eoc.pdf": "0e7126740bedf33f8c71bdcb22c7e20a90ddeec9e4a744448ebaa86b810f60bd",
+    "performance_vs_d_eoc.pdf": "3203e2929a7286f86b3b42434cad9a35d6aedeba98ae2323768f0b619fbe33a4",
     "performance_vs_d_eoc.png": "65a4a264cfc5e20c8646d4fc911b25c5190a71d094404055872d78601e42ecce",
-    "performance_vs_d_eoc.svg": "53cb93044b47360c506eb9ff7f17f485483954a4f95d70a6b1ebf3d55dba54dd"
+    "performance_vs_d_eoc.svg": "8aba0b4badea156dc95de75d31cc8558b0f354462199f74b18f7702e21e05734"
   }
 }
