@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, cite the software and its underlying CV architecture."
+title: "bosonic-qrc CV"
+version: 0.1.0
+authors:
+  - family-names: Biswas
+    given-names: Chinmoy
+references:
+  - type: article
+    title: "Scalable photonic platform for real-time quantum reservoir computing"
+    doi: 10.1103/PhysRevResearch.5.023081
