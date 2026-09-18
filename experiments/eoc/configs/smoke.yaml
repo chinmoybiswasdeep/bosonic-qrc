@@ -1,0 +1,33 @@
+experiment:
+  profile: smoke
+provenance:
+  base_commit: 2d227067881351ed64baf455028dfc83594e5040
+  backend_scope: PhotoGraphiQ mixed Fock plus SciPy Bose-Hubbard adapter
+closed_system:
+  modes: 5
+  particles: 3
+  hopping: 1.0
+  interactions: [0.0, 0.5, 1.0, 2.0, 4.0, 8.0]
+  interval: 0.3
+  boundary: open
+  disorder: [0.0, 0.0, 0.0, 0.0, 0.0]
+  edge_fraction: 0.1
+  bootstrap_replicates: 200
+  seed: 2026
+open_system:
+  memory_modes: 1
+  cutoff: 4
+  cutoff_sequence: [3, 4]
+  interactions: [0.0, 1.0, 4.0, 8.0]
+  interval: 0.2
+  transmissivity: 0.9
+  input_length: 8
+seeds:
+  reservoir: 17
+  data: 211
+  measurement: 13001
+  trajectory: 41001
+thresholds:
+  trace_error: 1.0e-8
+  positivity: 1.0e-9
+  boundary_shell: 0.05
