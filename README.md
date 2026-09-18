@@ -38,3 +38,9 @@ perfect reservoir capacity while the identity control remains zero. That result
 is explicitly held behind finite-shot/noise and stronger-control stress tests.
 See `docs/REPRODUCIBILITY.md` for resume, chunk, merge, production, and reporting
 commands.
+## Corrected many-body EOC workflow
+
+The symmetry-broken fixed-number Floquet calibration and complete four-mode open-channel
+study are documented in [docs/EOC_METHODS_V2.md](docs/EOC_METHODS_V2.md). Run the CI profile
+with `bosonic-qrc-eoc-dv run configs/eoc/smoke.yaml --output results/eoc/corrected-smoke-v2`.
+Smoke validates implementation only and does not establish an EOC advantage.
