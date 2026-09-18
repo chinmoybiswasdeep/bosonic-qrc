@@ -46,3 +46,5 @@ def test_rank_bound_and_fdr():
     assert not capacity_bound(2.1, 2)[0]
     significant = benjamini_hochberg(np.asarray([0.001, 0.01, 0.5]), q=0.05)
     assert significant.tolist() == [True, True, False]
+    near_constant = np.ones((30, 3)) + 1e-14 * np.arange(30)[:, None]
+    assert fit_pseudoinverse(near_constant, np.arange(30)).numerical_rank == 0
