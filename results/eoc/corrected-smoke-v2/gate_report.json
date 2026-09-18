@@ -1,0 +1,16 @@
+{
+  "status": "PASS_SMOKE",
+  "checks": {
+    "closed_degeneracy_and_symmetry": true,
+    "finite_size_edge_with_uncertainty": true,
+    "complete_channels_cptp": true,
+    "channel_spectral_convergence": true,
+    "echo_state_curves_recorded": true,
+    "cutoff_convergence": true,
+    "dv_cutoff_chaos": true,
+    "all_tasks_connected": true,
+    "four_interacting_memory_modes": true
+  },
+  "edge_of_many_body_quantum_chaos_claim": false,
+  "claim_reason": "development workflow only; publication-size paired statistics are not run"
+}
