@@ -23,6 +23,8 @@ dev = ["pytest>=8,<10", "ruff>=0.8,<1"]
 [project.scripts]
 bosonic-qrc-dv = "bosonic_qrc_dv.cli:main"
 bosonic-qrc-dv-static-capacity = "bosonic_qrc_dv.static_capacity:main"
+bosonic-qrc-dv-aggregate = "bosonic_qrc_dv.aggregate:main"
+bosonic-qrc-dv-publication = "bosonic_qrc_dv.publication:main"
 bosonic-qrc-dv-temporal-ipc = "bosonic_qrc_dv.temporal_qrc.cli:main"
 
 [tool.pytest.ini_options]

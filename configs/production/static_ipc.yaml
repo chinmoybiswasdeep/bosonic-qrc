@@ -1,29 +1,29 @@
 experiment:
-  profile: smoke
+  profile: production
 reservoir:
-  modes: 4
+  modes: 6
   photons: 2
   measurement: exact
   include_lower_sectors: true
   measurement_seed: 13001
 models: [reservoir, identity]
 seeds:
-  reservoir: [13]
-  data: [211]
+  reservoir: [13, 17, 29, 37, 41, 53, 61, 73, 89, 97]
+  data: [211, 307, 401, 503, 601]
   measurement: [13001]
   validation_offset: 10000
   test_offset: 20000
   surrogate: 31001
 capacity:
-  maximum_degree: 4
-  train_length: 40
-  validation_length: 20
-  test_length: 40
+  maximum_degree: 12
+  train_length: 1000
+  validation_length: 400
+  test_length: 1000
   phase_scale: [1.5707963267948966, 2.221441469079183]
   phase_bias: [0.0, 0.3]
-  null_surrogates: 20
+  null_surrogates: 4999
   fdr_q: 0.05
   svd_relative_tolerance: 1.0e-10
   svd_absolute_tolerance: 1.0e-12
   bound_tolerance: 0.1
-  ridge_alphas: [1.0e-10, 1.0e-8, 1.0e-6, 1.0e-4, 1.0e-2, 1.0, 100.0]
+  ridge_alphas: [1.0e-10, 1.0e-9, 1.0e-8, 1.0e-7, 1.0e-6, 1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2, 1.0e-1, 1.0, 10.0, 100.0]

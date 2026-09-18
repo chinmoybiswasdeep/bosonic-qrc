@@ -1,4 +1,5 @@
 """Validated DV reservoir configuration."""
+
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass

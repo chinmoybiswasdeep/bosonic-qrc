@@ -32,4 +32,9 @@ The static-capacity command permits delay-zero Legendre targets only. It reports
 15 nominal indexed outcomes, 10 nonzero lossless two-photon columns, and the
 numerical rank separately. The committed smoke resolves degrees 1-4 for the
 random reservoir and correctly gives rank zero to the identity control. Its 20
-null surrogates are CI-scale, not calibration-scale inference.
+null surrogates are CI-scale, not calibration-scale inference. The committed
+degree-1–6 calibration uses `B=119`, passes `PASS_CALIBRATION`, and finds nearly
+perfect reservoir capacity while the identity control remains zero. That result
+is explicitly held behind finite-shot/noise and stronger-control stress tests.
+See `docs/REPRODUCIBILITY.md` for resume, chunk, merge, production, and reporting
+commands.

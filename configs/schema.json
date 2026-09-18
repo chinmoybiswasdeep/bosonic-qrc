@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["experiment", "reservoir"],
+  "properties": {
+    "experiment": {
+      "type": "object",
+      "properties": {"profile": {"enum": ["smoke", "calibration", "production"]}}
+    },
+    "reservoir": {"type": "object"},
+    "seeds": {"type": "object"},
+    "capacity": {"type": "object"}
+  }
+}

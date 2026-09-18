@@ -1,4 +1,5 @@
 """Guard against mislabeling static QRP as temporal recurrence."""
+
 from __future__ import annotations
 
 

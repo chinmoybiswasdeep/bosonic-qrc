@@ -65,9 +65,7 @@ def test_identity_direct_pnr_control():
 def test_every_committed_configuration_executes(profile):
     raw = yaml.safe_load(Path(f"configs/{profile}/xor.yaml").read_text(encoding="utf-8"))
     reservoir = LinearOpticalReservoir(DVConfig(**raw["reservoir"]))
-    features = reservoir.probabilities(
-        state=reservoir.dual_rail_input(), coordinates=(0.1, -0.2)
-    )
+    features = reservoir.probabilities(state=reservoir.dual_rail_input(), coordinates=(0.1, -0.2))
     modes = reservoir.config.modes
     assert len(features.values) == (modes + 1) * (modes + 2) // 2
     assert np.count_nonzero(features.values > 1e-14) <= modes * (modes + 1) // 2

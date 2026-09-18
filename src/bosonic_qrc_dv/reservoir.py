@@ -1,4 +1,5 @@
 """Configurable fixed Perceval SLOS quantum reservoir."""
+
 from __future__ import annotations
 
 import importlib
@@ -25,9 +26,15 @@ class ProbabilityFeatures:
     backend: str = "perceval.SLOS"
 
 
-def pnr_outcomes(modes: int, maximum_photons: int, include_lower: bool) -> tuple[tuple[int, ...], ...]:
+def pnr_outcomes(
+    modes: int, maximum_photons: int, include_lower: bool
+) -> tuple[tuple[int, ...], ...]:
     """Deterministic lexicographic PNR index, including collisions."""
-    states = [occupation for occupation in product(range(maximum_photons + 1), repeat=modes) if sum(occupation) <= maximum_photons]
+    states = [
+        occupation
+        for occupation in product(range(maximum_photons + 1), repeat=modes)
+        if sum(occupation) <= maximum_photons
+    ]
     if not include_lower:
         states = [occupation for occupation in states if sum(occupation) == maximum_photons]
     return tuple(sorted(states, key=lambda state: (sum(state), state)))
@@ -52,7 +59,9 @@ class LinearOpticalReservoir:
             raise ValueError("reservoir matrix must be unitary")
         self.reservoir_circuit = self._decompose(self.unitary)
         self.execution_count = 0
-        self.outcome_index = pnr_outcomes(config.modes, config.photons, config.include_lower_sectors)
+        self.outcome_index = pnr_outcomes(
+            config.modes, config.photons, config.include_lower_sectors
+        )
 
     @staticmethod
     def _haar(modes: int, rng: np.random.Generator) -> np.ndarray:
@@ -63,8 +72,15 @@ class LinearOpticalReservoir:
 
     def _decompose(self, unitary: np.ndarray):
         pcvl = self.pcvl
-        mzi = pcvl.BS() // (0, pcvl.PS(phi=pcvl.Parameter("phi_a"))) // pcvl.BS() // (1, pcvl.PS(phi=pcvl.Parameter("phi_b")))
-        circuit = pcvl.Circuit.decomposition(unitary, mzi, phase_shifter_fn=pcvl.PS, shape="triangle")
+        mzi = (
+            pcvl.BS()
+            // (0, pcvl.PS(phi=pcvl.Parameter("phi_a")))
+            // pcvl.BS()
+            // (1, pcvl.PS(phi=pcvl.Parameter("phi_b")))
+        )
+        circuit = pcvl.Circuit.decomposition(
+            unitary, mzi, phase_shifter_fn=pcvl.PS, shape="triangle"
+        )
         if circuit is None:
             raise RuntimeError("Perceval failed to decompose the reservoir unitary")
         return circuit
@@ -86,7 +102,9 @@ class LinearOpticalReservoir:
         circuit = pcvl.Circuit(self.config.modes, name="encoded_fixed_qrp")
         if coordinates is not None:
             if self.config.modes < 4 or self.config.photons != 2:
-                raise ValueError("dual-rail coordinate encoding requires four modes and two photons")
+                raise ValueError(
+                    "dual-rail coordinate encoding requires four modes and two photons"
+                )
             x, y = coordinates
             circuit.add((0, 1), pcvl.BS())
             circuit.add(0, pcvl.PS(phi=float(x)))
@@ -95,7 +113,9 @@ class LinearOpticalReservoir:
         circuit.add(0, self.reservoir_circuit)
         return circuit
 
-    def probabilities(self, state: tuple[int, ...] | None = None, coordinates: tuple[float, float] | None = None) -> ProbabilityFeatures:
+    def probabilities(
+        self, state: tuple[int, ...] | None = None, coordinates: tuple[float, float] | None = None
+    ) -> ProbabilityFeatures:
         """Execute SLOS and return a fixed-length ordered PNR vector."""
         state = self.default_input() if state is None else state
         if len(state) != self.config.modes or sum(state) != self.config.photons:
@@ -105,12 +125,25 @@ class LinearOpticalReservoir:
         sampler = self.pcvl.algorithm.Sampler(processor)
         if self.config.measurement == "exact":
             distribution = sampler.probs()["results"]
-            by_tuple = {tuple(output): float(probability) for output, probability in distribution.items()}
+            by_tuple = {
+                tuple(output): float(probability) for output, probability in distribution.items()
+            }
         else:
             counts = sampler.sample_count(self.config.shots)["results"]
-            by_tuple = {tuple(output): count / self.config.shots for output, count in counts.items()}
+            by_tuple = {
+                tuple(output): count / self.config.shots for output, count in counts.items()
+            }
         self.execution_count += 1
         values = np.asarray([by_tuple.get(outcome, 0.0) for outcome in self.outcome_index])
-        sectors = {sector: float(sum(value for outcome, value in zip(self.outcome_index, values) if sum(outcome) == sector)) for sector in range(self.config.photons + 1)}
+        sectors = {
+            sector: float(
+                sum(
+                    value
+                    for outcome, value in zip(self.outcome_index, values)
+                    if sum(outcome) == sector
+                )
+            )
+            for sector in range(self.config.photons + 1)
+        }
         labels = tuple("|" + ",".join(map(str, outcome)) + ">" for outcome in self.outcome_index)
         return ProbabilityFeatures(values, labels, sectors)
