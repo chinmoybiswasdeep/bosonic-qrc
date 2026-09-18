@@ -1,8 +1,8 @@
 experiment:
-  profile: calibration
+  profile: production
 reservoir:
-  modes: 2
-  loop_reflectivity: 0.5
+  modes: 4
+  loop_reflectivity: 0.7
   input_squeezing: 1.0
   active_squeezing: 0.02
   loss: 0.02
@@ -10,22 +10,22 @@ reservoir:
   measurement: exact
   measurement_seed: 7001
 seeds:
-  reservoir: [7, 11]
-  data: [101, 211]
+  reservoir: [7, 11, 19, 23, 31, 43, 47, 59, 71, 83]
+  data: [101, 211, 307, 401, 503]
   measurement: [7001]
   validation_offset: 10000
   test_offset: 20000
   surrogate: 30001
 capacity:
-  maximum_degree: 2
-  maximum_delay: 4
+  maximum_degree: 3
+  maximum_delay: 10
   maximum_interaction_order: 2
   include_cross_delay: true
-  washout: 30
-  train_length: 240
-  validation_length: 100
-  test_length: 240
-  null_surrogates: 399
+  washout: 100
+  train_length: 2000
+  validation_length: 800
+  test_length: 2000
+  null_surrogates: 4999
   fdr_q: 0.05
   svd_relative_tolerance: 1.0e-10
   svd_absolute_tolerance: 1.0e-12

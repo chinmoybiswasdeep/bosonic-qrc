@@ -5,3 +5,6 @@ __pycache__/
 .ruff_cache/
 results/*
 !results/.gitkeep
+!results/calibration/
+!results/calibration/**
+*.egg-info/

@@ -1,4 +1,5 @@
 """Piquasso-native N+N mode Gaussian feedback reservoir."""
+
 from __future__ import annotations
 
 import importlib
@@ -79,13 +80,17 @@ class GaussianLoopReservoir:
     def _input_gate(self, value: float):
         pq = self._pq
         if self.config.encoding == "angle":
-            return pq.Squeezing(r=self.config.input_squeezing, phi=3 * np.pi * value / 4)
+            return pq.Squeezing(
+                r=self.config.input_squeezing, phi=3 * np.pi * value / 4
+            )
         if self.config.encoding == "amplitude":
             amplitude = max(0.0, self.config.input_squeezing * (value + 1) / 2)
             return pq.Squeezing(r=amplitude)
         return pq.Displacement(r=self.config.input_squeezing * value, phi=0.0)
 
-    def _program(self, value: float, mean: np.ndarray, covariance: np.ndarray, measure: bool):
+    def _program(
+        self, value: float, mean: np.ndarray, covariance: np.ndarray, measure: bool
+    ):
         pq, n = self._pq, self.config.modes
         joint_mean = np.concatenate([mean, np.zeros(2 * n)])
         # Piquasso's default hbar is 2. Preparation instructions multiply mean
@@ -145,7 +150,9 @@ class GaussianLoopReservoir:
                 seed_sequence=self.config.measurement_seed + self.execution_count
             ),
         )
-        result = simulator.execute(self._program(value, old_mean, old_covariance, False))
+        result = simulator.execute(
+            self._program(value, old_mean, old_covariance, False)
+        )
         self.execution_count += 1
         loop = result.state.reduced(tuple(range(n)))
         detector = result.state.reduced(tuple(range(n, 2 * n)))

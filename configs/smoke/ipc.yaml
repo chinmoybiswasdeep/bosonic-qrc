@@ -1,3 +1,5 @@
+experiment:
+  profile: smoke
 reservoir:
   modes: 2
   loop_reflectivity: 0.5
@@ -10,6 +12,7 @@ reservoir:
 seeds:
   reservoir: [7, 11]
   data: [101]
+  measurement: [7001]
   validation_offset: 10000
   test_offset: 20000
   surrogate: 30001
@@ -18,13 +21,13 @@ capacity:
   maximum_delay: 4
   maximum_interaction_order: 2
   include_cross_delay: true
-  maximum_targets: 12
   washout: 20
   train_length: 180
   validation_length: 90
   test_length: 180
   null_surrogates: 20
   fdr_q: 0.05
-  svd_tolerance: 1.0e-10
+  svd_relative_tolerance: 1.0e-10
+  svd_absolute_tolerance: 1.0e-12
   bound_tolerance: 0.1
   ridge_alphas: [1.0e-10, 1.0e-8, 1.0e-6, 1.0e-4, 1.0e-2, 1.0, 100.0]

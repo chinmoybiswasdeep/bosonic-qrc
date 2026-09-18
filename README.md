@@ -22,20 +22,22 @@ python -m venv .venv
 .\.venv\Scripts\bosonic-qrc-cv-ipc configs/smoke/ipc.yaml --output results/calibration/ipc_smoke
 ```
 
-Moderate calibration:
+Inference-resolved IPC calibration:
 
 ```powershell
-.\.venv\Scripts\bosonic-qrc-cv configs/calibration/memory.yaml --output results/calibration/memory
+.\.venv\Scripts\bosonic-qrc-cv-ipc configs/calibration/ipc.yaml --output results/calibration/ipc
 ```
 
-The full profile is a cost declaration and is never launched by CI. Gaussian
+The production profile is a cost declaration and is never launched by CI. Gaussian
 steps scale approximately cubically with the joint 2N-mode covariance dimension.
 This branch passes physical topology and smoke gates but does not yet implement
 the complete IPC/task/ablation matrix requested for a manuscript. See
 `docs/LIMITATIONS.md` and `docs/NOVELTY.md`.
 
-Capacity output reports held-out squared correlation and raw held-out `test_r2`
-separately. Optical, measurement, and data seeds are independent. The committed
-IPC smoke uses only 20 null surrogates, whose minimum attainable p-value is
-1/21; it verifies execution and the rank bound but is not a significant-capacity
-claim. Calibration requires at least 100 surrogates and longer target banks.
+Capacity is held-out `C=max(0,R²)`; raw `R²` and squared correlation are retained
+as diagnostics. Reservoir, measurement, and data seeds are independent. The
+smoke profile uses `B=20` only as a pipeline check. The committed calibration
+uses the complete 20-target family and `B=399`, the minimum needed for its BH
+resolution condition. It passes `PASS_CALIBRATION`, not publication readiness.
+See `docs/REPRODUCIBILITY.md` for resume, chunk, merge, production, and reporting
+commands.

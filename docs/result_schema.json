@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/chinmoybiswasdeep/bosonic-qrc/result-schema-2.0.0.json",
+  "title": "Bosonic QRC experiment manifest",
+  "type": "object",
+  "required": [
+    "schema_version", "branch", "backend", "resolved_config", "config_hash",
+    "git_commit", "started_at_utc", "finished_at_utc", "wall_time_seconds",
+    "environment", "artifact_checksums", "gate_status"
+  ],
+  "properties": {
+    "schema_version": {"const": "2.0.0"},
+    "branch": {"enum": ["CV", "DV"]},
+    "resolved_config": {"type": "object"},
+    "config_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "git_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "gate_status": {
+      "enum": ["PASS_SMOKE", "PASS_CALIBRATION", "READY_FOR_PRODUCTION",
+        "FAIL_NUMERICAL", "FAIL_STATISTICAL", "FAIL_BACKEND", "INCOMPLETE"]
+    },
+    "artifact_checksums": {
+      "type": "object",
+      "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+    }
+  },
+  "additionalProperties": true
+}
+

@@ -1,4 +1,5 @@
 """Leakage-safe delayed-memory calibration and reproducible artifacts."""
+
 from __future__ import annotations
 
 import csv
@@ -50,7 +51,9 @@ def delayed_memory(
         "reservoir_seed": config.reservoir_seed,
         "data_seed": data_seed,
         "delay": delay,
-        "train_mse": float(mean_squared_error(targets[:train_end], prediction[:train_end])),
+        "train_mse": float(
+            mean_squared_error(targets[:train_end], prediction[:train_end])
+        ),
         "validation_mse": float(
             mean_squared_error(
                 targets[train_end:validation_end], prediction[train_end:validation_end]

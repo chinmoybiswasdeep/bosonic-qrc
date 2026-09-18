@@ -57,7 +57,9 @@ def test_history_and_expected_fading_law():
     observed = []
     for index in range(6):
         value = 1.0 if index == 0 else 0.0
-        observed.append(abs(impulse.step(value).feature[0] - control.step(0.0).feature[0]))
+        observed.append(
+            abs(impulse.step(value).feature[0] - control.step(0.0).feature[0])
+        )
     observed = np.asarray(observed[1:])
     assert np.allclose(observed[1:] / observed[:-1], reflectivity, rtol=1e-5, atol=1e-8)
 
@@ -78,7 +80,9 @@ def test_echo_state_convergence_and_bounded_energy():
 @pytest.mark.parametrize("modes", [1, 2, 3])
 def test_finite_shot_columns_and_convergence(modes):
     base = {"modes": modes, "active_squeezing": 0, "loss": 0, "reservoir_seed": 11}
-    exact = GaussianLoopReservoir(CVConfig(measurement="exact", **base)).step(0.2).feature
+    exact = (
+        GaussianLoopReservoir(CVConfig(measurement="exact", **base)).step(0.2).feature
+    )
     sampled = GaussianLoopReservoir(
         CVConfig(measurement="finite_shot", shots=3000, **base)
     ).step(0.2)
