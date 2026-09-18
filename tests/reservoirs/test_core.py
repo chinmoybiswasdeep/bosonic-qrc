@@ -77,7 +77,9 @@ def test_vacuum_zero_coupling_and_recurrence():
     r = m.run_sequence([0, 1, -1])
     np.testing.assert_allclose(r.features[:, :2], 0, atol=1e-14)
     np.testing.assert_allclose(r.features[:, 2:4], 1, atol=1e-14)
-    np.testing.assert_allclose(r.features[:, 4], 0, atol=1e-14)
+    # quadratic_nonredundant is [means, variances, second moments]. Vacuum
+    # second moments are one; photon number is absent by design.
+    np.testing.assert_allclose(r.features[:, 4:6], 1, atol=1e-14)
     recurrent = CVMBReservoir().run_sequence([1, 0]).features[-1]
     static = CVMBReservoir().run_sequence([0, 0]).features[-1]
     assert np.linalg.norm(recurrent - static) > 1e-4

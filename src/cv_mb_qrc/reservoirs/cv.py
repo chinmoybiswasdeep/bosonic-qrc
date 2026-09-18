@@ -103,7 +103,12 @@ class CVMBReservoir(MeasurementBasedReservoir):
             return np.asarray(list(mean) + list(cov[np.triu_indices_from(cov)]))
         quadratic = mean**2 + diagonal
         if preset == "diagnostic_redundant":
-            return np.asarray(list(mean) + list(diagonal) + [state.photon_number(n) for n in self.nodes] + list(quadratic))
+            return np.asarray(
+                list(mean)
+                + list(diagonal)
+                + [state.photon_number(n) for n in self.nodes]
+                + list(quadratic)
+            )
         # q² and p² are retained; n is deliberately omitted.
         return np.asarray(list(mean) + list(diagonal) + list(quadratic))
 
@@ -113,7 +118,9 @@ class CVMBReservoir(MeasurementBasedReservoir):
         if preset == "minimal_linear":
             return tuple(names)
         if preset == "full_gaussian":
-            names += [f"cov_{i}_{j}" for i, j in zip(*np.triu_indices(2 * len(self.nodes)), strict=True)]
+            names += [
+                f"cov_{i}_{j}" for i, j in zip(*np.triu_indices(2 * len(self.nodes)), strict=True)
+            ]
             return tuple(names)
         names += [f"var_{axis}{n}" for n in self.nodes for axis in ("q", "p")]
         if preset == "diagnostic_redundant":
@@ -189,9 +196,13 @@ class CVMBReservoir(MeasurementBasedReservoir):
             observed_covariance = self.state.covariance + c.measurement_noise * np.eye(
                 len(self.state.mean)
             )
-            observations = self.rng.multivariate_normal(self.state.mean, observed_covariance, size=count)
+            observations = self.rng.multivariate_normal(
+                self.state.mean, observed_covariance, size=count
+            )
             empirical_mean = observations.mean(axis=0)
-            empirical_var = observations.var(axis=0, ddof=1) if count > 1 else np.zeros_like(empirical_mean)
+            empirical_var = (
+                observations.var(axis=0, ddof=1) if count > 1 else np.zeros_like(empirical_mean)
+            )
             if c.feature_preset == "minimal_linear":
                 features = empirical_mean
             elif c.feature_preset == "full_gaussian":
@@ -200,7 +211,9 @@ class CVMBReservoir(MeasurementBasedReservoir):
                     if count > 1
                     else np.zeros((len(empirical_mean), len(empirical_mean)))
                 )
-                features = np.r_[empirical_mean, empirical_covariance[np.triu_indices(len(empirical_mean))]]
+                features = np.r_[
+                    empirical_mean, empirical_covariance[np.triu_indices(len(empirical_mean))]
+                ]
             else:
                 quadratic = np.mean(observations**2, axis=0)
                 features = np.r_[empirical_mean, empirical_var, quadratic]
@@ -231,7 +244,9 @@ class CVMBReservoir(MeasurementBasedReservoir):
                 "tier": c.tier,
                 "gaussian": True,
                 "readout_mode": c.readout_mode,
-                "readout_label": "simulation-only upper-bound readout" if c.readout_mode == "state_oracle" else "finite physical-probe simulator estimate",
+                "readout_label": "simulation-only upper-bound readout"
+                if c.readout_mode == "state_oracle"
+                else "finite physical-probe simulator estimate",
                 "standard_error": standard_error,
                 "compilation_seconds": self.compilation_seconds,
             },
@@ -241,8 +256,12 @@ class CVMBReservoir(MeasurementBasedReservoir):
                 "fresh_nodes": c.input_channels,
                 "measurements": c.input_channels,
                 "readout_replicas": c.n_replicas if c.readout_mode == "physical_probe" else 0,
-                "readout_shots_per_replica": c.n_readout_shots if c.readout_mode == "physical_probe" else 0,
-                "readout_measurements_total": c.n_replicas * c.n_readout_shots if c.readout_mode == "physical_probe" else 0,
+                "readout_shots_per_replica": c.n_readout_shots
+                if c.readout_mode == "physical_probe"
+                else 0,
+                "readout_measurements_total": c.n_replicas * c.n_readout_shots
+                if c.readout_mode == "physical_probe"
+                else 0,
                 "edges": int(np.count_nonzero(self.weights))
                 + (len(self.nodes) - 1 if c.coupling else 0),
                 "cutoff": None,

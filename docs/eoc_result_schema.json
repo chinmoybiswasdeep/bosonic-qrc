@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bosonic QRC EOC result",
+  "type": "object",
+  "required": ["schema_version", "branch", "base_commit", "git_commit", "resolved_config", "config_hash", "chunk", "closed_chaos_diagnostics", "trotter_convergence", "cutoff_convergence", "open_channel_and_performance", "gate", "artifact_checksums"],
+  "properties": {
+    "schema_version": {"const": "1.0.0-eoc"},
+    "branch": {"const": "EOC-CVMB"},
+    "base_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "git_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "config_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "chunk": {"type": "object", "required": ["index", "count"]},
+    "gate": {"type": "object", "required": ["status", "edge_of_many_body_quantum_chaos_claim", "checks", "blocking_reasons"]},
+    "artifact_checksums": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+  }
+}
+

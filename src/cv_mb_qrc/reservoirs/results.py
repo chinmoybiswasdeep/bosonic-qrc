@@ -38,6 +38,7 @@ def environment() -> dict:
     roots = {"cv-mb-qrc": Path(__file__).resolve().parents[3]}
     try:
         import photographiq
+
         roots["photographiq"] = Path(photographiq.__file__).resolve().parents[2]
     except ImportError:
         roots["photographiq"] = Path.cwd()

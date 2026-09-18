@@ -163,7 +163,9 @@ def run(config, output, *, resume=False):
     provenance.update(
         {
             "commands": ["experiments/measurement_based_reservoir/main.py"],
-            "start_timestamp_utc": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
+            "start_timestamp_utc": __import__("datetime")
+            .datetime.now(__import__("datetime").timezone.utc)
+            .isoformat(),
             "development_uncommitted": dirty,
             "publication_valid": not dirty,
             "publication_validity_reason": "requires clean cv-mb-qrc and PhotoGraphiQ worktrees",

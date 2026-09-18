@@ -37,7 +37,8 @@ class GaussianClassicalTwin:
         self.c = base.mean
         self.A = np.empty((d, d))
         for index in range(d):
-            vector = np.zeros(d); vector[index] = 1.0
+            vector = np.zeros(d)
+            vector[index] = 1.0
             self.A[:, index] = self._apply(vector, np.eye(d), 0.0).mean - self.c
         self.B = (self._apply(np.zeros(d), np.eye(d), 1.0).mean - self.c).reshape(d, 1)
         self.N = (base.covariance - self.A @ self.A.T + (base.covariance - self.A @ self.A.T).T) / 2
@@ -49,7 +50,6 @@ class GaussianClassicalTwin:
         return self
 
     def step(self, value):
-        encoded = self.config.input_scale * (self._oracle.mask @ np.asarray([value], float)) + self._oracle.bias
         # B is measured for a unit raw input; use channel identification rather
         # than PhotoGraphiQ after construction.
         self.mean = self.A @ self.mean + self.B[:, 0] * float(value) + self.c

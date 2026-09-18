@@ -46,7 +46,14 @@ class CVConfig:
     max_trajectories: int = 10000
 
     def __post_init__(self):
-        for name in ("memory_modes", "input_channels", "max_modes", "max_trajectories", "n_replicas", "n_readout_shots"):
+        for name in (
+            "memory_modes",
+            "input_channels",
+            "max_modes",
+            "max_trajectories",
+            "n_replicas",
+            "n_readout_shots",
+        ):
             integer(getattr(self, name), name)
         integer(self.seed, "seed", 0)
         for name in (
@@ -72,7 +79,13 @@ class CVConfig:
             raise ValueError("Invalid transmissivity or detector efficiency")
         if self.tier not in ("A", "B"):
             raise BackendCapabilityError("Gaussian CV reservoir supports Tier A/B only")
-        if self.feature_preset not in ("minimal_linear", "full_gaussian", "quadratic_nonredundant", "physical_probe", "diagnostic_redundant"):
+        if self.feature_preset not in (
+            "minimal_linear",
+            "full_gaussian",
+            "quadratic_nonredundant",
+            "physical_probe",
+            "diagnostic_redundant",
+        ):
             raise ValueError("Unknown CV feature preset")
         if self.readout_mode not in ("state_oracle", "physical_probe"):
             raise ValueError("readout_mode must be state_oracle or physical_probe")

@@ -19,3 +19,4 @@ jobs:
       - run: python -m mypy
       - run: python -m build
       - run: python experiments/measurement_based_reservoir/main.py --config experiments/measurement_based_reservoir/config_ci.json
+      - run: bosonic-qrc-eoc-cvmb experiments/eoc/configs/smoke.yaml --output experiments/eoc/results/smoke
