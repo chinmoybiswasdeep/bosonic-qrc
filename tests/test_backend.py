@@ -39,3 +39,18 @@ def test_unitary_perturbation_remains_unitary():
     reservoir = LinearOpticalReservoir()
     perturbed = perturb_unitary(reservoir.unitary, strength=0.2, seed=9)
     assert np.allclose(perturbed.conj().T @ perturbed, np.eye(4), atol=1e-10)
+
+
+def test_finite_shot_features_are_perceval_frequencies():
+    config = DVConfig(modes=4, photons=2, measurement="finite_shot", shots=2000)
+    features = LinearOpticalReservoir(config).probabilities()
+    assert features.values.shape == (15,)
+    assert np.isclose(features.values.sum(), 1)
+    assert np.allclose(features.values * config.shots, np.round(features.values * config.shots))
+
+
+def test_identity_direct_pnr_control():
+    config = DVConfig(modes=4, photons=2)
+    features = LinearOpticalReservoir(config, unitary=np.eye(4)).probabilities(state=(1, 1, 0, 0))
+    result = dict(zip(features.outcomes, features.values))
+    assert np.isclose(result["|1,1,0,0>"], 1)
