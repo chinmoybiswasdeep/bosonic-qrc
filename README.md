@@ -1,21 +1,28 @@
-# bosonic-qrc — DV branch
+# bosonic-qrc - DV branch
 
-This branch provides a backend-native discrete-variable **static quantum
-reservoir processing (QRP/QELM)** seed using Perceval 1.2 and its SLOS backend.
-It explicitly does not label this static feature map as recurrent QRC.
+This branch implements backend-native discrete-variable static quantum reservoir
+processing (QRP/QELM) with Perceval 1.2 and SLOS. It does not present the static
+model as recurrent QRC.
 
-Every PNR feature comes from `perceval.algorithm.Sampler(...).probs()`. The
-fixed reservoir is a two-mode beam splitter and phase shifter; Fock input
-states, circuit evolution, and photon-number outcome probabilities remain in
-Perceval. Classical code only orders the backend-returned probabilities.
+The configurable fixed Haar-like unitary is decomposed by Perceval into beam
+splitters and phase shifters. Fock inputs, sample-dependent dual-rail encoding,
+optical evolution, exact probabilities, and finite-shot counts are handled by
+Perceval. The four-mode, two-photon index includes all 1+4+10 zero-, one-, and
+two-photon outcomes, retaining collision events and zero-valued lower sectors
+in the lossless model.
+
+## Install and verify
 
 ```powershell
-.\.venv\Scripts\python -m pip install -e . -c dv_pyproject.toml
-.\.venv\Scripts\pytest -c dv_pyproject.toml dv_tests
+python -m venv .venv
+.\.venv\Scripts\python -m pip install -e ".[dev]"
+.\.venv\Scripts\ruff check src tests
+.\.venv\Scripts\pytest
+.\.venv\Scripts\bosonic-qrc-dv configs/smoke/xor.yaml --output results/calibration/xor
 ```
 
-The included integration test checks backend invocation, normalization, and the
-Hong--Ou--Mandel two-photon interference limit. Temporal DV recurrence,
-tomography, loss, finite shots, and the requested experiment/ablation suite are
-not implemented; this is a constrained physical baseline, not a claim of the
-complete research repository described in the task brief.
+The HOM limit remains an independent backend sanity test. The smoke XOR run
+checks encoding and artifact generation; training accuracy is not a held-out
+scientific claim. Tomography, source-ancilla reduction, loss models, spiral
+calibration, and genuine temporal collision-model QRC remain calibration-gate
+failures documented in `docs/LIMITATIONS.md`.

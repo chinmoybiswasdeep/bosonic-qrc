@@ -1,0 +1,6 @@
+reservoir:
+  modes: 8
+  photons: 2
+  seed: 13
+  measurement: exact
+  include_lower_sectors: true
