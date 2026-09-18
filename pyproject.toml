@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [project.scripts]
-bosonic-qrc-eoc-cvmb = "cv_mb_qrc.eoc.study:main"
+bosonic-qrc-eoc-cvmb = "cv_mb_qrc.eoc.study_v2:main"
 
 [project.optional-dependencies]
 graphix = ["graphix==0.4"]
