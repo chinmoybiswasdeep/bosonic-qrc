@@ -1,0 +1,2 @@
+[console_scripts]
+bosonic-qrc-cv = bosonic_qrc_cv.cli:main

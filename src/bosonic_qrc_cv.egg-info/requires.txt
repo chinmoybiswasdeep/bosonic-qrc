@@ -1,0 +1,9 @@
+piquasso==8.0.1
+numpy<3,>=1.26
+scikit-learn<1.8,>=1.5
+PyYAML<7,>=6
+matplotlib<4,>=3.9
+
+[dev]
+pytest<9,>=8
+ruff<1,>=0.8

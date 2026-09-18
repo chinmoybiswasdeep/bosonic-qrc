@@ -1,0 +1,11 @@
+reservoir:
+  modes: 4
+  reflectivity: 0.45
+  input_scale: 0.7
+  active_squeezing: 0.12
+  encoding: angle
+  seed: 7
+experiment:
+  length: 120
+  delay: 2
+  washout: 10
