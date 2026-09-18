@@ -1,0 +1,125 @@
+{
+  "branch": "DV",
+  "git_commit": "17d306097e5742e7f98c65388b239f5c404b55e1",
+  "backend": "perceval",
+  "backend_version": "1.2.4",
+  "simulator": "SLOS",
+  "capacity_type": "static delay-zero nonlinear capacity",
+  "temporal_recurrence": false,
+  "config": {
+    "reservoir": {
+      "modes": 4,
+      "photons": 2,
+      "measurement": "exact",
+      "include_lower_sectors": true,
+      "measurement_seed": 13001
+    },
+    "models": [
+      "reservoir",
+      "identity"
+    ],
+    "seeds": {
+      "reservoir": [
+        13
+      ],
+      "data": [
+        211
+      ],
+      "validation_offset": 10000,
+      "test_offset": 20000,
+      "surrogate": 31001
+    },
+    "capacity": {
+      "maximum_degree": 4,
+      "train_length": 40,
+      "validation_length": 20,
+      "test_length": 40,
+      "phase_scale": [
+        1.5707963267948966,
+        2.221441469079183
+      ],
+      "phase_bias": [
+        0.0,
+        0.3
+      ],
+      "null_surrogates": 20,
+      "fdr_q": 0.05,
+      "svd_tolerance": 1e-10,
+      "bound_tolerance": 0.1,
+      "ridge_alphas": [
+        1e-10,
+        1e-08,
+        1e-06,
+        0.0001,
+        0.01,
+        1.0,
+        100.0
+      ]
+    }
+  },
+  "input_distribution": "iid Uniform[-1,1]",
+  "target_bank": {
+    "maximum_degree": 4,
+    "train_length": 40,
+    "validation_length": 20,
+    "test_length": 40,
+    "phase_scale": [
+      1.5707963267948966,
+      2.221441469079183
+    ],
+    "phase_bias": [
+      0.0,
+      0.3
+    ],
+    "null_surrogates": 20,
+    "fdr_q": 0.05,
+    "svd_tolerance": 1e-10,
+    "bound_tolerance": 0.1,
+    "ridge_alphas": [
+      1e-10,
+      1e-08,
+      1e-06,
+      0.0001,
+      0.01,
+      1.0,
+      100.0
+    ],
+    "number_generated": 4
+  },
+  "seeds": {
+    "reservoir": [
+      13
+    ],
+    "data": [
+      211
+    ],
+    "validation_offset": 10000,
+    "test_offset": 20000,
+    "surrogate": 31001
+  },
+  "runs": [
+    {
+      "model": "reservoir",
+      "reservoir_seed": 13,
+      "data_seed": 211,
+      "capacity_bound_passed": true,
+      "capacity_bound_residual": 4.000000111357863,
+      "total_significant_capacity": 3.999999888642136,
+      "effective_rank": 8
+    },
+    {
+      "model": "identity",
+      "reservoir_seed": 13,
+      "data_seed": 211,
+      "capacity_bound_passed": true,
+      "capacity_bound_residual": 0.0,
+      "total_significant_capacity": 0.0,
+      "effective_rank": 0
+    }
+  ],
+  "number_of_significant_targets": 4,
+  "runtime_seconds": 3.181569700012915,
+  "backend_call_count": 200,
+  "gate_status": "PASS_SMOKE_PIPELINE_INSUFFICIENT_FDR_RESOLUTION",
+  "minimum_resolvable_p_value": 0.047619047619047616
+}
