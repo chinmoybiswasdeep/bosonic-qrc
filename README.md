@@ -6,8 +6,8 @@ incompatible Python package.
 
 | Branch | Physical model | Capacity currently implemented | Status |
 | --- | --- | --- | --- |
-| [`CV`](https://github.com/chinmoybiswasdeep/bosonic-qrc/tree/CV) | Persistent Gaussian loop with fresh squeezed pulses, Piquasso | Genuine temporal Legendre IPC smoke | Architecture and smoke gates pass; long calibration pending |
-| [`DV`](https://github.com/chinmoybiswasdeep/bosonic-qrc/tree/DV) | Static Fock-input interferometric QRP, Perceval SLOS | Delay-zero nonlinear capacity smoke | Static gate passes; tomography and recurrent DV channel pending |
+| [`CV`](https://github.com/chinmoybiswasdeep/bosonic-qrc/tree/CV) | Persistent Gaussian loop with fresh squeezed pulses, Piquasso | Temporal Legendre IPC | `PASS_CALIBRATION`; production/task matrix pending |
+| [`DV`](https://github.com/chinmoybiswasdeep/bosonic-qrc/tree/DV) | Static Fock-input interferometric QRP, Perceval SLOS | Delay-zero nonlinear capacity | `PASS_CALIBRATION`; robustness matrix pending |
 
 CV is temporal QRC because a reduced Gaussian loop state persists between input
 steps. DV is currently static QRP/QELM: its features are sample-dependent but it
@@ -31,18 +31,23 @@ bosonic-qrc-dv-static-capacity configs/smoke/static_ipc.yaml --output results/ca
 
 ## Latest calibration status
 
-The CV two-seed IPC smoke respects the numerical-rank capacity bound but uses
-only 20 null surrogates, so FDR significance is resolution-limited and no
-significant total is claimed. The DV smoke exposes degrees 1-4 with a random
-four-mode, two-photon reservoir; it reports 15 nominal outcomes, 10 nonzero
-lossless columns, and numerical rank 8. Its identity control has rank zero after
-scale-aware SVD filtering. These are pipeline checks, not publication results or
-claims of quantum advantage.
+CV calibration covers four reservoir/data runs and the complete 20-target bank
+with 399 independently generated nulls per target. Mean significant temporal
+capacity is 2.735 (hierarchical-bootstrap 95% CI 2.702–2.771) at numerical rank
+3. DV calibration covers eight model/seed runs and degrees 1–6 with 119 nulls;
+the reservoir mean is 5.99997 while the matched identity control is zero.
+
+Both branch-level calibration gates pass. The generated publication gates are
+still `INCOMPLETE`: production profiles were deliberately not run, paired
+task/control/robustness matrices remain incomplete, and exact truncated-Fock
+tomography is explicitly unsupported. These are calibration results, not claims
+of quantum advantage or publication readiness.
 
 Reference architectures:
 
 - Garcia-Beni et al., *Scalable photonic platform for real-time quantum reservoir computing*, [arXiv:2207.14031](https://arxiv.org/abs/2207.14031).
 - Lopez Carreno et al., *Quantum and classical processing with photonic quantum machine learning*, [arXiv:2605.10471](https://arxiv.org/abs/2605.10471).
 
-Each research branch contains its own `CITATION.cff`, bibliography, exact
-configuration, raw per-target results, manifests, limitations, and CI workflow.
+Each research branch contains versioned schemas, exact configs, append-only
+resume journals, raw per-target tables, checksummed manifests, PDF/SVG/PNG
+figures, production/SLURM instructions, publication bundles, and CI workflows.
