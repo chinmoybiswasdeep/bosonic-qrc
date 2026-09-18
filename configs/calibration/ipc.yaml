@@ -1,0 +1,30 @@
+reservoir:
+  modes: 4
+  loop_reflectivity: 0.7
+  input_squeezing: 1.0
+  active_squeezing: 0.02
+  loss: 0.02
+  encoding: angle
+  measurement: exact
+  measurement_seed: 7001
+seeds:
+  reservoir: [7, 11, 19, 23, 31, 43, 47, 59, 71, 83]
+  data: [101, 211, 307, 401, 503]
+  validation_offset: 10000
+  test_offset: 20000
+  surrogate: 30001
+capacity:
+  maximum_degree: 3
+  maximum_delay: 12
+  maximum_interaction_order: 2
+  include_cross_delay: true
+  maximum_targets: 150
+  washout: 100
+  train_length: 1000
+  validation_length: 400
+  test_length: 1000
+  null_surrogates: 100
+  fdr_q: 0.05
+  svd_tolerance: 1.0e-10
+  bound_tolerance: 0.1
+  ridge_alphas: [1.0e-10, 1.0e-9, 1.0e-8, 1.0e-7, 1.0e-6, 1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2, 1.0e-1, 1.0, 10.0, 100.0]
