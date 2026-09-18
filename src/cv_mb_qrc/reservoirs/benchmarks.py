@@ -101,7 +101,8 @@ class ClassicalFeatures:
         self.mask = rng.normal(size=(dimension, window))
         self.bias = rng.uniform(-np.pi, np.pi, dimension)
         self.recurrent = rng.normal(size=(dimension, dimension)) / np.sqrt(dimension)
-        self.recurrent *= 0.8 / max(np.linalg.norm(self.recurrent, 2), 1e-12)
+        recurrent_norm = float(np.linalg.norm(self.recurrent, 2))
+        self.recurrent *= 0.8 / max(recurrent_norm, 1e-12)
 
     def transform(self, inputs):
         u = np.asarray(inputs, float)

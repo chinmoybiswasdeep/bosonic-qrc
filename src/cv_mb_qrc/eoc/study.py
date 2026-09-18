@@ -12,6 +12,7 @@ import subprocess
 from datetime import datetime, timezone
 from itertools import pairwise
 from pathlib import Path
+from typing import Any, cast
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -164,6 +165,7 @@ def _cutoff_convergence(raw):
         models.append((cutoff, model, last))
     rows = []
     for (_, previous, _), (cutoff, current, last) in pairwise(models):
+        assert last is not None
         union = tuple(sorted(set(previous.state.basis) | set(current.state.basis)))
         left = _align_density(np.asarray(previous.state.matrix), previous.state.basis, union)
         right = _align_density(np.asarray(current.state.matrix), current.state.basis, union)
@@ -270,6 +272,7 @@ def run(
     convergence = _trotter_convergence(chaos_config)
     cutoff_convergence = _cutoff_convergence(raw)
     opened = _open_scan(raw_open, closed["candidate_boundaries"])
+    closed_rows = cast(list[dict[str, Any]], closed["rows"])
     output.mkdir(parents=True, exist_ok=True)
     with (output / "chaos_scan.csv").open("w", newline="", encoding="utf-8") as handle:
         fields = [
@@ -281,7 +284,7 @@ def run(
         ]
         writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore")
         writer.writeheader()
-        writer.writerows(closed["rows"])
+        writer.writerows(closed_rows)
     with (output / "open_scan.csv").open("w", newline="", encoding="utf-8") as handle:
         fields = sorted(
             key for key, value in opened[0].items() if not isinstance(value, (list, dict))
@@ -293,7 +296,7 @@ def run(
     checks = {
         "physical_boundary_candidates_found": bool(closed["candidate_boundaries"]),
         "two_physical_diagnostics_recorded": bool(
-            closed["spectral_form_factor"] and all(row["otoc"] for row in closed["rows"])
+            closed["spectral_form_factor"] and all(row["otoc"] for row in closed_rows)
         ),
         "trotter_refinement_monotonic": convergence["converged_monotonically"],
         "open_states_physical": all(

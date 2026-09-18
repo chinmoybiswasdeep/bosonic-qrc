@@ -103,8 +103,8 @@ def scan_closed_core(config: ChaosScanConfig) -> dict[str, object]:
                 "sector_dimensions": {name: len(block) for name, block in blocks.items()},
             }
         )
-    ratios = [row["mean_spacing_ratio"] for row in rows]
-    crossings, midpoint = _crossings(np.asarray(config.interactions), ratios)
+    mean_ratios = [row["mean_spacing_ratio"] for row in rows]
+    crossings, midpoint = _crossings(np.asarray(config.interactions), mean_ratios)
     form_factor = spectral_form_factor(spectra, times)
     for row in rows:
         if crossings:

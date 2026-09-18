@@ -138,6 +138,7 @@ class InteractingMBReservoir:
         retained = float(sum(probabilities))
         if retained <= 0:
             raise RuntimeError("all PNR branches have zero probability")
+        assert weighted is not None and basis is not None
         return pg.FockDensityMatrix(weighted / retained, basis), None, probabilities, retained
 
     def _interact(self, state):

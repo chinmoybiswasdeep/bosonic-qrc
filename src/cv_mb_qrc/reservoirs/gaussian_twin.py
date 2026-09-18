@@ -29,6 +29,7 @@ class GaussianClassicalTwin:
         import photographiq as pg
 
         memory = pg.GaussianState(mean, covariance, self._oracle.nodes)
+        assert self._oracle.channel is not None
         return self._oracle.channel.apply(self._oracle._joint(memory, np.asarray([value], float)))
 
     def _extract(self):

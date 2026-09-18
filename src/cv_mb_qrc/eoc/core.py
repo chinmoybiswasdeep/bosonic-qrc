@@ -130,7 +130,9 @@ def reflection_blocks(
         reflection[index[state[::-1]], column] = 1
     if np.linalg.norm(matrix @ reflection - reflection @ matrix) > tolerance:
         raise ValueError("Hamiltonian does not possess reflection symmetry")
-    plus, minus, visited = [], [], set()
+    plus: list[np.ndarray] = []
+    minus: list[np.ndarray] = []
+    visited: set[tuple[int, ...]] = set()
     for state in basis:
         if state in visited:
             continue
@@ -276,7 +278,10 @@ def kraus_completeness(kraus: tuple[np.ndarray, ...]) -> float:
 
 
 def channel_superoperator(kraus: tuple[np.ndarray, ...]) -> np.ndarray:
-    return sum(np.kron(operator.conj(), operator) for operator in kraus)
+    total = np.zeros((kraus[0].size, kraus[0].size), dtype=complex)
+    for operator in kraus:
+        total += np.kron(operator.conj(), operator)
+    return total
 
 
 def channel_spectrum(kraus: tuple[np.ndarray, ...]) -> dict[str, float]:
