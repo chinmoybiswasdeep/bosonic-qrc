@@ -146,6 +146,8 @@ def run_ipc(config_path: Path, output: Path) -> dict[str, object]:
             rows.extend(run_rows)
     if not all(record["passed"] for record in bound_records):
         gate_status = "FAIL_CAPACITY_BOUND"
+    elif specification["null_surrogates"] < 100:
+        gate_status = "PASS_SMOKE_PIPELINE_INSUFFICIENT_FDR_RESOLUTION"
     else:
         gate_status = "PASS"
     output.mkdir(parents=True, exist_ok=True)
@@ -174,6 +176,7 @@ def run_ipc(config_path: Path, output: Path) -> dict[str, object]:
         "runtime_seconds": time.perf_counter() - started,
         "backend_call_count": backend_calls,
         "gate_status": gate_status,
+        "minimum_resolvable_p_value": 1 / (specification["null_surrogates"] + 1),
     }
     (output / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     with (output / "capacities.csv").open("w", newline="", encoding="utf-8") as handle:
