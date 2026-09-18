@@ -46,7 +46,7 @@ class LinearOpticalReservoir:
         config = DVConfig() if config is None else config
         self.config = config
         self.pcvl = _perceval()
-        rng = np.random.default_rng(config.seed)
+        rng = np.random.default_rng(config.reservoir_seed)
         self.unitary = self._haar(config.modes, rng) if unitary is None else np.asarray(unitary)
         if not np.allclose(self.unitary.conj().T @ self.unitary, np.eye(config.modes), atol=1e-8):
             raise ValueError("reservoir matrix must be unitary")
@@ -71,6 +71,15 @@ class LinearOpticalReservoir:
 
     def default_input(self) -> tuple[int, ...]:
         return tuple(1 if mode < self.config.photons else 0 for mode in range(self.config.modes))
+
+    def dual_rail_input(self) -> tuple[int, ...]:
+        """Return two photons in the first rail of two dual-rail pairs."""
+        if self.config.modes < 4 or self.config.photons != 2:
+            raise ValueError("dual-rail encoding requires at least four modes and two photons")
+        state = [0] * self.config.modes
+        state[0] = 1
+        state[2] = 1
+        return tuple(state)
 
     def _circuit(self, coordinates: tuple[float, float] | None):
         pcvl = self.pcvl

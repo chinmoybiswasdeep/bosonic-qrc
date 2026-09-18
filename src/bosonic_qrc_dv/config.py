@@ -9,7 +9,8 @@ from typing import Literal
 class DVConfig:
     modes: int = 4
     photons: int = 2
-    seed: int = 13
+    reservoir_seed: int = 13
+    measurement_seed: int = 13001
     measurement: Literal["exact", "finite_shot"] = "exact"
     shots: int = 2000
     include_lower_sectors: bool = True
