@@ -41,3 +41,9 @@ uses the complete 20-target family and `B=399`, the minimum needed for its BH
 resolution condition. It passes `PASS_CALIBRATION`, not publication readiness.
 See `docs/REPRODUCIBILITY.md` for resume, chunk, merge, production, and reporting
 commands.
+## Corrected many-body EOC workflow
+
+The fixed-number Floquet calibration and complete four-mode non-Gaussian Fock-channel study
+are documented in [docs/EOC_METHODS_V2.md](docs/EOC_METHODS_V2.md). Run the CI profile with
+`bosonic-qrc-eoc-cv run configs/eoc/smoke.yaml --output results/eoc/corrected-smoke-v2`.
+Smoke validates implementation only and does not establish an EOC advantage.

@@ -1,33 +1,64 @@
-experiment:
-  profile: publication
+branch: EOC-CV
+base_commit: 80d7d3f31b1dc284ad8babe218b459327b5dbd7a
+profile: publication
 provenance:
-  base_commit: 80d7df8e9ca42cd788467e0fc505cd1229c71b00
-  backend_scope: Piquasso Gaussian baseline and Kerr validation plus SciPy Bose-Hubbard
+  dependencies: [numpy, scipy, matplotlib, PyYAML, piquasso]
 closed_system:
-  modes: 7
-  particles: 5
+  sizes: [[5, 3], [6, 3], [7, 3], [8, 3]]
+  interactions: [0.0, 0.125, 0.25, 0.375, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0, 8.0, 12.0]
   hopping: 1.0
-  interactions: [0.0, 0.125, 0.25, 0.375, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0, 8.0, 12.0, 16.0]
-  interval: 0.2
+  hopping_time: 0.37
+  interaction_time: 0.23
   boundary: open
-  disorder: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-  edge_fraction: 0.1
-  bootstrap_replicates: 10000
+  disorder_strength: 0.173
+  phase_kick_strength: 0.117
+  realizations: 64
+  bootstrap_replicates: 5000
+  degeneracy_tolerance: 1.0e-10
+  universality_class: COE
+  otoc_steps: 24
   seed: 2026
 open_system:
-  memory_modes: 2
-  cutoff: 7
-  cutoff_sequence: [5, 6, 7]
+  memory_modes: 4
+  cutoff: 5
+  cutoff_sequence: [4, 5, 6]
+  hopping: 1.0
   interactions: [0.0, 0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0, 8.0, 12.0]
-  interval: 0.2
-  transmissivity: 0.96
-  input_length: 3000
-seeds:
-  reservoir: 17
-  data: 211
-  measurement: 13001
-  trajectory: 41001
-thresholds:
-  trace_error: 1.0e-10
-  positivity: 1.0e-11
-  boundary_shell: 0.001
+  disorder: [0.11, -0.07, 0.03, -0.07]
+  kick_phases: [0.05, -0.09, 0.12, -0.08]
+  hopping_time: 0.37
+  interaction_time: 0.23
+  boundary: open
+  collision_angle: 0.22
+  resource_strength: 0.12
+  input_scale: 0.10
+  transmissivity: 0.94
+  trace_tolerance: 1.0e-10
+  seed: 17
+  diagnostic_input: 0.3
+  echo_realizations: 32
+  echo_length: 300
+  overmixing_lambda2_threshold: 0.85
+  task_seeds: [211, 307, 401, 503, 601, 701, 809, 907, 1009, 1103]
+  run_tasks: true
+seeds: {reservoir: 17, data: 211}
+tasks:
+  train: 1000
+  validation: 400
+  test: 800
+  washout: 200
+  embargo: 50
+  maximum_delay: 20
+  maximum_degree: 3
+  alphas: [1.0e-9, 1.0e-7, 1.0e-5, 1.0e-3, 1.0e-1]
+convergence:
+  sequence_length: 400
+  observable_prefix: 40
+  task_score_check: true
+  thresholds:
+    state_trace_distance: 0.01
+    raw_trace_error: 1.0e-10
+    boundary_population: 0.01
+    observable_difference: 0.02
+    task_score_difference: 0.05
+    chaos_statistic_difference: 0.03

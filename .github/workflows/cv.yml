@@ -14,4 +14,4 @@ jobs:
       - run: pytest
       - run: bosonic-qrc-cv configs/smoke/memory.yaml --output results/cv-smoke
       - run: bosonic-qrc-cv-ipc configs/smoke/ipc.yaml --output results/ipc-smoke
-      - run: bosonic-qrc-eoc-cv configs/eoc/smoke.yaml --output results/eoc/smoke
+      - run: bosonic-qrc-eoc-cv run configs/eoc/smoke.yaml --output results/eoc/ci-v2
