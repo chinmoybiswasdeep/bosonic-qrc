@@ -1,0 +1,30 @@
+{
+  "schema_version": "2.0.0",
+  "status": "PASS_SMOKE",
+  "checks": [
+    {
+      "name": "complete static target family",
+      "passed": true,
+      "detail": "4 targets"
+    },
+    {
+      "name": "significant capacity bounds",
+      "passed": true,
+      "detail": "per-run total <= numerical feature rank"
+    },
+    {
+      "name": "FDR resolution",
+      "passed": false,
+      "detail": "B=20, required=79"
+    },
+    {
+      "name": "target orthogonality",
+      "passed": true,
+      "detail": "maximum empirical off-diagonal <= configured threshold"
+    }
+  ],
+  "blocking_reasons": [
+    "null B=20 < required 79"
+  ],
+  "next_action": "Run the calibration profile."
+}

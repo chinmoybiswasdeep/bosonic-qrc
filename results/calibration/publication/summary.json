@@ -1,0 +1,34 @@
+{
+  "schema_version": "2.0.0",
+  "inputs": [
+    {
+      "branch": "DV",
+      "profile": "smoke",
+      "gate_status": "PASS_SMOKE",
+      "runs": 2,
+      "targets": 4,
+      "null_surrogates": 20,
+      "mean_significant_capacity": 3.9999998447109535,
+      "ci95_low": 3.9999998447109535,
+      "ci95_high": 3.9999998447109535,
+      "git_commit": "250890ce388e3331a28e3fc3e9fd0902521a1b80",
+      "config_hash": "61655e3a07271cfabae110d265274996cc08dbb089b5c7ce04c9c61cdf2c041d",
+      "source": "results/calibration/static_ipc_smoke"
+    },
+    {
+      "branch": "DV",
+      "profile": "calibration",
+      "gate_status": "PASS_CALIBRATION",
+      "runs": 8,
+      "targets": 6,
+      "null_surrogates": 119,
+      "mean_significant_capacity": 5.999974966410333,
+      "ci95_low": 5.999964929579161,
+      "ci95_high": 5.999985003241506,
+      "git_commit": "250890ce388e3331a28e3fc3e9fd0902521a1b80",
+      "config_hash": "a57e5ba13e090403550bb203c6d0206531afe6d0a239159718575103b77a98b8",
+      "source": "results/calibration/static_ipc"
+    }
+  ],
+  "publication_ready": false
+}

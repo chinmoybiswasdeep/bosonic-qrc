@@ -1,12 +1,13 @@
 {
   "branch": "DV",
-  "git_commit": "17d306097e5742e7f98c65388b239f5c404b55e1",
   "backend": "perceval",
-  "backend_version": "1.2.4",
   "simulator": "SLOS",
   "capacity_type": "static delay-zero nonlinear capacity",
   "temporal_recurrence": false,
-  "config": {
+  "resolved_config": {
+    "experiment": {
+      "profile": "smoke"
+    },
     "reservoir": {
       "modes": 4,
       "photons": 2,
@@ -24,6 +25,9 @@
       ],
       "data": [
         211
+      ],
+      "measurement": [
+        13001
       ],
       "validation_offset": 10000,
       "test_offset": 20000,
@@ -44,7 +48,8 @@
       ],
       "null_surrogates": 20,
       "fdr_q": 0.05,
-      "svd_tolerance": 1e-10,
+      "svd_relative_tolerance": 1e-10,
+      "svd_absolute_tolerance": 1e-12,
       "bound_tolerance": 0.1,
       "ridge_alphas": [
         1e-10,
@@ -73,7 +78,8 @@
     ],
     "null_surrogates": 20,
     "fdr_q": 0.05,
-    "svd_tolerance": 1e-10,
+    "svd_relative_tolerance": 1e-10,
+    "svd_absolute_tolerance": 1e-12,
     "bound_tolerance": 0.1,
     "ridge_alphas": [
       1e-10,
@@ -84,42 +90,278 @@
       1.0,
       100.0
     ],
-    "number_generated": 4
+    "number_generated": 4,
+    "required_null_surrogates": 79
   },
-  "seeds": {
-    "reservoir": [
-      13
-    ],
-    "data": [
-      211
-    ],
-    "validation_offset": 10000,
-    "test_offset": 20000,
-    "surrogate": 31001
+  "readout_protocol": {
+    "principal": "centered SVD pseudoinverse",
+    "robustness": "validation-selected ridge",
+    "principal_metric": "held-out C=max(0,R2)",
+    "secondary_metric": "held-out squared correlation",
+    "constant_features": "removed using absolute tolerance"
+  },
+  "null_protocol": {
+    "type": "independently regenerated iid target streams",
+    "fit_and_validation_repeated": true,
+    "multiple_testing": "BH within each model/run family",
+    "max_statistic_reported": true
   },
   "runs": [
     {
-      "model": "reservoir",
-      "reservoir_seed": 13,
+      "backend_calls": 100,
+      "condition_number": 5096152.033037362,
       "data_seed": 211,
-      "capacity_bound_passed": true,
-      "capacity_bound_residual": 4.000000111357863,
-      "total_significant_capacity": 3.999999888642136,
-      "effective_rank": 8
+      "max_statistic_threshold": 0.0,
+      "measurement_seed": 13001,
+      "model": "reservoir",
+      "nominal_dimension": 15,
+      "nonzero_nonconstant_dimension": 10,
+      "numerical_rank": 8,
+      "participation_rank": 1.329540508814432,
+      "photon_sector_weights": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.9999999999999999
+      },
+      "rank_threshold": 1.3973219225879267e-10,
+      "raw_capacity_bound_passed": true,
+      "raw_capacity_bound_residual": 4.0000001552890465,
+      "raw_total_capacity": 3.9999998447109535,
+      "reservoir_seed": 13,
+      "significant_capacity_bound_passed": true,
+      "significant_capacity_bound_residual": 4.0000001552890465,
+      "significant_total_capacity": 3.9999998447109535,
+      "singular_values": [
+        1.3973219225879268,
+        0.5140892968933007,
+        0.23005666136457625,
+        0.05382991934552398,
+        0.009237125191572288,
+        0.0010361926088455946,
+        2.8069142501853994e-05,
+        2.741915691544053e-07,
+        2.316983103062792e-16,
+        1.685349241181216e-16
+      ],
+      "stable_rank": 1.1639931005288429,
+      "target_diagnostics": {
+        "effective_independent_target_count": 3.704763934194557,
+        "gram_condition_number": 2.15352720409369,
+        "gram_eigenvalues": [
+          0.6532424155370075,
+          0.8449798168174184,
+          1.0950024549187531,
+          1.40677531272682
+        ],
+        "gram_matrix": [
+          [
+            0.9999999999999998,
+            -0.1495983665568193,
+            -0.19185052952368659,
+            0.15056695209031107
+          ],
+          [
+            -0.1495983665568193,
+            1.0000000000000002,
+            -0.09914258847725126,
+            -0.11877713754702932
+          ],
+          [
+            -0.19185052952368659,
+            -0.09914258847725126,
+            1.0,
+            -0.23149057272379858
+          ],
+          [
+            0.15056695209031107,
+            -0.11877713754702932,
+            -0.23149057272379858,
+            0.9999999999999998
+          ]
+        ],
+        "maximum_absolute_off_diagonal": 0.23149057272379858,
+        "means": [
+          -0.21011115707253714,
+          -0.28560556188757263,
+          0.15494721593224164,
+          0.07246452466106851
+        ],
+        "variances": [
+          0.7003999212205854,
+          0.7980752124047611,
+          0.9324508493237916,
+          0.7888254578059645
+        ]
+      }
     },
     {
-      "model": "identity",
-      "reservoir_seed": 13,
+      "backend_calls": 100,
+      "condition_number": null,
       "data_seed": 211,
-      "capacity_bound_passed": true,
-      "capacity_bound_residual": 0.0,
-      "total_significant_capacity": 0.0,
-      "effective_rank": 0
+      "max_statistic_threshold": 0.0,
+      "measurement_seed": 13001,
+      "model": "identity",
+      "nominal_dimension": 15,
+      "nonzero_nonconstant_dimension": 0,
+      "numerical_rank": 0,
+      "participation_rank": 0.0,
+      "photon_sector_weights": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 1.0
+      },
+      "rank_threshold": 1e-12,
+      "raw_capacity_bound_passed": true,
+      "raw_capacity_bound_residual": 0.0,
+      "raw_total_capacity": 0.0,
+      "reservoir_seed": 13,
+      "significant_capacity_bound_passed": true,
+      "significant_capacity_bound_residual": 0.0,
+      "significant_total_capacity": 0.0,
+      "singular_values": [],
+      "stable_rank": 0.0,
+      "target_diagnostics": {
+        "effective_independent_target_count": 3.704763934194557,
+        "gram_condition_number": 2.15352720409369,
+        "gram_eigenvalues": [
+          0.6532424155370075,
+          0.8449798168174184,
+          1.0950024549187531,
+          1.40677531272682
+        ],
+        "gram_matrix": [
+          [
+            0.9999999999999998,
+            -0.1495983665568193,
+            -0.19185052952368659,
+            0.15056695209031107
+          ],
+          [
+            -0.1495983665568193,
+            1.0000000000000002,
+            -0.09914258847725126,
+            -0.11877713754702932
+          ],
+          [
+            -0.19185052952368659,
+            -0.09914258847725126,
+            1.0,
+            -0.23149057272379858
+          ],
+          [
+            0.15056695209031107,
+            -0.11877713754702932,
+            -0.23149057272379858,
+            0.9999999999999998
+          ]
+        ],
+        "maximum_absolute_off_diagonal": 0.23149057272379858,
+        "means": [
+          -0.21011115707253714,
+          -0.28560556188757263,
+          0.15494721593224164,
+          0.07246452466106851
+        ],
+        "variances": [
+          0.7003999212205854,
+          0.7980752124047611,
+          0.9324508493237916,
+          0.7888254578059645
+        ]
+      }
     }
   ],
-  "number_of_significant_targets": 4,
-  "runtime_seconds": 3.181569700012915,
+  "aggregate": {
+    "reservoir": {
+      "mean": 3.9999998447109535,
+      "median": 3.9999998447109535,
+      "standard_deviation": 0.0,
+      "iqr": 0.0,
+      "bootstrap_95_ci": [
+        3.9999998447109535,
+        3.9999998447109535
+      ],
+      "bootstrap_replicates": 1000,
+      "raw_by_degree": {
+        "1": 0.9999999999553901,
+        "2": 0.999999999999959,
+        "3": 0.9999998455700216,
+        "4": 0.9999999991855829
+      },
+      "significant_by_degree": {
+        "1": 0.9999999999553901,
+        "2": 0.999999999999959,
+        "3": 0.9999998455700216,
+        "4": 0.9999999991855829
+      }
+    },
+    "identity": {
+      "mean": 0.0,
+      "median": 0.0,
+      "standard_deviation": 0.0,
+      "iqr": 0.0,
+      "bootstrap_95_ci": [
+        0.0,
+        0.0
+      ],
+      "bootstrap_replicates": 1000,
+      "raw_by_degree": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.0
+      },
+      "significant_by_degree": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.0
+      }
+    },
+    "paired_reservoir_minus_identity": {
+      "mean": 3.9999998447109535,
+      "median": 3.9999998447109535,
+      "standard_deviation": 0.0,
+      "iqr": 0.0,
+      "bootstrap_95_ci": [
+        3.9999998447109535,
+        3.9999998447109535
+      ],
+      "bootstrap_replicates": 1000
+    }
+  },
   "backend_call_count": 200,
-  "gate_status": "PASS_SMOKE_PIPELINE_INSUFFICIENT_FDR_RESOLUTION",
-  "minimum_resolvable_p_value": 0.047619047619047616
+  "gate_status": "PASS_SMOKE",
+  "schema_version": "2.0.0",
+  "config_hash": "61655e3a07271cfabae110d265274996cc08dbb089b5c7ce04c9c61cdf2c041d",
+  "git_commit": "250890ce388e3331a28e3fc3e9fd0902521a1b80",
+  "started_at_utc": "2026-09-18T07:19:12.779784+00:00",
+  "finished_at_utc": "2026-09-18T07:19:14.063044+00:00",
+  "wall_time_seconds": 1.28326,
+  "environment": {
+    "python": "3.11.16 (main, Sep  1 2026, 14:15:24) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+    "logical_cpus": 12,
+    "dependencies": {
+      "perceval-quandela": "1.2.4",
+      "numpy": "2.4.6",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "PyYAML": "6.0.3"
+    }
+  },
+  "artifact_checksums": {
+    "capacities.csv": "5851dd0b72f1cba04183646d8ce66c89297170229566f47193f7498b9fe6a456",
+    "feature_rank_spectrum.pdf": "7ab3530160af5d760d842e8b2c02363af1b89bb1122aa05d252a5ff7b8aa8d57",
+    "feature_rank_spectrum.png": "35a55abac88dd4d6e05e351ca7495a5f27166bd8dc987f1ade98bbc8e2536779",
+    "feature_rank_spectrum.svg": "4b96facc982ba9894f8f88143e0a74d01f4a73e788f48577d30404afab69ac8c",
+    "gate_report.json": "5df40c0b15b87c2d03835df3f1f472784e4c079fd7d12e90196c4e5adc3f6bb5",
+    "gate_report.md": "aafd230b0ee0371a45f4816dd72a5547c65c2ee94811fbda728f95f34f0c7603",
+    "run_summaries.csv": "22d15716210e529457c174749dd89118546350a4831d7567df24f036316c0052",
+    "runs.jsonl": "520312138df254913dc01711789ae8ac214ed0d89ba03167053bb526f7a3c0c5",
+    "static_capacity_by_degree.pdf": "12a5599a3a950090030db79b36309d01b7fc971aae664953de2df8a5e5aa8ffe",
+    "static_capacity_by_degree.png": "044ac2436767ea3ce4099dec7fe8b4fa4e0a9c304fbf452abcaacfa019a0b88c",
+    "static_capacity_by_degree.svg": "8c635baddaa4cc07135564e4228d1ded23166ba1db1a4759c0031ba9df70810c"
+  }
 }

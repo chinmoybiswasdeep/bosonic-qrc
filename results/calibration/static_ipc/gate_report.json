@@ -1,0 +1,28 @@
+{
+  "schema_version": "2.0.0",
+  "status": "PASS_CALIBRATION",
+  "checks": [
+    {
+      "name": "complete static target family",
+      "passed": true,
+      "detail": "6 targets"
+    },
+    {
+      "name": "significant capacity bounds",
+      "passed": true,
+      "detail": "per-run total <= numerical feature rank"
+    },
+    {
+      "name": "FDR resolution",
+      "passed": true,
+      "detail": "B=119, required=119"
+    },
+    {
+      "name": "target orthogonality",
+      "passed": true,
+      "detail": "maximum empirical off-diagonal <= configured threshold"
+    }
+  ],
+  "blocking_reasons": [],
+  "next_action": "Review stress tests before production launch."
+}

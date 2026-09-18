@@ -1,0 +1,3 @@
+branch,profile,gate_status,runs,targets,null_surrogates,mean_significant_capacity,ci95_low,ci95_high,git_commit,config_hash,source
+DV,smoke,PASS_SMOKE,2,4,20,3.9999998447109535,3.9999998447109535,3.9999998447109535,250890ce388e3331a28e3fc3e9fd0902521a1b80,61655e3a07271cfabae110d265274996cc08dbb089b5c7ce04c9c61cdf2c041d,results/calibration/static_ipc_smoke
+DV,calibration,PASS_CALIBRATION,8,6,119,5.999974966410333,5.999964929579161,5.999985003241506,250890ce388e3331a28e3fc3e9fd0902521a1b80,a57e5ba13e090403550bb203c6d0206531afe6d0a239159718575103b77a98b8,results/calibration/static_ipc

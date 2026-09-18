@@ -1,0 +1,40 @@
+[
+  {
+    "branch": "DV",
+    "profile": "smoke",
+    "seeds": {
+      "reservoir": [
+        13
+      ],
+      "data": [
+        211
+      ],
+      "measurement": [
+        13001
+      ],
+      "validation_offset": 10000,
+      "test_offset": 20000,
+      "surrogate": 31001
+    }
+  },
+  {
+    "branch": "DV",
+    "profile": "calibration",
+    "seeds": {
+      "reservoir": [
+        13,
+        17
+      ],
+      "data": [
+        211,
+        307
+      ],
+      "measurement": [
+        13001
+      ],
+      "validation_offset": 10000,
+      "test_offset": 20000,
+      "surrogate": 31001
+    }
+  }
+]

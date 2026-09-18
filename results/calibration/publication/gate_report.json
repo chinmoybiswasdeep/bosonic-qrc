@@ -1,0 +1,10 @@
+{
+  "schema_version": "2.0.0",
+  "status": "INCOMPLETE",
+  "blocking_reasons": [
+    "No production manifest with READY_FOR_PRODUCTION was supplied.",
+    "DV finite-shot/noise stress matrix is not yet complete.",
+    "Exact truncated-Fock tomography is unsupported in this repository."
+  ],
+  "next_action": "Complete preregistered stress matrices, then launch production."
+}
