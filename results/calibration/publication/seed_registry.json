@@ -1,0 +1,41 @@
+[
+  {
+    "branch": "CV",
+    "profile": "smoke",
+    "seeds": {
+      "reservoir": [
+        7,
+        11
+      ],
+      "data": [
+        101
+      ],
+      "measurement": [
+        7001
+      ],
+      "validation_offset": 10000,
+      "test_offset": 20000,
+      "surrogate": 30001
+    }
+  },
+  {
+    "branch": "CV",
+    "profile": "calibration",
+    "seeds": {
+      "reservoir": [
+        7,
+        11
+      ],
+      "data": [
+        101,
+        211
+      ],
+      "measurement": [
+        7001
+      ],
+      "validation_offset": 10000,
+      "test_offset": 20000,
+      "surrogate": 30001
+    }
+  }
+]

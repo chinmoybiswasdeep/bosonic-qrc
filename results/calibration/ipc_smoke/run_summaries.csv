@@ -1,0 +1,3 @@
+backend_calls,condition_number,data_seed,max_statistic_threshold,measurement_seed,numerical_rank,participation_rank,rank_threshold,raw_capacity_bound_passed,raw_capacity_bound_residual,raw_total_capacity,reservoir_seed,significant_capacity_bound_passed,significant_capacity_bound_residual,significant_total_capacity,stable_rank
+522,2.5537182613334033,101,0.021712920353194397,7001,3,1.7090657603063162,3.249004752778199e-09,True,0.12196095616868519,2.878039043831315,7,True,3.0,0.0,1.3464782041024226
+522,2.893806638175196,101,0.020373918917126012,7001,3,1.9781246935480583,3.969015595803518e-09,True,0.27626587197927055,2.7237341280207295,11,True,3.0,0.0,1.5292371867693255

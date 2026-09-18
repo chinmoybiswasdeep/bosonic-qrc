@@ -1,0 +1,28 @@
+{
+  "schema_version": "2.0.0",
+  "status": "PASS_CALIBRATION",
+  "checks": [
+    {
+      "name": "complete target family",
+      "passed": true,
+      "detail": "20 targets; no truncation"
+    },
+    {
+      "name": "significant capacity bounds",
+      "passed": true,
+      "detail": "per-run total <= numerical feature rank"
+    },
+    {
+      "name": "FDR resolution",
+      "passed": true,
+      "detail": "B=399, required=399, min p=0.0025"
+    },
+    {
+      "name": "target orthogonality",
+      "passed": true,
+      "detail": "maximum empirical off-diagonal <= configured threshold"
+    }
+  ],
+  "blocking_reasons": [],
+  "next_action": "Run the production profile only after reviewing calibration."
+}
