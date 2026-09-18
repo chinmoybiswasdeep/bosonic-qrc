@@ -12,3 +12,4 @@ jobs:
       - run: pytest
       - run: bosonic-qrc-dv configs/smoke/xor.yaml --output results/calibration/xor
       - run: bosonic-qrc-dv-static-capacity configs/smoke/static_ipc.yaml --output results/calibration/static-ipc
+      - run: bosonic-qrc-eoc-dv configs/eoc/smoke.yaml --output results/eoc/smoke

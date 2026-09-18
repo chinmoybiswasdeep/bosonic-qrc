@@ -9,3 +9,12 @@ publication.
 No temporal-memory or tomography claim is made. DV static capacity and CV
 temporal IPC are different estimands and are not plotted as a direct winner.
 
+# EOC claims ledger
+
+| Statement | Status | Evidence needed / available |
+|---|---|---|
+| The added DV model is genuinely recurrent. | Supported in implementation/tests | Full memory density matrix survives fresh-ancilla collisions; causality and reset tests pass. |
+| The interacting core is exact at smoke size. | Supported | Independent matrix, sparse action, phase, conservation, and unitarity tests. |
+| Smoke finds candidate regular-to-chaotic crossovers. | Pipeline observation only | Reflection-resolved ratios plus stored SFF/OTOC curves at one small size. |
+| Performance peaks at the EOC. | Not supported | Calibration/production paired task and IPC scans are not run. |
+| An edge of many-body quantum chaos is established. | Not supported | Size, cutoff, time-step, controls, and statistical replication remain blocking gates. |
