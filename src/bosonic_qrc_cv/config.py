@@ -23,7 +23,8 @@ class CVConfig:
     encoding: Literal["angle", "amplitude", "displacement"] = "angle"
     measurement: Literal["exact", "finite_shot"] = "exact"
     shots: int = 1000
-    seed: int = 7
+    reservoir_seed: int = 7
+    measurement_seed: int = 7001
     stability_covariance_limit: float = 1e6
 
     def __post_init__(self) -> None:

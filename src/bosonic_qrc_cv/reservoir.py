@@ -24,6 +24,7 @@ class FeatureRecord:
     covariance_norm: float
     maximum_covariance_eigenvalue: float
     mean_photon_number: float
+    measurement_sample_shape: tuple[int, int] | None = None
     backend: str = "piquasso.GaussianSimulator"
 
 
@@ -39,7 +40,7 @@ class GaussianLoopReservoir:
     def __init__(self, config: CVConfig) -> None:
         self.config = config
         self._pq = _piquasso()
-        rng = np.random.default_rng(config.seed)
+        rng = np.random.default_rng(config.reservoir_seed)
         self.loop_unitary = self._haar(config.modes, rng)
         self.detector_unitary = self._haar(config.modes, rng)
         count = max(1, config.modes - 1)
@@ -121,6 +122,16 @@ class GaussianLoopReservoir:
                 pq.Q(*range(n, 2 * n)) | pq.HomodyneMeasurement(phi=0.0)
         return program
 
+    @staticmethod
+    def _homodyne_x_samples(samples: np.ndarray, modes: int) -> np.ndarray:
+        """Extract phi=0 results from Piquasso's pair per measured mode."""
+        if samples.ndim != 2 or samples.shape[1] != 2 * modes:
+            raise RuntimeError(
+                f"unexpected Piquasso homodyne shape {samples.shape}; "
+                f"expected (shots, {2 * modes})"
+            )
+        return samples[:, np.arange(modes) * 2]
+
     def step(self, value: float) -> FeatureRecord:
         """Execute one physical timestep and extract detector-arm covariance."""
         if self._mean is None or self._covariance is None:
@@ -130,7 +141,9 @@ class GaussianLoopReservoir:
         pq, n = self._pq, self.config.modes
         simulator = pq.GaussianSimulator(
             d=2 * n,
-            config=pq.Config(seed_sequence=self.config.seed + self.execution_count),
+            config=pq.Config(
+                seed_sequence=self.config.measurement_seed + self.execution_count
+            ),
         )
         result = simulator.execute(self._program(value, old_mean, old_covariance, False))
         self.execution_count += 1
@@ -139,13 +152,16 @@ class GaussianLoopReservoir:
         self._mean = loop.xpxp_mean_vector.copy()
         self._covariance = loop.xpxp_covariance_matrix.copy()
         detector_x = detector.xpxp_covariance_matrix[0::2, 0::2]
+        sample_shape = None
         if self.config.measurement == "finite_shot":
             measured = simulator.execute(
                 self._program(value, old_mean, old_covariance, True),
                 shots=self.config.shots,
             )
             self.execution_count += 1
-            samples = np.asarray(measured.samples, dtype=float)[:, 0::2]
+            raw_samples = np.asarray(measured.samples, dtype=float)
+            sample_shape = raw_samples.shape
+            samples = self._homodyne_x_samples(raw_samples, n)
             detector_x = np.atleast_2d(np.cov(samples, rowvar=False, ddof=1))
         indices = np.triu_indices(n)
         maximum = float(np.linalg.eigvalsh(self._covariance).max())
@@ -156,6 +172,7 @@ class GaussianLoopReservoir:
             covariance_norm=float(np.linalg.norm(self._covariance)),
             maximum_covariance_eigenvalue=maximum,
             mean_photon_number=float(loop.mean_photon_number()),
+            measurement_sample_shape=sample_shape,
         )
 
     def transform(

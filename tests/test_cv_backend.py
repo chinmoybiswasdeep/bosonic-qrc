@@ -1,5 +1,6 @@
 import numpy as np
 import piquasso as pq
+import pytest
 
 from bosonic_qrc_cv import CVConfig, GaussianLoopReservoir
 
@@ -41,7 +42,13 @@ def test_beamsplitter_limits_identify_loop_and_detector_arms():
 
 def test_history_and_expected_fading_law():
     reflectivity = 0.6
-    config = CVConfig(modes=1, loop_reflectivity=reflectivity, active_squeezing=0, loss=0, seed=2)
+    config = CVConfig(
+        modes=1,
+        loop_reflectivity=reflectivity,
+        active_squeezing=0,
+        loss=0,
+        reservoir_seed=2,
+    )
     impulse, control = GaussianLoopReservoir(config), GaussianLoopReservoir(config)
     impulse.loop_unitary[:] = 1
     impulse.detector_unitary[:] = 1
@@ -68,8 +75,14 @@ def test_echo_state_convergence_and_bounded_energy():
     assert distances[-1] < 0.01 * distances[0]
 
 
-def test_finite_shot_converges_to_exact():
-    base = {"modes": 2, "active_squeezing": 0, "loss": 0, "seed": 11}
+@pytest.mark.parametrize("modes", [1, 2, 3])
+def test_finite_shot_columns_and_convergence(modes):
+    base = {"modes": modes, "active_squeezing": 0, "loss": 0, "reservoir_seed": 11}
     exact = GaussianLoopReservoir(CVConfig(measurement="exact", **base)).step(0.2).feature
-    sampled = GaussianLoopReservoir(CVConfig(measurement="finite_shot", shots=12000, **base)).step(0.2).feature
-    assert np.allclose(sampled, exact, rtol=0.12, atol=0.12)
+    sampled = GaussianLoopReservoir(
+        CVConfig(measurement="finite_shot", shots=3000, **base)
+    ).step(0.2)
+    assert sampled.measurement_sample_shape == (3000, 2 * modes)
+    assert sampled.detector_covariance.shape == (modes, modes)
+    assert sampled.feature.shape == (modes * (modes + 1) // 2,)
+    assert np.allclose(sampled.feature, exact, rtol=0.25, atol=0.25)

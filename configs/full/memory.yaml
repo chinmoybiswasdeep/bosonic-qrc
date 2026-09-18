@@ -6,8 +6,10 @@ reservoir:
   loss: 0.02
   encoding: angle
   measurement: exact
-  seed: 7
+  reservoir_seed: 7
+  measurement_seed: 7001
 experiment:
   length: 4000
   delay: 5
   washout: 200
+  data_seed: 101

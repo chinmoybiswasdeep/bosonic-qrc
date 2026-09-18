@@ -21,6 +21,7 @@ dev = ["pytest>=8,<9", "ruff>=0.8,<1"]
 
 [project.scripts]
 bosonic-qrc-cv = "bosonic_qrc_cv.cli:main"
+bosonic-qrc-cv-ipc = "bosonic_qrc_cv.ipc:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

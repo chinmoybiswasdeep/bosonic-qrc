@@ -6,9 +6,11 @@ reservoir:
   loss: 0.02
   encoding: angle
   measurement: exact
-  seed: 7
+  reservoir_seed: 7
+  measurement_seed: 7001
 experiment:
   length: 160
   delay: 2
   washout: 20
+  data_seed: 101
 seeds: [7, 11, 19, 23, 31, 43, 47, 59, 71, 83]
