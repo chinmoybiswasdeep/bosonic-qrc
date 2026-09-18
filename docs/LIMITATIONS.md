@@ -7,3 +7,7 @@ reduced moments at each causal step. Finite-shot measurement is separate from
 unconditional loop reduction, representing ensemble-averaged rather than
 trajectory-conditioned back-action. Detector inefficiency and higher-order
 observables are absent. No result is a claim of quantum advantage.
+
+The committed IPC run is a two-reservoir-seed smoke test with 20 null
+surrogates. Benjamini-Hochberg inference is resolution-limited at that surrogate
+count, so zero significant CV targets is recorded rather than reinterpreted.

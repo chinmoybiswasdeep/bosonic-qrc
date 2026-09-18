@@ -12,3 +12,4 @@ jobs:
       - run: pip install -e '.[dev]'
       - run: pytest
       - run: bosonic-qrc-cv configs/smoke/memory.yaml --output results/cv-smoke
+      - run: bosonic-qrc-cv-ipc configs/smoke/ipc.yaml --output results/ipc-smoke

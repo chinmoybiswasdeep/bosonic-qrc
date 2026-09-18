@@ -19,6 +19,7 @@ python -m venv .venv
 .\.venv\Scripts\ruff check src tests
 .\.venv\Scripts\pytest
 .\.venv\Scripts\bosonic-qrc-cv configs/smoke/memory.yaml --output results/calibration/smoke
+.\.venv\Scripts\bosonic-qrc-cv-ipc configs/smoke/ipc.yaml --output results/calibration/ipc_smoke
 ```
 
 Moderate calibration:
@@ -32,3 +33,9 @@ steps scale approximately cubically with the joint 2N-mode covariance dimension.
 This branch passes physical topology and smoke gates but does not yet implement
 the complete IPC/task/ablation matrix requested for a manuscript. See
 `docs/LIMITATIONS.md` and `docs/NOVELTY.md`.
+
+Capacity output reports held-out squared correlation and raw held-out `test_r2`
+separately. Optical, measurement, and data seeds are independent. The committed
+IPC smoke uses only 20 null surrogates, whose minimum attainable p-value is
+1/21; it verifies execution and the rank bound but is not a significant-capacity
+claim. Calibration requires at least 100 surrogates and longer target banks.
