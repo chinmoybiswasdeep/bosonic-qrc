@@ -7,3 +7,8 @@ state tomography pipeline. Lower photon sectors are present in the deterministic
 Finite-shot sampling uses Perceval but deterministic sampler seeding is not
 exposed by this local workflow. No temporal recurrence, source impurity,
 distinguishability, or detector loss is claimed.
+
+Temporal IPC is deliberately unavailable because no recurrent Perceval channel
+has passed trace-preservation, causality, and fading-memory tests. Mixed-state
+source/ancilla tomography is also not implemented, so this branch is not yet a
+reproduction of the reference tomography architecture.

@@ -19,6 +19,7 @@ python -m venv .venv
 .\.venv\Scripts\ruff check src tests
 .\.venv\Scripts\pytest
 .\.venv\Scripts\bosonic-qrc-dv configs/smoke/xor.yaml --output results/calibration/xor
+.\.venv\Scripts\bosonic-qrc-dv-static-capacity configs/smoke/static_ipc.yaml --output results/calibration/static_ipc_smoke
 ```
 
 The HOM limit remains an independent backend sanity test. The smoke XOR run
@@ -26,3 +27,9 @@ checks encoding and artifact generation; training accuracy is not a held-out
 scientific claim. Tomography, source-ancilla reduction, loss models, spiral
 calibration, and genuine temporal collision-model QRC remain calibration-gate
 failures documented in `docs/LIMITATIONS.md`.
+
+The static-capacity command permits delay-zero Legendre targets only. It reports
+15 nominal indexed outcomes, 10 nonzero lossless two-photon columns, and the
+numerical rank separately. The committed smoke resolves degrees 1-4 for the
+random reservoir and correctly gives rank zero to the identity control. Its 20
+null surrogates are CI-scale, not calibration-scale inference.
