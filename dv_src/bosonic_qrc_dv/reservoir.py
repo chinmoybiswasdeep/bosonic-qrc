@@ -29,7 +29,7 @@ class LinearOpticalReservoir:
     PNR probabilities as a ridge-compatible classical feature vector.
     """
 
-    def __init__(self, theta: float = np.pi / 4, phase: float = 0.0) -> None:
+    def __init__(self, theta: float = np.pi / 2, phase: float = 0.0) -> None:
         self.pcvl = _perceval()
         self.theta = float(theta)
         self.phase = float(phase)

@@ -7,20 +7,20 @@ from bosonic_qrc_dv import LinearOpticalReservoir
 def test_perceval_execution_is_called(monkeypatch):
     pcvl = pytest.importorskip("perceval")
     called = {"value": False}
-    original = pcvl.algorithm.Sampler.probs
+    original = pcvl.algorithm.Sampler._create_job
 
     def wrapped(self, *args, **kwargs):
         called["value"] = True
         return original(self, *args, **kwargs)
 
-    monkeypatch.setattr(pcvl.algorithm.Sampler, "probs", wrapped)
+    monkeypatch.setattr(pcvl.algorithm.Sampler, "_create_job", wrapped)
     features = LinearOpticalReservoir().probabilities()
     assert called["value"]
     assert np.isclose(features.values.sum(), 1.0)
 
 
 def test_hom_interference_at_balanced_beamsplitter():
-    features = LinearOpticalReservoir(theta=np.pi / 4).probabilities((1, 1))
+    features = LinearOpticalReservoir(theta=np.pi / 2).probabilities((1, 1))
     result = dict(zip(features.outcomes, features.values))
     assert result.get("|1,1>", 0.0) < 1e-10
     assert np.isclose(result["|2,0>"], 0.5)
