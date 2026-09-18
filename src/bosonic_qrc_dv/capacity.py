@@ -72,7 +72,7 @@ def test_r2(target: np.ndarray, prediction: np.ndarray) -> float:
 def fit_pseudoinverse(features: np.ndarray, target: np.ndarray, relative_tolerance: float = 1e-10) -> LinearFit:
     feature_mean, target_mean = features.mean(axis=0), float(target.mean())
     u, singular_values, vh = np.linalg.svd(features - feature_mean, full_matrices=False)
-    threshold = relative_tolerance * singular_values[0] if singular_values.size else 0
+    threshold = relative_tolerance * max(float(singular_values[0]), 1.0) if singular_values.size else 0
     retained = singular_values > threshold
     inverse = np.zeros_like(singular_values)
     inverse[retained] = 1 / singular_values[retained]
