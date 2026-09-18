@@ -4,6 +4,7 @@ import argparse
 import csv
 import json
 from pathlib import Path
+from typing import Any
 
 import matplotlib
 
@@ -31,18 +32,19 @@ def reproduce(output):
             "lines.linewidth": 1.6,
         }
     )
-    summaries, flat = {}, []
+    summaries: dict[str, Any] = {}
+    flat: list[dict[str, Any]] = []
     for task in sorted({r["task"] for r in runs}):
         for method in sorted({r["method"] for r in runs}):
-            group = [r for r in runs if r["task"] == task and r["method"] == method]
+            run_group = [r for r in runs if r["task"] == task and r["method"] == method]
             fields = {
-                "linear_capacity": [r["linear_capacity"] for r in group],
-                "nonlinear_capacity": [r["nonlinear_capacity"] for r in group],
-                "seconds": [r["seconds"] for r in group],
-                "effective_rank": [r["diagnostics"]["effective_rank"] for r in group],
+                "linear_capacity": [r["linear_capacity"] for r in run_group],
+                "nonlinear_capacity": [r["nonlinear_capacity"] for r in run_group],
+                "seconds": [r["seconds"] for r in run_group],
+                "effective_rank": [r["diagnostics"]["effective_rank"] for r in run_group],
             }
-            for target in group[0]["scores"]:
-                fields[target] = [r["scores"][target]["r2"] for r in group]
+            for target in run_group[0]["scores"]:
+                fields[target] = [r["scores"][target]["r2"] for r in run_group]
             summaries[f"{task}/{method}"] = {k: bootstrap_summary(v) for k, v in fields.items()}
             for field, summary in summaries[f"{task}/{method}"].items():
                 flat.append(
@@ -83,12 +85,12 @@ def reproduce(output):
     config = json.loads((output / "raw/config.json").read_text())
     fig, ax = plt.subplots(figsize=(7, 4))
     for method in methods:
-        group = summaries[f"iid/{method}"]
+        summary_group = summaries[f"iid/{method}"]
         delays = range(1, config["delays"] + 1)
         ax.errorbar(
             list(delays),
-            [group[f"linear_{d}"]["mean"] for d in delays],
-            yerr=[group[f"linear_{d}"]["std"] for d in delays],
+            [summary_group[f"linear_{d}"]["mean"] for d in delays],
+            yerr=[summary_group[f"linear_{d}"]["std"] for d in delays],
             label=method,
             marker="o",
             capsize=2,
@@ -98,12 +100,12 @@ def reproduce(output):
     save(fig, "linear_memory")
     fig, ax = plt.subplots(figsize=(7, 4))
     for method in methods:
-        group = summaries[f"iid/{method}"]
+        summary_group = summaries[f"iid/{method}"]
         ax.errorbar(
-            group["linear_capacity"]["mean"],
-            group["nonlinear_capacity"]["mean"],
-            xerr=group["linear_capacity"]["std"],
-            yerr=group["nonlinear_capacity"]["std"],
+            summary_group["linear_capacity"]["mean"],
+            summary_group["nonlinear_capacity"]["mean"],
+            xerr=summary_group["linear_capacity"]["std"],
+            yerr=summary_group["nonlinear_capacity"]["std"],
             fmt="o",
             label=method,
         )
@@ -172,13 +174,18 @@ def reproduce(output):
     save(fig, "noise_robustness")
     fig, axes = plt.subplots(1, 2, figsize=(10, 3.5))
     for method in methods:
-        group = summaries[f"iid/{method}"]
+        summary_group = summaries[f"iid/{method}"]
         names = [f"quadratic_{d}" for d in range(1, config["delays"] + 1)]
         axes[0].plot(
-            range(1, len(names) + 1), [group[n]["mean"] for n in names], "o-", label=method
+            range(1, len(names) + 1),
+            [summary_group[n]["mean"] for n in names],
+            "o-",
+            label=method,
         )
-        cross = [key for key in group if key.startswith("cross_")]
-        axes[1].plot(range(len(cross)), [group[n]["mean"] for n in cross], "o-", label=method)
+        cross = [key for key in summary_group if key.startswith("cross_")]
+        axes[1].plot(
+            range(len(cross)), [summary_group[n]["mean"] for n in cross], "o-", label=method
+        )
     axes[0].set(xlabel="Delay", ylabel="Degree-two self target test R²")
     axes[1].set(xlabel="Cross-delay pair index", ylabel="Degree-two cross target test R²")
     axes[0].legend(fontsize=7)

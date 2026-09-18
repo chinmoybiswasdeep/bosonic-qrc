@@ -1,6 +1,7 @@
 import hashlib
 import json
 from pathlib import Path
+from typing import Any, cast
 
 import pytest
 
@@ -24,8 +25,9 @@ def test_resume_requires_matching_identity_and_checksums(tmp_path):
         "artifact_checksums": {"raw.csv": digest},
     }
     (tmp_path / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
-    assert _resume_manifest(tmp_path, "a" * 64, manifest["chunk"]) == manifest
+    chunk = cast(dict[str, Any], manifest["chunk"])
+    assert _resume_manifest(tmp_path, "a" * 64, chunk) == manifest
 
     artifact.write_text("changed", encoding="utf-8")
     with pytest.raises(ValueError, match="checksum mismatch"):
-        _resume_manifest(tmp_path, "a" * 64, manifest["chunk"])
+        _resume_manifest(tmp_path, "a" * 64, chunk)

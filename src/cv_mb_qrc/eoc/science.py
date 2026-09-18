@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from math import log
+from typing import Any
 
 import numpy as np
 from scipy.linalg import expm
@@ -236,12 +237,12 @@ def _bootstrap_ci(values):
     return np.quantile(np.asarray(values, float), [0.025, 0.975]).tolist()
 
 
-def _edge_estimate(size_rows, config: FloquetChaosConfig, rng):
+def _edge_estimate(size_rows: list[dict[str, Any]], config: FloquetChaosConfig, rng):
     poisson = 0.3862943611
     chaotic = 0.5307 if config.universality_class == "COE" else 0.5996
-    estimates = []
-    bootstrap_by_size = []
-    all_crossings = {}
+    estimates: list[float] = []
+    bootstrap_by_size: list[list[float]] = []
+    all_crossings: dict[str, list[float]] = {}
     for size in size_rows:
         means = np.asarray([point["mean_spacing_ratio"] for point in size["points"]])
         scores = np.clip((means - poisson) / (chaotic - poisson), 0, 1)
@@ -265,8 +266,10 @@ def _edge_estimate(size_rows, config: FloquetChaosConfig, rng):
         size["additional_crossings"] = crossings[1:]
         size["entry_ci95"] = _bootstrap_ci(boot_edges) if len(boot_edges) >= 10 else [None, None]
 
-    valid = [
-        (size["dimension"], edge) for size, edge in zip(size_rows, estimates) if np.isfinite(edge)
+    valid: list[tuple[float, float]] = [
+        (float(size["dimension"]), edge)
+        for size, edge in zip(size_rows, estimates)
+        if np.isfinite(edge)
     ]
     if not valid:
         return {
@@ -284,10 +287,10 @@ def _edge_estimate(size_rows, config: FloquetChaosConfig, rng):
         estimate = float(valid[-1][1])
     boot_extrapolated = []
     for replicate in range(config.bootstrap_replicates):
-        sample = []
+        sample: list[tuple[float, float]] = []
         for size, edges in zip(size_rows, bootstrap_by_size):
             if edges:
-                sample.append((size["dimension"], edges[replicate % len(edges)]))
+                sample.append((float(size["dimension"]), edges[replicate % len(edges)]))
         if len(sample) >= 2:
             boot_extrapolated.append(
                 float(
@@ -310,17 +313,17 @@ def _edge_estimate(size_rows, config: FloquetChaosConfig, rng):
 
 def scan_floquet_chaos(config: FloquetChaosConfig):
     root_rng = np.random.default_rng(config.seed)
-    size_rows = []
+    size_rows: list[dict[str, Any]] = []
     for modes, particles in config.sizes:
         basis = fixed_number_basis(modes, particles)
-        realization_parameters = []
+        realization_parameters: list[tuple[np.ndarray, np.ndarray]] = []
         for _ in range(config.realizations):
             disorder = root_rng.normal(size=modes)
             disorder -= disorder.mean()
-            disorder *= config.disorder_strength / max(np.std(disorder), 1e-15)
+            disorder *= config.disorder_strength / max(float(np.std(disorder)), 1e-15)
             phases = root_rng.normal(size=modes)
             phases -= phases.mean()
-            phases *= config.phase_kick_strength / max(np.std(phases), 1e-15)
+            phases *= config.phase_kick_strength / max(float(np.std(phases)), 1e-15)
             realization_parameters.append((disorder, phases))
         points = []
         for interaction in config.interactions:
@@ -407,7 +410,7 @@ def scan_floquet_chaos(config: FloquetChaosConfig):
             size["entry_crossings"] = []
             size["additional_crossings"] = []
             size["entry_ci95"] = [None, None]
-        edge = {
+        edge: dict[str, Any] = {
             "status": "unresolved_degeneracy",
             "estimate": None,
             "ci95": [None, None],

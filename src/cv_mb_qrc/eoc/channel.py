@@ -8,7 +8,7 @@ from scipy.sparse.linalg import LinearOperator, eigs
 
 def compose_kraus(*stages: tuple[np.ndarray, ...]) -> tuple[np.ndarray, ...]:
     """Compose Kraus stages in application order without dropping noise."""
-    current = (np.eye(stages[0][0].shape[1], dtype=complex),)
+    current: tuple[np.ndarray, ...] = (np.eye(stages[0][0].shape[1], dtype=complex),)
     for stage in stages:
         current = tuple(right @ left for left in current for right in stage)
     return current
@@ -80,7 +80,8 @@ def complete_channel_diagnostics(
     if dense:
         superoperator = channel_superoperator(kraus)
         eigenvalues, eigenvectors = np.linalg.eig(superoperator)
-        normality_scale = max(np.linalg.norm(superoperator) ** 2, 1e-30)
+        superoperator_norm = float(np.linalg.norm(superoperator))
+        normality_scale = max(superoperator_norm**2, 1e-30)
         non_normality = float(
             np.linalg.norm(
                 superoperator.conj().T @ superoperator - superoperator @ superoperator.conj().T

@@ -6,6 +6,7 @@ import traceback
 from dataclasses import replace
 from pathlib import Path
 from time import perf_counter
+from typing import Any, Callable
 
 import numpy as np
 import photographiq as pg
@@ -33,26 +34,29 @@ from cv_mb_qrc.reservoirs.results import atomic_json, environment
 from cv_mb_qrc.reservoirs.temporal import delay_features
 
 
-def methods(seed, config):
+def methods(seed: int, config: dict[str, Any]) -> dict[str, Callable[[], Any]]:
     c = CVConfig(seed=seed)
-    factories = {
+
+    def cv_with(**changes: Any) -> Callable[[], CVMBReservoir]:
+        selected = replace(c, **changes)
+        return lambda: CVMBReservoir(selected)
+
+    factories: dict[str, Callable[[], Any]] = {
         "cv_B": lambda: CVMBReservoir(c),
-        "cv_A": lambda: CVMBReservoir(replace(c, tier="A")),
+        "cv_A": cv_with(tier="A"),
         "cv_window": lambda: WindowedMBQELM(lambda: CVMBReservoir(c), config["window"]),
-        "cv_no_temporal": lambda: CVMBReservoir(replace(c, temporal_edges=False)),
-        "cv_zero_coupling": lambda: CVMBReservoir(replace(c, coupling=0)),
-        "cv_no_feedforward": lambda: CVMBReservoir(replace(c, feedforward=0)),
+        "cv_no_temporal": cv_with(temporal_edges=False),
+        "cv_zero_coupling": cv_with(coupling=0),
+        "cv_no_feedforward": cv_with(feedforward=0),
         "graphix": lambda: GraphixMBReservoir(QubitConfig(seed=seed)),
         "graphix_no_entanglement": lambda: GraphixMBReservoir(
             QubitConfig(seed=seed, entangle=False)
         ),
     }
     for eta in config["transmissivities"]:
-        factories[f"cv_eta_{eta}"] = lambda eta=eta: CVMBReservoir(replace(c, transmissivity=eta))
+        factories[f"cv_eta_{eta}"] = cv_with(transmissivity=eta)
     for noise in config["noise_strengths"]:
-        factories[f"cv_noise_{noise}"] = lambda noise=noise: CVMBReservoir(
-            replace(c, measurement_noise=noise)
-        )
+        factories[f"cv_noise_{noise}"] = cv_with(measurement_noise=noise)
     return factories
 
 
@@ -185,7 +189,9 @@ def run(config, output, *, resume=False):
     peak = process.memory_info().rss
     for seed in config["seeds"]:
         for task, series in data.items():
-            jobs = [(name, factory, None) for name, factory in methods(seed, config).items()]
+            jobs: list[tuple[str, Callable[[], Any] | None, ClassicalFeatures | None]] = [
+                (name, factory, None) for name, factory in methods(seed, config).items()
+            ]
             for kind in ("delay", "rff", "esn", "input_only", "persistence"):
                 dimensions = (3, 14) if kind in ("rff", "esn", "input_only") else (14,)
                 for dimension in dimensions:

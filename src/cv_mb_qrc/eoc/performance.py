@@ -133,7 +133,7 @@ def run_task_suite(factory, seed: int, protocol: TaskProtocol, input_domain: str
 
     ipc = ipc_targets(centered, protocol.maximum_delay, protocol.maximum_degree)
     nonlinear_scores = []
-    degree_capacity = {}
+    degree_capacity: dict[str, float] = {}
     for label, target in ipc.items():
         score = evaluate_target(factory, drive, target, protocol)
         results[f"ipc:{label}"] = score

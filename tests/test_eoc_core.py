@@ -1,3 +1,5 @@
+from typing import Any, cast
+
 import numpy as np
 
 from cv_mb_qrc.eoc.core import (
@@ -57,7 +59,10 @@ def test_exact_kerr_phase_and_reflection_sector_resolution():
     blocks = reflection_blocks(symmetric.total, basis)
     assert sum(len(block) for block in blocks.values()) == len(basis)
     report = symmetry_resolved_level_statistics(blocks, edge_fraction=0)
-    assert set(report["by_sector"]) == {"reflection_even", "reflection_odd"}
+    assert set(cast(dict[str, Any], report["by_sector"])) == {
+        "reflection_even",
+        "reflection_odd",
+    }
 
 
 def test_partial_trace_state_guards_and_kraus_channel():
