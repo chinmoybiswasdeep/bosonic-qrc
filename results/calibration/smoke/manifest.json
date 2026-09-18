@@ -1,0 +1,115 @@
+{
+  "branch": "CV",
+  "git_commit": "e7512a0de096f1f7e1ea4767822967b0369f3aaa",
+  "backend": "piquasso",
+  "backend_version": "8.0.1",
+  "simulator": "GaussianSimulator",
+  "config": {
+    "modes": 2,
+    "loop_reflectivity": 0.45,
+    "input_squeezing": 1.0,
+    "active_squeezing": 0.02,
+    "local_squeezing": 0.0,
+    "loss": 0.02,
+    "encoding": "angle",
+    "measurement": "exact",
+    "shots": 1000,
+    "seed": 7,
+    "stability_covariance_limit": 1000000.0
+  },
+  "dataset": {
+    "task": "delayed_linear_memory",
+    "length": 40,
+    "delay": 1,
+    "washout": 4
+  },
+  "seeds": [
+    7
+  ],
+  "modes": 2,
+  "photons_or_gaussian_parameters": {
+    "input_squeezing": 1.0
+  },
+  "shots_or_ensemble_size": 0,
+  "feature_dimension": 3,
+  "train_metrics": {
+    "mse": 0.17636916094738297
+  },
+  "validation_metrics": {
+    "mse": 0.10102304015990327
+  },
+  "test_metrics": {
+    "mse": 0.1499189059858561,
+    "capacity": 0.5254202170931521
+  },
+  "per_seed_metrics": [
+    {
+      "seed": 7,
+      "delay": 1,
+      "train_mse": 0.17636916094738297,
+      "validation_mse": 0.10102304015990327,
+      "test_mse": 0.1499189059858561,
+      "current_input_test_mse": 0.4412428716130493,
+      "memory_capacity": 0.5254202170931521,
+      "feature_dimension": 3,
+      "max_covariance_eigenvalue": 14.125897586529092,
+      "max_mean_photon_number": 2.7742472918291545,
+      "stable": true,
+      "reservoir_parameters": {
+        "loop_unitary_real": [
+          [
+            0.00230228643303243,
+            0.48398855369840105
+          ],
+          [
+            -0.5130611247305239,
+            -0.15267846993532336
+          ]
+        ],
+        "loop_unitary_imag": [
+          [
+            -0.8509364900155442,
+            0.2041001453359003
+          ],
+          [
+            0.11256141313725429,
+            0.8371305127523441
+          ]
+        ],
+        "detector_unitary_real": [
+          [
+            -0.7001718336489562,
+            -0.33088498784773296
+          ],
+          [
+            0.6968083386745464,
+            -0.24048673377338423
+          ]
+        ],
+        "detector_unitary_imag": [
+          [
+            0.1499534955994071,
+            -0.6146450010690582
+          ],
+          [
+            -0.041611196519633346,
+            -0.6744573955090363
+          ]
+        ],
+        "loop_pair_phases": [
+          6.25491275416809
+        ],
+        "detector_pair_phases": [
+          4.980441724364625
+        ]
+      }
+    }
+  ],
+  "runtime_seconds": 1.5030321000085678,
+  "physicality_diagnostics": {
+    "stable": true,
+    "max_covariance_eigenvalue": 14.125897586529092,
+    "max_mean_photon_number": 2.7742472918291545
+  },
+  "python": "3.11.16"
+}
