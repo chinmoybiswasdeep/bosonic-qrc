@@ -2,7 +2,7 @@
   "schema_version": "1.0.0-eoc",
   "branch": "EOC-CVMB",
   "base_commit": "2d227067881351ed64baf455028dfc83594e5040",
-  "git_commit": "7a63fde2e34a128adc83b86ca498f46b718e4e70",
+  "git_commit": "dd51b81113053075d4ffdf82e5c6d0d00536161b",
   "resolved_config": {
     "experiment": {
       "profile": "smoke"
@@ -885,8 +885,8 @@
       "performance peak is not established"
     ]
   },
-  "started_at_utc": "2026-09-18T08:46:48.816095+00:00",
-  "finished_at_utc": "2026-09-18T08:46:52.870178+00:00",
+  "started_at_utc": "2026-09-18T08:50:04.041023+00:00",
+  "finished_at_utc": "2026-09-18T08:50:07.921713+00:00",
   "platform": "Windows-10-10.0.26200-SP0",
   "python": "3.11.16",
   "dependencies": {
@@ -900,15 +900,15 @@
     "chaos_scan.csv": "1e83afe560ebb89b7e51e80e03a5d0aa0646a99fc48e211bee4c3de864429d46",
     "gate_report.json": "e8190ab22f0c06e5eaadec2ca29ab81885b13c855a0113f942a71ce9e34c664a",
     "gate_report.md": "96c18ce7bf42be362c3774c1607a10f9c856d7165617e8f3c099d56b12f0e67f",
-    "level_statistics.pdf": "3b0dd03e7a8ed35aa2d2d9c874f73c30c1f26f43443407cc2bd0fda657502a0b",
+    "level_statistics.pdf": "72a4ef6f199f067dd6e1b17b8790596c585d25d449f3137455ef08ac6f8ccb7f",
     "level_statistics.png": "a75817830feae092123b051e5b7c0513ef0a6cf8292ba823e7fb36c66d603ba5",
-    "level_statistics.svg": "cf5cba5dac097b38594ad5881442a8349bea45aa9a8fdfa7388f41cffc983e28",
+    "level_statistics.svg": "3051a9bdc2580411bfb036cffa80fa9f0567e44469dc7954af563d8d3deea056",
     "open_scan.csv": "0438f8e6979b8a4216ad1c22f41a87debc35ec3e3d4eb345525267a47f9610f3",
-    "performance_after_boundary.pdf": "df26ce0ccc6126dbdd918a021adec488e164cf85829a282e2f20ba093581788b",
+    "performance_after_boundary.pdf": "c1cc2916c4395db4afaf632c1ed5e6780f3025514a24e8b49ac52649bc550ec7",
     "performance_after_boundary.png": "90006ace5e91a7cdc154056c737e8fd538e88974f1265cdd9a4359bdb7237db2",
-    "performance_after_boundary.svg": "b078aa2e212d42a2a8ca3337887dd0574707aee4cd5f7cd0ae813afa89ae3dd3",
-    "spectral_form_factor.pdf": "2b4816c5afd6d75a72f544fdf6908f1d8a56b867c83a8b35b0c37923d30cfa7c",
+    "performance_after_boundary.svg": "20c47da789004217995720b1e2b4e6da052b73f9c05168c26ca225ce34869e0a",
+    "spectral_form_factor.pdf": "37070925fc19620ad549988423ed2e7c4632b95455976dd0c5856eeb6e01c6d7",
     "spectral_form_factor.png": "8249b5068e6ed4cac5f88dc7a87d376a7f89e88c426fb60640fd6160e9db2c3d",
-    "spectral_form_factor.svg": "871342b11f6d783d5a566a0673087927949cba303dfef2c4ddbebb4b09d277ba"
+    "spectral_form_factor.svg": "e431eecca8158d303da8fc9fd5e6d8f3c733a0f8557174175dcfae4eeef60017"
   }
 }
