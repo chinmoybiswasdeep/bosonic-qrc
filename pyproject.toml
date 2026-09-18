@@ -11,6 +11,7 @@ requires-python = ">=3.10,<3.14"
 dependencies = [
   "piquasso==8.0.1",
   "numpy>=1.26,<3",
+  "scipy>=1.13,<2",
   "scikit-learn>=1.5,<1.8",
   "PyYAML>=6,<7",
   "matplotlib>=3.9,<4",
@@ -24,6 +25,7 @@ bosonic-qrc-cv = "bosonic_qrc_cv.cli:main"
 bosonic-qrc-cv-ipc = "bosonic_qrc_cv.ipc:main"
 bosonic-qrc-cv-aggregate = "bosonic_qrc_cv.aggregate:main"
 bosonic-qrc-cv-publication = "bosonic_qrc_cv.publication:main"
+bosonic-qrc-eoc-cv = "bosonic_qrc_cv.eoc.study:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

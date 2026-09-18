@@ -1,0 +1,33 @@
+experiment:
+  profile: publication
+provenance:
+  base_commit: 80d7df8e9ca42cd788467e0fc505cd1229c71b00
+  backend_scope: Piquasso Gaussian baseline and Kerr validation plus SciPy Bose-Hubbard
+closed_system:
+  modes: 7
+  particles: 5
+  hopping: 1.0
+  interactions: [0.0, 0.125, 0.25, 0.375, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0, 8.0, 12.0, 16.0]
+  interval: 0.2
+  boundary: open
+  disorder: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  edge_fraction: 0.1
+  bootstrap_replicates: 10000
+  seed: 2026
+open_system:
+  memory_modes: 2
+  cutoff: 7
+  cutoff_sequence: [5, 6, 7]
+  interactions: [0.0, 0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0, 8.0, 12.0]
+  interval: 0.2
+  transmissivity: 0.96
+  input_length: 3000
+seeds:
+  reservoir: 17
+  data: 211
+  measurement: 13001
+  trajectory: 41001
+thresholds:
+  trace_error: 1.0e-10
+  positivity: 1.0e-11
+  boundary_shell: 0.001
