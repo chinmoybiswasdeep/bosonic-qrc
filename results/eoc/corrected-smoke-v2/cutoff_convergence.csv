@@ -1,0 +1,2 @@
+cutoff,trace_distance_to_previous,fidelity_to_previous,maximum_raw_trace_error,maximum_boundary_population,observable_linf_difference,maximum_task_score_difference,passed
+4,0.0018200300152534934,0.9999898973867463,1.1102230246251565e-16,6.4348477365604395e-06,4.217945887764751e-05,,True
