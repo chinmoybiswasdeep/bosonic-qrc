@@ -1,0 +1,49 @@
+{
+  "branch": "DV",
+  "git_commit": "319339a081ec7e436152bcd1db3bb99fc5be599f",
+  "backend": "perceval",
+  "backend_version": "1.2.4",
+  "simulator": "SLOS",
+  "config": {
+    "modes": 4,
+    "photons": 2,
+    "seed": 13,
+    "measurement": "exact",
+    "shots": 2000,
+    "include_lower_sectors": true
+  },
+  "dataset": {
+    "task": "xor",
+    "samples": 4
+  },
+  "seeds": [
+    13
+  ],
+  "modes": 4,
+  "photons_or_gaussian_parameters": {
+    "photons": 2
+  },
+  "shots_or_ensemble_size": 0,
+  "feature_dimension": 15,
+  "train_metrics": {
+    "accuracy": 1.0
+  },
+  "validation_metrics": {},
+  "test_metrics": {},
+  "per_seed_metrics": [
+    {
+      "seed": 13,
+      "train_accuracy": 1.0
+    }
+  ],
+  "runtime_seconds": 1.388414000015473,
+  "physicality_diagnostics": {
+    "probability_sums": [
+      1.0,
+      1.0000000000000002,
+      1.0,
+      1.0000000000000002
+    ],
+    "unitary_error": 9.097768805358205e-16
+  }
+}
