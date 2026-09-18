@@ -16,3 +16,12 @@ and surrogate. The complete fit and validation procedure is repeated. P-values
 are `(1 + #null>=observed)/(B+1)`; BH correction is within each run's
 preregistered target family. A max-statistic threshold is also reported.
 
+# EOC extension
+
+Closed-system chaos analysis precedes all performance analysis. Reflection sectors are diagonalized
+separately, and spectral edges use a fixed trim. Temporal utilities generate NARMA10, delayed
+parity, Mackey–Glass, and nonlinear channel-equalization targets; compare tapped linear delay, RFF,
+ESN, and NVAR controls; and enforce chronological embargoed splits, split resets/washout,
+training-only preprocessing, validation-only regularization, and untouched tests. IPC follows
+Dambre et al. [@dambre_2012], and dissipation is treated as a tunable fading-memory resource
+[@sannia_2024], not as chaos.

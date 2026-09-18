@@ -7,4 +7,6 @@ results/*
 !results/.gitkeep
 !results/calibration/
 !results/calibration/**
+!results/eoc/
+!results/eoc/**
 *.egg-info/

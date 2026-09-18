@@ -30,3 +30,13 @@ bosonic-qrc-cv-ipc configs/production/ipc.yaml --output results/production/ipc
 The final IPC invocation regenerates aggregate tables, figures, and gates from
 the merged journal without repeating completed backend runs.
 
+# EOC workflow
+
+Install with `pip install -e '.[dev]'`, run tests, then use the smoke command in `VALIDATION.md`.
+YAML preserves independent reservoir/data/measurement/trajectory seeds and predeclared thresholds.
+Each manifest includes exact base/current Git SHAs, resolved config plus SHA-256, dependency
+versions, platform, UTC times, and checksums for CSV/JSON/PNG/PDF/SVG artifacts.
+
+Use `--chunk-index I --chunk-count K` with distinct output directories to partition open-system
+interaction points. `--resume` accepts an existing run only if config/chunk identity and every file
+checksum match. Merge only equal-config, disjoint chunks.
