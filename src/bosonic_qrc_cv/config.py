@@ -1,4 +1,4 @@
-"""Validated experiment configuration."""
+"""Validated CV experiment configuration."""
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
@@ -7,28 +7,34 @@ from typing import Literal
 
 @dataclass(frozen=True)
 class CVConfig:
-    r"""Parameters for a fixed Gaussian feedback-loop reservoir.
+    """Fixed Gaussian-loop parameters.
 
-    The input mode is squeezed with ``r=input_scale`` and phase
-    :math:`3\pi s_t/4` for ``angle`` encoding.  All values are fixed before
-    readout fitting.
+    ``loop_reflectivity`` is the intensity fraction of the old loop field in
+    the retained beam-splitter output, so Piquasso uses
+    ``theta = arccos(sqrt(loop_reflectivity))``.
     """
 
     modes: int = 3
-    reflectivity: float = 0.45
-    input_scale: float = 0.7
-    active_squeezing: float = 0.12
-    loss: float = 0.0
+    loop_reflectivity: float = 0.45
+    input_squeezing: float = 1.0
+    active_squeezing: float = 0.05
+    local_squeezing: float = 0.0
+    loss: float = 0.02
     encoding: Literal["angle", "amplitude", "displacement"] = "angle"
+    measurement: Literal["exact", "finite_shot"] = "exact"
+    shots: int = 1000
     seed: int = 7
+    stability_covariance_limit: float = 1e6
 
     def __post_init__(self) -> None:
         if self.modes < 1:
             raise ValueError("modes must be positive")
-        if not 0.0 <= self.reflectivity <= 1.0:
-            raise ValueError("reflectivity must be in [0, 1]")
-        if not 0.0 <= self.loss < 1.0:
+        if not 0 <= self.loop_reflectivity <= 1:
+            raise ValueError("loop_reflectivity must be in [0, 1]")
+        if not 0 <= self.loss < 1:
             raise ValueError("loss must be in [0, 1)")
+        if self.measurement == "finite_shot" and self.shots < 2:
+            raise ValueError("finite-shot covariance needs at least two shots")
 
     @property
     def feature_dimension(self) -> int:

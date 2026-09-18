@@ -17,7 +17,8 @@ def main() -> None:
     args = parser.parse_args()
     raw = yaml.safe_load(args.config.read_text(encoding="utf-8"))
     config = CVConfig(**raw.pop("reservoir"))
-    print(save_run(config, args.output, **raw.get("experiment", {}))["result"])
+    manifest = save_run(config, args.output, **raw.get("experiment", {}))
+    print(manifest["test_metrics"])
 
 
 if __name__ == "__main__":

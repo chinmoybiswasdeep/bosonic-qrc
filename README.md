@@ -1,36 +1,34 @@
-# bosonic-qrc — CV branch
+# bosonic-qrc - CV branch
 
-This branch contains a deliberately backend-strict, continuous-variable proof of
-the feedback-loop reservoir in García-Beni *et al.* (arXiv:2207.14031).  Every
-quantum state preparation and evolution runs via `piquasso.GaussianSimulator`.
-The only trained component is a scikit-learn ridge readout.
+Backend-native continuous-variable feedback-loop reservoir based on
+Garcia-Beni et al. (arXiv:2207.14031). Every quantum preparation, gate, channel,
+reduction, and measurement is executed by `piquasso.GaussianSimulator`; only a
+classical ridge readout is trained.
 
-## Quick start
+At each step, N persistent Gaussian modes interact in parallel with N fresh
+squeezed modes. Distinct fixed passive and two-mode-active networks act on the
+retained loop and detector arms. Readout features are the upper triangle of the
+detector-arm x-quadrature covariance, with dimension N(N+1)/2. Finite-shot mode
+uses actual backend homodyne samples.
+
+## Install and verify
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python -m pip install -e ".[dev]"
+.\.venv\Scripts\ruff check src tests
 .\.venv\Scripts\pytest
-.\.venv\Scripts\bosonic-qrc-cv configs/smoke/memory.yaml --output results/cv-smoke
+.\.venv\Scripts\bosonic-qrc-cv configs/smoke/memory.yaml --output results/calibration/smoke
 ```
 
-The reservoir retains reduced Gaussian memory modes between steps. Fresh encoded
-ancilla pulses are coupled by a beam splitter, followed by fixed passive mixing,
-fixed single-mode squeezing, and optional loss. Features are the upper triangle
-of the backend-reported x-quadrature covariance. This initial implementation
-provides a delayed-memory calibration only; finite-shot homodyne, the requested
-full benchmark suite, and the DV branch remain future work.
-
-See `docs/LIMITATIONS.md` for scientific boundaries.
-
-Calibration (moderate laptop profile):
+Moderate calibration:
 
 ```powershell
-.\.venv\Scripts\bosonic-qrc-cv configs/calibration/memory.yaml --output results/cv-calibration
+.\.venv\Scripts\bosonic-qrc-cv configs/calibration/memory.yaml --output results/calibration/memory
 ```
 
-Scaling is dominated by Gaussian covariance operations and is approximately
-cubic in the total number of loop-plus-input modes per timestep. A `full`
-profile is intentionally not shipped: it requires the unimplemented benchmark,
-finite-shot, and multi-seed orchestration rather than pretending this smoke
-baseline is publication-scale.
+The full profile is a cost declaration and is never launched by CI. Gaussian
+steps scale approximately cubically with the joint 2N-mode covariance dimension.
+This branch passes physical topology and smoke gates but does not yet implement
+the complete IPC/task/ablation matrix requested for a manuscript. See
+`docs/LIMITATIONS.md` and `docs/NOVELTY.md`.

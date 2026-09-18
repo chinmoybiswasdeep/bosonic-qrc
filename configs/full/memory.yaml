@@ -1,13 +1,13 @@
 reservoir:
-  modes: 2
-  loop_reflectivity: 0.45
+  modes: 8
+  loop_reflectivity: 0.65
   input_squeezing: 1.0
-  active_squeezing: 0.02
+  active_squeezing: 0.03
   loss: 0.02
   encoding: angle
   measurement: exact
   seed: 7
 experiment:
-  length: 40
-  delay: 1
-  washout: 4
+  length: 4000
+  delay: 5
+  washout: 200

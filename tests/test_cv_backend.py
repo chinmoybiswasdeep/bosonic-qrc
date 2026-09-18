@@ -1,38 +1,75 @@
 import numpy as np
-import pytest
+import piquasso as pq
 
 from bosonic_qrc_cv import CVConfig, GaussianLoopReservoir
 
 
-def test_backend_execution_is_called(monkeypatch):
-    pq = pytest.importorskip("piquasso")
-    called = {"value": False}
+def test_backend_execution_and_feature_dimension(monkeypatch):
+    called = {"count": 0}
     original = pq.GaussianSimulator.execute
 
     def wrapped(self, program, *args, **kwargs):
-        called["value"] = True
+        called["count"] += 1
         return original(self, program, *args, **kwargs)
 
     monkeypatch.setattr(pq.GaussianSimulator, "execute", wrapped)
-    reservoir = GaussianLoopReservoir(CVConfig(modes=2, active_squeezing=0.0))
-    feature = reservoir.step(0.2).feature
-    assert called["value"] and reservoir.execution_count == 1
-    assert feature.shape == (3,)
+    record = GaussianLoopReservoir(CVConfig(modes=3)).step(0.2)
+    assert called["count"] == 1
+    assert record.feature.shape == (6,)
 
 
-def test_history_changes_feature():
-    pytest.importorskip("piquasso")
-    config = CVConfig(modes=2, active_squeezing=0.0, seed=3)
-    first = GaussianLoopReservoir(config)
-    first.step(-0.8)
-    a = first.step(0.1).feature
-    second = GaussianLoopReservoir(config)
-    second.step(0.8)
-    b = second.step(0.1).feature
-    assert not np.allclose(a, b)
+def test_covariances_symmetric_and_physical():
+    covariance = GaussianLoopReservoir(CVConfig(modes=2)).step(0.3).loop_covariance
+    omega = 2 * np.kron(np.eye(2), [[0, 1], [-1, 0]])
+    assert np.allclose(covariance, covariance.T)
+    assert np.linalg.eigvalsh(covariance + 1j * omega).min() > -1e-9
 
 
-def test_covariance_is_symmetric():
-    pytest.importorskip("piquasso")
-    record = GaussianLoopReservoir(CVConfig(modes=2)).step(0.3)
-    assert np.allclose(record.covariance, record.covariance.T)
+def test_beamsplitter_limits_identify_loop_and_detector_arms():
+    common = {"modes": 1, "input_squeezing": 0, "active_squeezing": 0, "loss": 0}
+    retained = GaussianLoopReservoir(CVConfig(loop_reflectivity=1, **common))
+    retained.reset(covariance_scale=3)
+    old_loop = retained.step(0)
+    exchanged = GaussianLoopReservoir(CVConfig(loop_reflectivity=0, **common))
+    exchanged.reset(covariance_scale=3)
+    new_loop = exchanged.step(0)
+    assert np.allclose(old_loop.loop_covariance, 6 * np.eye(2))
+    assert np.allclose(old_loop.detector_covariance, [[2]])
+    assert np.allclose(new_loop.loop_covariance, 2 * np.eye(2))
+    assert np.allclose(new_loop.detector_covariance, [[6]])
+
+
+def test_history_and_expected_fading_law():
+    reflectivity = 0.6
+    config = CVConfig(modes=1, loop_reflectivity=reflectivity, active_squeezing=0, loss=0, seed=2)
+    impulse, control = GaussianLoopReservoir(config), GaussianLoopReservoir(config)
+    impulse.loop_unitary[:] = 1
+    impulse.detector_unitary[:] = 1
+    control.loop_unitary[:] = 1
+    control.detector_unitary[:] = 1
+    observed = []
+    for index in range(6):
+        value = 1.0 if index == 0 else 0.0
+        observed.append(abs(impulse.step(value).feature[0] - control.step(0.0).feature[0]))
+    observed = np.asarray(observed[1:])
+    assert np.allclose(observed[1:] / observed[:-1], reflectivity, rtol=1e-5, atol=1e-8)
+
+
+def test_echo_state_convergence_and_bounded_energy():
+    config = CVConfig(modes=2, loop_reflectivity=0.4, active_squeezing=0, loss=0.02)
+    first, second = GaussianLoopReservoir(config), GaussianLoopReservoir(config)
+    first.reset(1.0)
+    second.reset(3.0)
+    distances = []
+    for value in np.linspace(-0.8, 0.8, 12):
+        a, b = first.step(value), second.step(value)
+        distances.append(np.linalg.norm(a.loop_covariance - b.loop_covariance))
+        assert a.maximum_covariance_eigenvalue < config.stability_covariance_limit
+    assert distances[-1] < 0.01 * distances[0]
+
+
+def test_finite_shot_converges_to_exact():
+    base = {"modes": 2, "active_squeezing": 0, "loss": 0, "seed": 11}
+    exact = GaussianLoopReservoir(CVConfig(measurement="exact", **base)).step(0.2).feature
+    sampled = GaussianLoopReservoir(CVConfig(measurement="finite_shot", shots=12000, **base)).step(0.2).feature
+    assert np.allclose(sampled, exact, rtol=0.12, atol=0.12)
