@@ -1,33 +1,65 @@
-experiment:
-  profile: smoke
+branch: EOC-CVMB
+base_commit: 2d227b8b7fef7037b78ec81bd67b42ccf68c01e4
+profile: smoke
 provenance:
-  base_commit: 2d227067881351ed64baf455028dfc83594e5040
-  backend_scope: PhotoGraphiQ mixed Fock plus SciPy Bose-Hubbard adapter
+  dependencies: [numpy, scipy, matplotlib, PyYAML, PhotoGraphiQ]
 closed_system:
-  modes: 5
-  particles: 3
-  hopping: 1.0
+  sizes: [[4, 2], [5, 2]]
   interactions: [0.0, 0.5, 1.0, 2.0, 4.0, 8.0]
-  interval: 0.3
+  hopping: 1.0
+  hopping_time: 0.37
+  interaction_time: 0.23
   boundary: open
-  disorder: [0.0, 0.0, 0.0, 0.0, 0.0]
-  edge_fraction: 0.1
-  bootstrap_replicates: 200
+  disorder_strength: 0.173
+  phase_kick_strength: 0.117
+  realizations: 4
+  bootstrap_replicates: 40
+  degeneracy_tolerance: 1.0e-9
+  universality_class: COE
+  otoc_steps: 4
   seed: 2026
 open_system:
-  memory_modes: 1
+  memory_modes: 4
   cutoff: 4
   cutoff_sequence: [3, 4]
+  hopping: 1.0
   interactions: [0.0, 1.0, 4.0, 8.0]
-  interval: 0.2
-  transmissivity: 0.9
-  input_length: 8
-seeds:
-  reservoir: 17
-  data: 211
-  measurement: 13001
-  trajectory: 41001
-thresholds:
-  trace_error: 1.0e-8
-  positivity: 1.0e-9
-  boundary_shell: 0.05
+  disorder: [0.11, -0.07, 0.03, -0.07]
+  kick_phases: [0.05, -0.09, 0.12, -0.08]
+  hopping_time: 0.37
+  interaction_time: 0.23
+  boundary: open
+  collision_angle: 0.22
+  resource_strength: 0.12
+  input_scale: 0.10
+  transmissivity: 0.94
+  evolution: unconditional
+  trace_tolerance: 1.0e-9
+  seed: 17
+  diagnostic_input: 0.3
+  echo_realizations: 2
+  echo_length: 8
+  overmixing_lambda2_threshold: 0.85
+  task_seeds: [211]
+  run_tasks: true
+seeds: {reservoir: 17, data: 211}
+tasks:
+  train: 8
+  validation: 4
+  test: 6
+  washout: 2
+  embargo: 1
+  maximum_delay: 2
+  maximum_degree: 2
+  alphas: [1.0e-7, 1.0e-4, 1.0e-2]
+convergence:
+  sequence_length: 6
+  observable_prefix: 12
+  task_score_check: false
+  thresholds:
+    state_trace_distance: 0.03
+    raw_trace_error: 1.0e-9
+    boundary_population: 0.05
+    observable_difference: 0.05
+    task_score_difference: 0.15
+    chaos_statistic_difference: 0.08

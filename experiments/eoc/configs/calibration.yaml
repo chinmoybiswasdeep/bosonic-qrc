@@ -1,33 +1,65 @@
-experiment:
-  profile: calibration
+branch: EOC-CVMB
+base_commit: 2d227b8b7fef7037b78ec81bd67b42ccf68c01e4
+profile: calibration
 provenance:
-  base_commit: 2d227067881351ed64baf455028dfc83594e5040
-  backend_scope: PhotoGraphiQ mixed Fock plus SciPy Bose-Hubbard adapter
+  dependencies: [numpy, scipy, matplotlib, PyYAML, PhotoGraphiQ]
 closed_system:
-  modes: 6
-  particles: 4
+  sizes: [[4, 3], [5, 3], [6, 3]]
+  interactions: [0.0, 0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 4.0, 8.0]
   hopping: 1.0
-  interactions: [0.0, 0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0, 8.0, 12.0]
-  interval: 0.25
+  hopping_time: 0.37
+  interaction_time: 0.23
   boundary: open
-  disorder: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-  edge_fraction: 0.1
-  bootstrap_replicates: 2000
+  disorder_strength: 0.173
+  phase_kick_strength: 0.117
+  realizations: 16
+  bootstrap_replicates: 500
+  degeneracy_tolerance: 1.0e-9
+  universality_class: COE
+  otoc_steps: 12
   seed: 2026
 open_system:
-  memory_modes: 2
-  cutoff: 5
-  cutoff_sequence: [4, 5, 6]
+  memory_modes: 4
+  cutoff: 4
+  cutoff_sequence: [3, 4, 5]
+  hopping: 1.0
   interactions: [0.0, 0.5, 1.0, 2.0, 4.0, 8.0]
-  interval: 0.2
+  disorder: [0.11, -0.07, 0.03, -0.07]
+  kick_phases: [0.05, -0.09, 0.12, -0.08]
+  hopping_time: 0.37
+  interaction_time: 0.23
+  boundary: open
+  collision_angle: 0.22
+  resource_strength: 0.12
+  input_scale: 0.10
   transmissivity: 0.94
-  input_length: 300
-seeds:
-  reservoir: 17
-  data: 211
-  measurement: 13001
-  trajectory: 41001
-thresholds:
-  trace_error: 1.0e-9
-  positivity: 1.0e-10
-  boundary_shell: 0.01
+  evolution: unconditional
+  trace_tolerance: 1.0e-9
+  seed: 17
+  diagnostic_input: 0.3
+  echo_realizations: 8
+  echo_length: 60
+  overmixing_lambda2_threshold: 0.85
+  task_seeds: [211, 307, 401]
+  run_tasks: true
+seeds: {reservoir: 17, data: 211}
+tasks:
+  train: 120
+  validation: 60
+  test: 100
+  washout: 30
+  embargo: 10
+  maximum_delay: 8
+  maximum_degree: 3
+  alphas: [1.0e-8, 1.0e-6, 1.0e-4, 1.0e-2]
+convergence:
+  sequence_length: 60
+  observable_prefix: 24
+  task_score_check: true
+  thresholds:
+    state_trace_distance: 0.02
+    raw_trace_error: 1.0e-9
+    boundary_population: 0.02
+    observable_difference: 0.03
+    task_score_difference: 0.10
+    chaos_statistic_difference: 0.05

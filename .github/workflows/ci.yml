@@ -19,4 +19,4 @@ jobs:
       - run: python -m ruff format --check src tests experiments
       - run: python -m mypy
       - run: python -m build
-      - run: bosonic-qrc-eoc-cvmb experiments/eoc/configs/smoke.yaml --output experiments/eoc/results/smoke
+      - run: bosonic-qrc-eoc-cvmb run experiments/eoc/configs/smoke.yaml --output experiments/eoc/results/ci-v2

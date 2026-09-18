@@ -71,3 +71,9 @@ tradeoff violation, non-Gaussian task superiority or edge-of-chaos behavior.
 Read the [design audit](docs/research/measurement_based_quantum_reservoir_design.md),
 [tutorial](docs/tutorials/measurement-based-reservoir.md), [experiment protocol](experiments/measurement_based_reservoir/README.md),
 and [implementation report](docs/research/measurement_based_quantum_reservoir_report.md).
+## Corrected many-body EOC workflow
+
+The fixed-number Floquet calibration and four-mode manual mixed-state adapter are documented
+in [docs/EOC_METHODS_V2.md](docs/EOC_METHODS_V2.md). Run the CI profile with
+`bosonic-qrc-eoc-cvmb run experiments/eoc/configs/smoke.yaml --output experiments/eoc/results/corrected-smoke-v2`.
+Smoke validates implementation only and does not establish an EOC advantage.
