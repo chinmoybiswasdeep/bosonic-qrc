@@ -1,0 +1,25 @@
+reservoir:
+  modes: 6
+  photons: 2
+  measurement: exact
+  include_lower_sectors: true
+  measurement_seed: 13001
+models: [reservoir, identity]
+seeds:
+  reservoir: [13, 17, 29, 37, 41, 53, 61, 73, 89, 97]
+  data: [211, 307, 401, 503, 601]
+  validation_offset: 10000
+  test_offset: 20000
+  surrogate: 31001
+capacity:
+  maximum_degree: 6
+  train_length: 500
+  validation_length: 200
+  test_length: 500
+  phase_scale: [1.5707963267948966, 2.221441469079183]
+  phase_bias: [0.0, 0.3]
+  null_surrogates: 100
+  fdr_q: 0.05
+  svd_tolerance: 1.0e-10
+  bound_tolerance: 0.1
+  ridge_alphas: [1.0e-10, 1.0e-9, 1.0e-8, 1.0e-7, 1.0e-6, 1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2, 1.0e-1, 1.0, 10.0, 100.0]
