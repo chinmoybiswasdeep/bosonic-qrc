@@ -11,3 +11,4 @@ experiment:
   length: 160
   delay: 2
   washout: 20
+seeds: [7, 11, 19, 23, 31, 43, 47, 59, 71, 83]

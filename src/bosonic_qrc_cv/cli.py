@@ -7,7 +7,7 @@ from pathlib import Path
 import yaml
 
 from .config import CVConfig
-from .experiment import save_run
+from .experiment import save_multiseed_run, save_run
 
 
 def main() -> None:
@@ -17,7 +17,12 @@ def main() -> None:
     args = parser.parse_args()
     raw = yaml.safe_load(args.config.read_text(encoding="utf-8"))
     config = CVConfig(**raw.pop("reservoir"))
-    manifest = save_run(config, args.output, **raw.get("experiment", {}))
+    if "seeds" in raw:
+        manifest = save_multiseed_run(
+            config, list(raw["seeds"]), args.output, **raw.get("experiment", {})
+        )
+    else:
+        manifest = save_run(config, args.output, **raw.get("experiment", {}))
     print(manifest["test_metrics"])
 
 
