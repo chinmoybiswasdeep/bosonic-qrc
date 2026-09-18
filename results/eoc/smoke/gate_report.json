@@ -1,0 +1,18 @@
+{
+  "status": "PASS_SMOKE",
+  "edge_of_many_body_quantum_chaos_claim": false,
+  "narrow_claim": "candidate closed-system chaos crossings and open-channel smoke",
+  "checks": {
+    "physical_boundary_candidates_found": true,
+    "two_physical_diagnostics_recorded": true,
+    "trotter_refinement_monotonic": true,
+    "open_states_physical": true,
+    "cutoff_guard_passed": true
+  },
+  "blocking_reasons": [
+    "size refinement is not complete",
+    "cutoff refinement is not complete",
+    "production statistics are not complete",
+    "performance peak is not established"
+  ]
+}
